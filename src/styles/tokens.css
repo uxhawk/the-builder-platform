@@ -1,0 +1,147 @@
+/* ------------------------------------------------------------------
+   Design tokens — ported 1:1 from builderplatform.engine.xyz
+   (Webflow variables: tbp-testing.webflow.shared.css) + Brand Book.
+   Keep names identical to the live site so parity is easy to check.
+   ------------------------------------------------------------------ */
+:root {
+  /* Interface */
+  --colors-interface--white: #ffffff;
+  --colors-interface--dark: #1e1e1e;
+  --colors-interface--dark-2: #121212;
+  --colors-interface--grey: #f3f3f3;
+  --colors-interface--grey-2: #e6e6e6;
+  --colors-interface--grey-3: #fafafa;
+  --colors-interface--body-text: #ffffffb3;
+  --colors-interface--faded-heading: #ffffff80;
+  --colors-interface--white-border: #ffffff1a;
+  --colors-interface--white-faded: #ffffff0f;
+  --colors-interface--white-faded-hover: #ffffff1f;
+  --colors-interface--glass-bg-white: #ffffff26;
+  --colors-interface--glass-bg-dark: #00000040;
+  --colors-interface--dark-border: #0000001a;
+
+  /* Brand (Brand Book p.23) */
+  --colors-brand--deep-blue: #3c53b9;
+  --colors-brand--deep-blue-light: #8a98d5;
+  --colors-brand--deep-blue-lighter: #d8ddf1;
+  --colors-brand--deep-blue-dark: #24326f;
+  --colors-brand--deep-blue-darker: #0c1125;
+  --colors-brand--ultramarine: #6494ff;
+  --colors-brand--ultramarine-blue-light: #a2bfff;
+  --colors-brand--ultramarine-blue-lighter: #e0eaff;
+  --colors-brand--ultramarine-dark: #3c5999;
+  --colors-brand--ultramarine-darker: #141e33;
+  --colors-brand--sky-blue: #47d7ee;
+  --colors-brand--sky-blue-light: #91e7f5;
+  --colors-brand--sky-blue-lighter: #daf7fc;
+  --colors-brand--sky-blue-dark: #2b818f;
+  --colors-brand--sky-blue-darker: #0e2b30;
+  --colors-brand--magenta: #d269ff;
+  --colors-brand--magenta-light: #e4a5ff;
+  --colors-brand--magenta-lighter: #f6e1ff;
+  --colors-brand--magenta-dark: #7e3f99;
+  --colors-brand--magenta-darker: #2a1533;
+  --colors-brand--verdant-green: #3ee68f;
+  --colors-brand--verdant-green-light: #8bf0bc;
+  --colors-brand--verdant-green-lighter: #d8fae9;
+  --colors-brand--verdant-green-dark: #258a56;
+  --colors-brand--verdant-green-darker: #0c2e1d;
+  --colors-brand--evergreen: #b5f44a;
+  --colors-brand--evergreen-light: #d3f892;
+  --colors-brand--evergreen-lighter: #f0fddb;
+  --colors-brand--evergreen-dark: #6d922c;
+  --colors-brand--evergreen-darker: #24310f;
+
+  /* Typefaces */
+  --typefaces--body: NeueHaasDisplayRoman, "Helvetica Neue", Arial, sans-serif;
+  --typefaces--heading-bold: NeueHaasDisplayBold, "Helvetica Neue", Arial, sans-serif;
+  --typefaces--heading-light: NeueHaasDisplayThin, "Helvetica Neue", Arial, sans-serif;
+  --typefaces--secondary: "Sometype Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale (desktop) */
+  --typography--display-size: 4.06rem;
+  --typography--display-line-height: 110%;
+  --typography--h1-size: 3.2rem;
+  --typography--h1-line-height: 115%;
+  --typography--h2-size: 2.5rem;
+  --typography--h2-line-height: 115%;
+  --typography--h3-size: 2.1rem;
+  --typography--h3-line-height: 1.2em;
+  --typography--h4-size: 1.8rem;
+  --typography--h4-line-height: 120%;
+  --typography--h5-size: 1.25rem;
+  --typography--h5-line-height: 120%;
+  --typography--body-size: 1rem;
+  --typography--body-line-height: 140%;
+  --typography--paragraph-big: 1.5rem;
+  --typography--bade-size: 13px; /* sic — Webflow variable name */
+  --typography--badge-line-height: 1.4em;
+  --typography--fine-print-size: 13px;
+  --typography--fine-print-line-height: 1.4em;
+
+  /* Layout */
+  --containers--main-container-with-gutters: 1248px;
+  --containers--content-xl: 960px;
+  --containers--content-l: 768px;
+  --containers--content-m: 576px;
+  --containers--content-s: 480px;
+  --containers--content-xs: 384px;
+  --globals--gutter: 24px;
+  --globals--wide-section-padding: 9px;
+  --globals--navbar-height: 100px;
+  --section-padding--default: 96px;
+  --section-padding--small: 48px;
+  --section-padding--large: 168px;
+  --grid-gaps--tight: 12px;
+  --grid-gaps--default: 24px;
+  --grid-gaps--loose: 48px;
+  --border-radius--default: 10px;
+  --border-radius--small: 5px;
+  --buttons--button-height: 48px;
+  --buttons--button-x-radius: 54px;
+  --hero-sizes--small: 480px;
+  --hero-sizes--default: 576px;
+  --hero-sizes--large: 768px;
+  --blur-effects--intense: 24px;
+
+  /* Motion (Brand Book p.33 — 12fps “step” feel) */
+  --motion--fast: 0.2s;
+  --motion--step: steps(6, end);
+}
+
+@media screen and (max-width: 991px) {
+  :root {
+    --typography--display-size: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --typography--h1-size: 2rem;
+    --typography--h2-size: 32px;
+    --typography--h2-line-height: 1.2em;
+    --typography--h3-size: 2rem;
+    --typography--h4-size: 1.8rem;
+    --typography--display-size: var(--typography--h1-size);
+    --typography--display-line-height: var(--typography--h1-line-height);
+    --typography--paragraph-big: 1.5rem;
+    --section-padding--large: 96px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  :root {
+    --typography--display-size: 40px;
+    --typography--h3-line-height: 1.25em;
+    --typography--h4-size: 20px;
+    --typography--h4-line-height: 1.35em;
+    --typography--h5-size: 18px;
+    --typography--h5-line-height: 1.4em;
+    --typography--paragraph-big: 1.1rem;
+    --section-padding--default: 72px;
+    --globals--gutter: 18px;
+    --globals--navbar-height: 70px;
+    --border-radius--default: 7px;
+    --border-radius--small: 3px;
+  }
+}
