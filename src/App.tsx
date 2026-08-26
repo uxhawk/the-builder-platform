@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { BrowserRouter, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Banner, Footer, Navbar } from "./components/Chrome";
 import { HelpProvider } from "./components/HelpDrawer";
 import Landing from "./pages/Landing";
-import Engines from "./pages/Engines";
 import EnginePortal from "./pages/EnginePortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
 import Styleguide from "./pages/Styleguide";
 import NotFound from "./pages/NotFound";
+import { MY_COMPASS } from "./config";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -36,7 +36,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Landing />} />
-          <Route path="engines" element={<Engines />} />
+          <Route path="compass" element={<Navigate to={MY_COMPASS} replace />} />
           <Route path="engine/:slug" element={<EnginePortal />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
