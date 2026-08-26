@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type { Engine } from "../compass/data/engines";
-import { ArrowDown, Users } from "./Icons";
+import { Users } from "./Icons";
 import { useHelp } from "./HelpDrawer";
 import { LINKS } from "../config";
 
@@ -17,7 +17,7 @@ export function AppShell({ engine, progressLabel, children }: { engine?: Engine;
             <img src="/logo/TBP_Logo_Endorsed_White.svg" alt="The Builder Platform" />
             <span className="sep" /><span className="product">Compass</span>
           </Link>
-          {engine && <Link to="/engines" className="engine-switch" title="Switch Engine"><span>{engine.name}</span><ArrowDown /></Link>}
+          {engine && <span className="engine-switch" title={engine.region}><span>{engine.name}</span></span>}
           <div className="app-bar-right">
             {progressLabel && <span className="status-pill current hide-narrow">{progressLabel}</span>}
             <Link to="/learn" className="nav-link hide-narrow">Learn</Link>

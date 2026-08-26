@@ -8,7 +8,7 @@ import { MILESTONES } from "../compass/data/milestones";
 import type { MoodId } from "../compass/data/moods";
 import { LEARN } from "../compass/data/learn";
 import { useHelp } from "../components/HelpDrawer";
-import { LINKS } from "../config";
+import { LINKS, MY_COMPASS } from "../config";
 
 const MOOD_KEY = "tbp-compass:mood";
 
@@ -27,7 +27,7 @@ export default function Landing() {
             <h1 className="display-heading font-color-white">Know exactly where your Engine should act next.</h1>
             <p className="paragraph-big font-color-white" style={{ maxWidth: 560, opacity: .9 }}>A data-grounded diagnostic that turns your region's evidence into a story partners believe — and two or three first moves you can defend.</p>
             <div className="hero-actions">
-              <Button variant="primary" to="/engines" icon={<ArrowRight width={18} height={18} />}>Find your Engine</Button>
+              <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button>
               <Button variant="glass" href="#how">How it works</Button>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Landing() {
           </div>
           <div className="overview-strip">
             {MILESTONES.map((m, i) => (
-              <Link to="/engines" className={`overview-item ${m.kind === "bookend" ? "human" : ""}`} key={m.id}>
+              <Link to={`${MY_COMPASS}#${m.id}`} className={`overview-item ${m.kind === "bookend" ? "human" : ""}`} key={m.id}>
                 <span className="ov-code">{m.kind === "bookend" ? "Call" : `Milestone ${i}`}{m.gate ? " · gate" : ""}</span>
                 <span className="ov-title">{m.title}</span>
                 <span className="ov-sub">{m.purpose}</span>

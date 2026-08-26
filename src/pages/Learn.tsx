@@ -4,6 +4,7 @@ import { milestoneById } from "../compass/data/milestones";
 import { ArrowLink, Badge, Container, Section, WideHero } from "../components/Primitives";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
 import NotFound from "./NotFound";
+import { MY_COMPASS } from "../config";
 
 export function LearnIndex() {
   return (
@@ -63,7 +64,7 @@ export function LearnTopic() {
               <div className="divider" style={{ marginTop: 24 }} />
               <div className="stack">
                 <span className="badge-text muted">Where this shows up</span>
-                <div className="chip-row">{t.related.map((r) => { const m = milestoneById(r); return <Link key={r} className="chip" to="/engines">{m.code} · {m.title}</Link>; })}</div>
+                <div className="chip-row">{t.related.map((r) => { const m = milestoneById(r); return <Link key={r} className="chip" to={`${MY_COMPASS}#${r}`}>{m.code} · {m.title}</Link>; })}</div>
               </div>
               <div className="row between" style={{ marginTop: 12 }}>
                 {prev ? <ArrowLink to={`/learn/${prev.slug}`}>← {prev.title}</ArrowLink> : <span />}

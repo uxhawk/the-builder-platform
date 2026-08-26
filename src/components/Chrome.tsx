@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { LINKS } from "../config";
+import { LINKS, MY_COMPASS } from "../config";
 import { ArrowRight, ArrowUpRight, Cross, LinkedIn, Menu } from "./Icons";
 
 /* ---------- Magenta announcement strip (site: .banner) ---------- */
-export function Banner({ text = "Cohort two self-guided Compass · Kickoffs begin Sep 26", to = "/engines" }: { text?: string; to?: string }) {
+export function Banner({ text = "Cohort two self-guided Compass · Kickoffs begin Sep 26", to = MY_COMPASS }: { text?: string; to?: string }) {
   return (
     <div className="banner">
       <Link to={to}><span className="badge-text">{text}</span><ArrowRight /></Link>
@@ -15,7 +15,7 @@ export function Banner({ text = "Cohort two self-guided Compass · Kickoffs begi
 /* ---------- Navbar (site: .navbar-wrapper / .navbar) ---------- */
 const NAV = [
   { to: "/", label: "Compass", end: true },
-  { to: "/engines", label: "Engines" },
+  { to: MY_COMPASS, label: "My Compass" },
   { to: "/learn", label: "Learn" },
   { to: "/styleguide", label: "Styleguide" },
 ];
@@ -71,7 +71,7 @@ export function Footer() {
             <div className="footer-menus">
               <div className="footer-menu">
                 <Link className="footer-link" to="/">Compass</Link>
-                <Link className="footer-link" to="/engines">Engines</Link>
+                <Link className="footer-link" to={MY_COMPASS}>My Compass</Link>
                 <Link className="footer-link" to="/learn">Learn</Link>
                 <Link className="footer-link" to="/styleguide">Styleguide</Link>
               </div>

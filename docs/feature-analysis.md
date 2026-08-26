@@ -65,7 +65,7 @@ Source: `tbp_meetings_compilation.md` (29 meetings, Mar 19 – Aug 20 2026), the
 
 ## Not built yet (good feature-branch candidates)
 
-- Auth / member-login gating (Jul 30 open question) — placeholder copy only.
+- Auth / member-login gating (Jul 30 open question) — users sign in and land directly on their Engine; `SIGNED_IN_ENGINE` stands in for the session.
 - Where landing pages live (engine site vs TBP site vs standalone) — this prototype assumes TBP-hosted.
 - Pre-produced network-graph reveals per milestone.
 - Cross-Engine archetype discovery ("Engines like yours").
