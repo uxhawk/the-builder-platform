@@ -1,16 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LINKS, MY_COMPASS } from "../config";
-import { ArrowRight, ArrowUpRight, Cross, LinkedIn, Menu } from "./Icons";
-
-/* ---------- Magenta announcement strip (site: .banner) ---------- */
-export function Banner({ text = "Cohort two self-guided Compass · Kickoffs begin Sep 26", to = MY_COMPASS }: { text?: string; to?: string }) {
-  return (
-    <div className="banner">
-      <Link to={to}><span className="badge-text">{text}</span><ArrowRight /></Link>
-    </div>
-  );
-}
+import { ArrowUpRight, Cross, LinkedIn, Menu } from "./Icons";
 
 /* ---------- Navbar (site: .navbar-wrapper / .navbar) ---------- */
 const NAV = [
