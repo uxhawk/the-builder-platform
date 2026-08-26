@@ -164,7 +164,7 @@
 @media screen and (max-width: 767px) { .banner .badge-text { font-size: var(--typography--bade-size); } }
 
 /* ---------- Navbar ---------- */
-.navbar-wrapper { position: sticky; top: 0; z-index: 9999; display: flex; flex-flow: column; align-items: center; margin-bottom: calc(-1 * var(--globals--navbar-height)); }
+.navbar-wrapper { position: sticky; top: 0; padding-top: 0; z-index: 9999; display: flex; flex-flow: column; align-items: center; margin-bottom: calc(-1 * var(--globals--navbar-height)); }
 .navbar-top-line { width: 100%; height: var(--globals--wide-section-padding); background-color: var(--colors-interface--dark); }
 .navbar-content { display: flex; flex-flow: column; align-items: stretch; align-self: stretch; }
 .navbar { position: relative; height: var(--globals--navbar-height); border-bottom-left-radius: var(--border-radius--small); border-bottom-right-radius: var(--border-radius--small); background-color: var(--colors-interface--dark); display: flex; flex-flow: column; justify-content: center; align-items: stretch; padding-left: 18px; padding-right: 18px; }

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
-import { Banner, Footer, Navbar } from "./components/Chrome";
+import { Footer, Navbar } from "./components/Chrome";
 import { HelpProvider } from "./components/HelpDrawer";
 import Landing from "./pages/Landing";
 import GemFirstPortal from "./pages/GemFirstPortal";
@@ -22,7 +22,6 @@ function Layout() {
   return (
     <HelpProvider>
       <ScrollToTop />
-      <Banner />
       <Navbar />
       <main><Outlet /></main>
       <Footer />
