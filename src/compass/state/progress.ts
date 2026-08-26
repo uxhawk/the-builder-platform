@@ -15,6 +15,7 @@ export interface ProgressState {
   deadline?: { label: string; date: string };
   personasAnswered: string[];
   revisionRequested?: boolean;
+  notes: Partial<Record<MilestoneId, string>>;
 }
 
 const KEY = (slug: string) => `tbp-compass:${slug}`;
@@ -23,7 +24,7 @@ function initial(engine: Engine): ProgressState {
   return {
     completed: [...engine.seedCompleted], checks: {}, flags: [],
     reviews: engine.seedReviewApproved ? { m4: "approved" } : {},
-    deadline: engine.deadline, personasAnswered: [],
+    deadline: engine.deadline, personasAnswered: [], notes: {},
   };
 }
 
@@ -73,6 +74,7 @@ export function useProgress(engine: Engine) {
     setDeadline: (deadline?: { label: string; date: string }) => setState((s) => ({ ...s, deadline })),
     togglePersona: (id: string) => setState((s) => ({ ...s, personasAnswered: s.personasAnswered.includes(id) ? s.personasAnswered.filter((p) => p !== id) : [...s.personasAnswered, id] })),
     requestRevision: () => setState((s) => ({ ...s, revisionRequested: true })),
+    setNote: (id: MilestoneId, text: string) => setState((s) => ({ ...s, notes: { ...s.notes, [id]: text } })),
     reset: () => setState(initial(engine)),
   }), [state, statusOf, isComplete, current, engine]);
 

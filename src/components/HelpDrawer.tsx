@@ -11,7 +11,7 @@ export const useHelp = () => useContext(Ctx);
 
 /* “Get live help” is the always-available off-ramp (Aug 6 / Aug 13 / Aug 20 notes:
    engines should be able to flag they want a thought partner at any point). */
-export function HelpProvider({ children }: { children: ReactNode }) {
+export function HelpProvider({ children, fab = true }: { children: ReactNode; fab?: boolean }) {
   const [state, setState] = useState<{ open: boolean; engine?: Engine; milestone?: string }>({ open: false });
   const [note, setNote] = useState("");
   const open = useCallback((opts?: { engine?: Engine; milestone?: string }) => setState({ open: true, ...opts }), []);
@@ -25,7 +25,7 @@ export function HelpProvider({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={value}>
       {children}
-      <button type="button" className="button dark help-fab" onClick={() => open()}><Users width={18} height={18} />Get help</button>
+      {fab && <button type="button" className="button dark help-fab" onClick={() => open()}><Users width={18} height={18} />Get help</button>}
       <Drawer open={state.open} onClose={close} title="Get live help">
         <div className="stack gap-l">
           <p className="body-text">The Compass is self-guided, not hands-off. If you're stuck, unsure, or want a thought partner before you commit to a call — reach out. The bookend calls are the most load-bearing moments in the process; the middle has off-ramps.</p>
