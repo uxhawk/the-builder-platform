@@ -2,25 +2,9 @@
    concept/gem-first — a single-page, Gem-centred portal inside a
    standalone (logged-in) app shell. Same tokens as tbp.css.
    ================================================================== */
-.app-shell { min-height: 100dvh; display: flex; flex-flow: column; background: #f5f5f5; }
-.app-bar { position: sticky; top: 0; z-index: 9999; height: 64px; background: var(--colors-interface--dark); color: #fff; display: flex; align-items: center; }
-.app-bar .main-container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.app-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; }
-.app-brand img { height: 34px; width: auto; }
-.app-brand .sep { width: 1px; height: 24px; background: var(--colors-interface--white-border); }
-.app-brand .product { font-family: var(--typefaces--secondary); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; font-variation-settings: "wght" 600; }
-.engine-switch { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 200px; background: var(--colors-interface--glass-bg-white); color: #fff; text-decoration: none; font-family: var(--typefaces--body); font-size: 14px; max-width: 46vw; }
-.engine-switch .icon { width: 16px; height: 16px; }
-.engine-switch span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.app-bar-right { display: flex; align-items: center; gap: 12px; }
-.app-bar-right .avatar { width: 34px; height: 34px; font-size: 12px; }
-.app-footer { padding: 24px 0; color: #6b6b6b; font-size: 13px; }
-.app-footer .main-container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.app-footer a { color: inherit; }
-@media screen and (max-width: 767px) { .app-brand .product, .app-bar .hide-narrow { display: none; } }
-
+.gf-page { background: #f5f5f5; padding-top: var(--globals--navbar-height); min-height: 100dvh; }
 /* ---- Page header ---- */
-.gf-head { padding: 40px 0 24px; }
+.gf-head { padding: 48px 0 24px; }
 .gf-head .main-container { display: flex; flex-flow: column; gap: 12px; }
 .gf-head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
 .gf-hyp { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px 18px; border-radius: var(--border-radius--default); background: #fff; border: 1px solid var(--colors-interface--grey-2); }
@@ -39,7 +23,7 @@
 .gf-step.done::before { background: var(--colors-interface--dark-2); }
 .gf-step:first-child::before { top: 28px; }
 .gf-step:last-child::before { bottom: auto; height: 28px; }
-.gf-node { position: sticky; top: 88px; z-index: 1; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+.gf-node { position: sticky; top: calc(var(--globals--navbar-height) + 24px); z-index: 1; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
 .gf-node > span { width: 36px; height: 36px; border-radius: 50%; background: #f5f5f5; border: 2px solid var(--colors-interface--grey-2); display: inline-flex; align-items: center; justify-content: center; font-family: var(--typefaces--secondary); font-size: 12px; font-variation-settings: "wght" 700; color: #8a8a8a; box-shadow: 0 0 0 6px #f5f5f5; }
 .gf-step.done .gf-node > span { background: var(--colors-interface--dark-2); border-color: var(--colors-interface--dark-2); color: #fff; }
 .gf-step.current .gf-node > span { background: var(--colors-brand--evergreen); border-color: var(--colors-brand--evergreen); color: var(--colors-interface--dark-2); }
@@ -70,7 +54,7 @@
 .gf-gate .gf-node > span { border-style: dashed; }
 
 /* ---- Gem dock ---- */
-.gem-dock { position: sticky; top: 88px; display: flex; flex-flow: column; gap: 14px; }
+.gem-dock { position: sticky; top: calc(var(--globals--navbar-height) + 24px); display: flex; flex-flow: column; gap: 14px; }
 .gem-card { background: var(--colors-interface--dark-2); color: #fff; border-radius: var(--border-radius--default); padding: 20px; display: flex; flex-flow: column; gap: 14px; }
 .gem-card .prompt-box { background: #000; }
 .gem-now { display: flex; flex-flow: column; gap: 4px; }

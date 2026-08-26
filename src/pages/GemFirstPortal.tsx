@@ -5,7 +5,6 @@ import { MILESTONES, type Milestone, type MilestoneId } from "../compass/data/mi
 import { learnBySlug } from "../compass/data/learn";
 import { useProgress, type Progress } from "../compass/state/progress";
 import { StressTest } from "../compass/components/StressTest";
-import { AppShell } from "../components/AppShell";
 import { Button, Notice, StatusPill } from "../components/Primitives";
 import { CopyButton, Disclosure } from "../components/Interactive";
 import { ArrowUpRight, Calendar, Check, Copy, Doc, Flag, Info, Lock, Users } from "../components/Icons";
@@ -35,7 +34,7 @@ function Page({ slug }: { slug: string }) {
   const copyAndOpen = async (text?: string) => { try { if (text) await navigator.clipboard.writeText(text); } catch { /* ignore */ } window.open(gemHref, "_blank", "noreferrer"); };
 
   return (
-    <AppShell engine={engine} progressLabel={`${progress.state.completed.length} / ${MILESTONES.length}`}>
+    <div className="gf-page">
       <section className="gf-head">
         <div className="main-container">
           <div className="gf-head-row">
@@ -45,6 +44,7 @@ function Page({ slug }: { slug: string }) {
               <div className="fine-print" style={{ color: "#555" }}>{engine.region} · {engine.industry}</div>
             </div>
             <div className="row">
+              <span className="status-pill current">{progress.state.completed.length} / {MILESTONES.length} milestones</span>
               {d && <span className={`deadline-chip ${days !== null && days < 21 ? "" : "grey"}`}><Calendar width={14} height={14} />{d.label} · {days !== null && days >= 0 ? `${days} days` : "passed"}</span>}
               <button type="button" className="proto-note" onClick={progress.reset}>reset prototype state</button>
             </div>
@@ -115,7 +115,7 @@ function Page({ slug }: { slug: string }) {
           </aside>
         </div>
       </div>
-    </AppShell>
+    </div>
   );
 }
 

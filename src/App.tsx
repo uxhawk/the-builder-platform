@@ -33,10 +33,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* concept/gem-first: the Engine portal lives in a standalone app shell */}
-        <Route path="engine/:slug" element={<HelpProvider fab={false}><ScrollToTop /><GemFirstPortal /></HelpProvider>} />
         <Route element={<Layout />}>
           <Route index element={<Landing />} />
+          <Route path="engine/:slug" element={<GemFirstPortal />} />
           <Route path="compass" element={<Navigate to={MY_COMPASS} replace />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
