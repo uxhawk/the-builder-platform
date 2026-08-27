@@ -200,7 +200,8 @@ export default function Landing() {
               <p className="body-text">Dig deeper in the Learn library — frameworks, process, and what the data can and can't see.</p>
               <ArrowLink to="/learn">Open the Learn library ({LEARN.length} topics)</ArrowLink>
             </div>
-            <div className="stack" style={{ gap: 0 }}>
+            {/* width: 100% — the grid centres/shrink-wraps items, which made this column resize as answers opened */}
+            <div className="stack" style={{ gap: 0, width: "100%" }}>
               <FaqItem q="How much time does this really take?" defaultOpen>Roughly 8–15 hours of your team's time on the self-guided path, plus two calls. A motivated team with a deadline has done the middle in two or three focused days. The guided path is 6–8 hours of calls over 10–12 weeks, with TBP doing the between-call work.</FaqItem>
               <FaqItem q="Do we need a data scientist?">No. The Gem does the retrieval and the arithmetic; the navigator and data steward handle sources. You need someone who knows your region's firms and institutions well enough to challenge a chart — and a CEO willing to be challenged.</FaqItem>
               <FaqItem q="What if the data is wrong about us?">It will be, somewhere: suppressed defense employers, misclassified firms, trade secrets that never patent. Milestone 1 is designed to surface exactly that. When a correction changes the picture, you get an explicit revised read — never a silent update.</FaqItem>

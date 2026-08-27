@@ -179,11 +179,11 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
                   <span className="badge-text muted">Go deeper</span>
                   <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={here}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
                 </section>
-                {status === "done" && <button type="button" className="arrow-link" onClick={() => progress.uncomplete(m.id)}><span className="arrow-link-text">Reopen</span></button>}
+                {status === "done" && <div className="row"><Button variant="outline" size="small" onClick={() => progress.uncomplete(m.id)}>Reopen</Button></div>}
               </div>
             </Disclosure>
           )}
-          {status === "locked" && <span className="fine-print" style={{ color: "#8a8a8a" }}>Unlocks after {MILESTONES[idx - 1]?.title}. <Link to={`/learn/${m.deeper[0]}`} state={here}>Read ahead</Link>.</span>}
+          {status === "locked" && <span className="fine-print" style={{ color: "#6b6b6b" }}>Unlocks after {MILESTONES[idx - 1]?.title}. <Link to={`/learn/${m.deeper[0]}`} state={here}>Read ahead</Link>.</span>}
         </div>
       </div>
       {m.gate && (

@@ -33,7 +33,7 @@
 .gf-card { margin: 8px 0 20px; background: #fff; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); padding: 20px 22px; display: flex; flex-flow: column; gap: 14px; min-width: 0; }
 .gf-step.current .gf-card { border-color: var(--colors-interface--dark-2); box-shadow: 0 12px 34px -20px rgba(0,0,0,.4); }
 .gf-step.locked .gf-card { background: transparent; border-style: dashed; padding: 14px 22px; }
-.gf-step.locked .gf-card .milestone-purpose { color: #8a8a8a; }
+.gf-step.locked .gf-card .milestone-purpose { color: #6b6b6b; }
 .gf-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .gf-title-row > div:first-child { min-width: 0; } /* text column wraps; the pill keeps its size */
 /* Disclosure row: whole row is the hit target; darkens on hover, with a labelled button instead of a bare chevron */
@@ -56,6 +56,7 @@
 .gf-gate { display: grid; grid-template-columns: 56px 1fr; gap: 0 16px; position: relative; }
 .gf-gate::before { content: ""; position: absolute; left: 27px; top: 0; bottom: 0; width: 2px; background: var(--colors-interface--grey-2); }
 .gf-gate .gf-node > span { border-style: dashed; }
+.gf-gate .gf-kicker { color: #555; } /* #6b6b6b was 4.35:1 on the magenta tint */
 
 /* ---- Gem dock ---- */
 .gem-dock { position: sticky; top: calc(var(--globals--navbar-height) + 24px); display: flex; flex-flow: column; gap: 14px; }

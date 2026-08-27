@@ -7,7 +7,7 @@ import { LINKS } from "../config";
 /* Side-by-side parity page: compare against builderplatform.engine.xyz */
 const SWATCHES: [string, string, string][] = [
   ["Foundation White", "#FFFFFF", "#000"], ["Light Gray", "#F5F5F5", "#000"], ["Interface Grey", "#F3F3F3", "#000"], ["Dark", "#1E1E1E", "#fff"], ["Dark 2", "#121212", "#fff"],
-  ["Deep Blue", "#3C53B9", "#fff"], ["Ultramarine", "#6494FF", "#fff"], ["Sky Blue", "#47D7EE", "#000"], ["Magenta", "#D269FF", "#fff"], ["Verdant Green", "#3EE68F", "#000"], ["Evergreen", "#B5F44A", "#000"],
+  ["Deep Blue", "#3C53B9", "#fff"], ["Ultramarine", "#6494FF", "#000"], ["Sky Blue", "#47D7EE", "#000"], ["Magenta", "#D269FF", "#000"], ["Verdant Green", "#3EE68F", "#000"], ["Evergreen", "#B5F44A", "#000"],
 ];
 export default function Styleguide() {
   const [tab, setTab] = useState<"a" | "b" | "c">("a");

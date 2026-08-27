@@ -38,7 +38,7 @@
 .status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--typefaces--secondary); font-size: 11px; line-height: 22px; /* integer: inherited 22.4px made pills 30.4px tall and snap unevenly */ text-transform: uppercase; letter-spacing: .02em; padding: 4px 10px; border-radius: 3px; background: var(--colors-interface--grey); color: var(--colors-interface--dark-2); white-space: nowrap; flex-shrink: 0; /* a label never gives up width in a flex row */ font-variation-settings: "wght" 600; }
 .status-pill.done { background: var(--colors-interface--dark-2); color: #fff; }
 .status-pill.current { background: var(--colors-brand--evergreen); }
-.status-pill.locked { background: var(--colors-interface--grey); color: #7a7a7a; }
+.status-pill.locked { background: var(--colors-interface--grey); color: #6b6b6b; }
 .status-pill.review { background: var(--colors-brand--magenta); }
 .status-pill.human { background: var(--colors-brand--sky-blue); }
 .status-pill .icon { width: 12px; height: 12px; }
@@ -88,8 +88,8 @@
 
 /* ---------- Deeper chips ---------- */
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--typefaces--secondary); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--colors-interface--grey-2); border-radius: 3px; text-decoration: none; color: var(--colors-interface--dark-2); transition: background var(--motion--fast); }
-.chip:hover { background: var(--colors-interface--grey); }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--typefaces--secondary); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid color-mix(in srgb, var(--colors-brand--ultramarine) 45%, transparent); background: color-mix(in srgb, var(--colors-brand--ultramarine) 12%, transparent); border-radius: 3px; text-decoration: none; color: var(--colors-brand--deep-blue-dark); transition: background var(--motion--fast), border-color var(--motion--fast); }
+.chip:hover { background: color-mix(in srgb, var(--colors-brand--ultramarine) 28%, transparent); border-color: var(--colors-brand--ultramarine); }
 .chip .icon { width: 14px; height: 14px; }
 
 /* ---------- Gate / notice banners ---------- */
@@ -227,7 +227,7 @@
 
 /* ---------- Misc ---------- */
 .kbd-note { font-family: var(--typefaces--secondary); font-size: 12px; color: #6b6b6b; }
-.proto-note { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #8a8a8a; display: inline-flex; gap: 6px; align-items: center; }
+.proto-note { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; display: inline-flex; gap: 6px; align-items: center; }
 .proto-note::before { content: ""; width: 6px; height: 6px; background: var(--colors-brand--magenta); }
 .artifact-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--colors-interface--grey-2); font-size: 14px; }
 .artifact-row:first-child { border-top: 0; }
