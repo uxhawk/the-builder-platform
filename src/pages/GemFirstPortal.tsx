@@ -1,6 +1,6 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { engineBySlug } from "../compass/data/engines";
-import { MILESTONES, type Milestone, type MilestoneId } from "../compass/data/milestones";
+import { MILESTONES, nextMilestone, type Milestone, type MilestoneId } from "../compass/data/milestones";
 import { learnBySlug } from "../compass/data/learn";
 import { fromState } from "../compass/state/from";
 import { useProgress, type Progress } from "../compass/state/progress";
@@ -9,6 +9,7 @@ import { Button, Notice, StatusPill } from "../components/Primitives";
 import { CopyButton, Disclosure } from "../components/Interactive";
 import { ArrowUpRight, Calendar, Check, Copy, Flag, Info, Lock, Users } from "../components/Icons";
 import { useHelp } from "../components/HelpDrawer";
+import { useToast } from "../components/Toast";
 import { LINKS } from "../config";
 import NotFound from "./NotFound";
 
@@ -108,6 +109,7 @@ function Page({ slug }: { slug: string }) {
 
 function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: ReturnType<typeof engineBySlug> & object; progress: Progress; onOpenGem: (t?: string) => void }) {
   const help = useHelp();
+  const { toast } = useToast();
   const { hash } = useLocation();
   /* Cross-links into Learn carry this so the article's back link lands on this card, expanded. */
   const here = fromState(`/engine/${engine.slug}#${m.id}`, `Your Compass · ${m.title}`);
@@ -115,7 +117,20 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
   const idx = MILESTONES.findIndex((x) => x.id === m.id);
   const isHuman = m.kind === "bookend";
   const stressOk = !m.stressTest || progress.state.personasAnswered.length >= 6;
-  const complete = () => { progress.complete(m.id); if (m.gate) progress.requestReview(m.id); };
+  const complete = () => {
+    progress.complete(m.id);
+    if (m.gate) progress.requestReview(m.id);
+    toast(<>Congratulations — you completed <strong>{m.title}</strong></>);
+    const next = nextMilestone(m.id);
+    /* Let the completed card collapse before measuring; scroll-behavior in CSS keeps it smooth. */
+    if (next) setTimeout(() => document.getElementById(next.id)?.scrollIntoView({ block: "start" }), 100);
+  };
+  const reopen = () => {
+    progress.uncomplete(m.id);
+    toast(<>Reopened <strong>{m.title}</strong> — pick up where you left off</>);
+    /* The card expands back into its actionable state; scroll its top into view once it has. */
+    setTimeout(() => document.getElementById(m.id)?.scrollIntoView({ block: "start" }), 100);
+  };
 
   return (
     <>
@@ -174,7 +189,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
                   <span className="badge-text muted">Go deeper</span>
                   <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={here}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
                 </section>
-                {status === "done" && <div className="row"><Button variant="outline" size="small" onClick={() => progress.uncomplete(m.id)}>Reopen</Button></div>}
+                {status === "done" && <div className="row"><Button variant="outline" size="small" onClick={reopen}>Reopen</Button></div>}
               </div>
             </Disclosure>
           )}

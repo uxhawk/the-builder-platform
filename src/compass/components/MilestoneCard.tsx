@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { Link } from "react-router-dom";
-import { MILESTONES, prevMilestone, type Milestone } from "../data/milestones";
+import { MILESTONES, nextMilestone, prevMilestone, type Milestone } from "../data/milestones";
 import type { Engine } from "../data/engines";
 import type { Progress } from "../state/progress";
 import { learnBySlug } from "../data/learn";
@@ -9,6 +9,7 @@ import { Button, Notice, StatusPill } from "../../components/Primitives";
 import { Checkbox, CopyButton, Disclosure } from "../../components/Interactive";
 import { ArrowUpRight, Calendar, ChevronDown, Check, Doc, Flag, Info, Sparkle, Users } from "../../components/Icons";
 import { useHelp } from "../../components/HelpDrawer";
+import { useToast } from "../../components/Toast";
 import { StressTest } from "./StressTest";
 import { LINKS } from "../../config";
 
@@ -20,6 +21,7 @@ import { LINKS } from "../../config";
    Locked milestones are still readable (preview), just not actionable. */
 export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Milestone; engine: Engine; progress: Progress; open: boolean; onToggle: () => void }) {
   const help = useHelp();
+  const { toast } = useToast();
   const id = useId();
   const status = progress.statusOf(m.id);
   const prev = prevMilestone(m.id);
@@ -37,6 +39,16 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
   const complete = () => {
     progress.complete(m.id);
     if (m.gate) progress.requestReview(m.id);
+    toast(<>Congratulations — you completed <strong>{m.title}</strong></>);
+    const next = nextMilestone(m.id);
+    /* Let the completed card collapse before measuring; scroll-behavior in CSS keeps it smooth. */
+    if (next) setTimeout(() => document.getElementById(next.id)?.scrollIntoView({ block: "start" }), 100);
+  };
+  const reopen = () => {
+    progress.uncomplete(m.id);
+    toast(<>Reopened <strong>{m.title}</strong> — pick up where you left off</>);
+    /* The card expands back into its actionable state; scroll its top into view once it has. */
+    setTimeout(() => document.getElementById(m.id)?.scrollIntoView({ block: "start" }), 100);
   };
 
   return (
@@ -144,7 +156,7 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
             <div className="row">
               {actionable && status !== "done" && <span className="kbd-note">{doneCount}/{allChecks.length} steps{m.stressTest ? ` · ${progress.state.personasAnswered.length}/6 skeptics` : ""}</span>}
               {status === "done"
-                ? <Button variant="outline" size="small" onClick={() => progress.uncomplete(m.id)}>Reopen</Button>
+                ? <Button variant="outline" size="small" onClick={reopen}>Reopen</Button>
                 : actionable && <Button variant="dark" size="small" disabled={!canComplete} onClick={complete} title={!stressOk ? "Answer all six skeptics first" : undefined}>{m.gate ? "Mark complete & request review" : "Mark complete"}</Button>}
             </div>
           </div>

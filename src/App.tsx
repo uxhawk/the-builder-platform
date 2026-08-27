@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Footer, Navbar } from "./components/Chrome";
 import { HelpProvider } from "./components/HelpDrawer";
+import { ToastProvider } from "./components/Toast";
 import Landing from "./pages/Landing";
 import GemFirstPortal from "./pages/GemFirstPortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
@@ -21,10 +22,12 @@ function ScrollToTop() {
 function Layout() {
   return (
     <HelpProvider>
-      <ScrollToTop />
-      <Navbar />
-      <main><Outlet /></main>
-      <Footer />
+      <ToastProvider>
+        <ScrollToTop />
+        <Navbar />
+        <main><Outlet /></main>
+        <Footer />
+      </ToastProvider>
     </HelpProvider>
   );
 }
