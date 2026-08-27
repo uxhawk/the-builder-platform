@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { engineBySlug } from "../compass/data/engines";
 import { MILESTONES, type MilestoneId } from "../compass/data/milestones";
 import { useProgress } from "../compass/state/progress";
@@ -26,7 +26,12 @@ function Portal({ engineSlug }: { engineSlug: string }) {
   const help = useHelp();
   /* Open card = the current milestone, unless the user picked another one since
      the current milestone last changed (derived during render, no effect). */
-  const [pick, setPick] = useState<{ when: MilestoneId; id: MilestoneId | "" } | null>(null);
+  const { hash } = useLocation();
+  const [pick, setPick] = useState<{ when: MilestoneId; id: MilestoneId | "" } | null>(() => {
+    /* Arriving at #m3 (e.g. back from a Learn article) opens that card. */
+    const id = hash.slice(1) as MilestoneId;
+    return MILESTONES.some((x) => x.id === id) ? { when: progress.current.id, id } : null;
+  });
   const openId: MilestoneId | "" = pick && pick.when === progress.current.id ? pick.id : progress.current.id;
   const setOpenId = (id: MilestoneId | "") => setPick({ when: progress.current.id, id });
 

@@ -14,12 +14,12 @@ export type Block =
 
 export interface LearnTopic {
   slug: string; title: string; group: "Start here" | "Frameworks" | "Process" | "Data & the Gem";
-  summary: string; readTime: string; body: Block[]; related: MilestoneId[];
+  summary: string; body: Block[]; related: MilestoneId[];
 }
 
 export const LEARN: LearnTopic[] = [
   {
-    slug: "what-is-compass", group: "Start here", title: "What the Compass is (and isn't)", readTime: "4 min", related: ["m0", "m6"],
+    slug: "what-is-compass", group: "Start here", title: "What the Compass is (and isn't)", related: ["m0", "m6"],
     summary: "A regional decision system: evidence first, then alignment, then two or three moves you can defend.",
     body: [
       { t: "p", text: "Engines default to talking about their work at two levels: the macro case (“this technology matters for national security and jobs”) and the micro case (“here are our twelve sub-awards”). What's missing is the middle layer — a concrete account of how the regional ecosystem actually works or doesn't, and how the Engine intends to change it. That middle layer is where the real theory of change lives." },
@@ -38,7 +38,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "engine-vs-grant", group: "Start here", title: "How an Engine differs from a research grant", readTime: "3 min", related: ["m0"],
+    slug: "engine-vs-grant", group: "Start here", title: "How an Engine differs from a research grant", related: ["m0"],
     summary: "The one-pager most Engines wish they'd had six months in.",
     body: [
       { t: "p", text: "An Engine is not a grant program with a bigger budget. It is a small, precisely targeted intervention team — roughly $10–15M a year — trying to shape how much larger sums ($500M a year or more) get spent on research, education, and economic development in a region." },
@@ -55,7 +55,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "ninja-and-but-for", group: "Start here", title: "The “ninja” framing and the “but for” question", readTime: "3 min", related: ["m0", "m4"],
+    slug: "ninja-and-but-for", group: "Start here", title: "The “ninja” framing and the “but for” question", related: ["m0", "m4"],
     summary: "Small, surgical, aimed at a strike you can actually land.",
     body: [
       { t: "p", text: "In the first pilot kickoff, the Engine's CEO adopted a framing that stuck: an Engine is a ninja. Not a broad transformation program — a small team with a modest budget that has to be precise about where it acts. “When we fire our bullets, let's do it where we think we'll get our biggest strike.”" },
@@ -66,7 +66,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "input-fallacy", group: "Frameworks", title: "The input fallacy", readTime: "3 min", related: ["m3", "m4"],
+    slug: "input-fallacy", group: "Frameworks", title: "The input fallacy", related: ["m3", "m4"],
     summary: "Why “we need more X” is usually the wrong diagnosis.",
     body: [
       { t: "p", text: "The input fallacy is the assumption that innovation output is a function of the quantity and quality of inputs: more funding, more facilities, more trained scientists, more startup programs. It is the default trap for Engines because inputs are countable, so political and reporting pressure always bends toward buying inputs that are already relatively abundant." },
@@ -80,7 +80,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "industry-archetypes", group: "Frameworks", title: "Industry archetypes", readTime: "4 min", related: ["m2"],
+    slug: "industry-archetypes", group: "Frameworks", title: "Industry archetypes", related: ["m2"],
     summary: "Four patterns for where a regional industry is heading. Hypotheses, not labels.",
     body: [
       { t: "p", text: "Milestone 2 benchmarks your industry twice — against the same region ten years ago and against peer regions. A region can be improving in absolute terms while losing ground competitively, or holding steady while the landscape shifts beneath it. Each pattern demands a different response. The archetype is a shorthand for the pattern, and it's presented as a hypothesis with the signals behind it." },
@@ -96,7 +96,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "ecosystem-archetypes", group: "Frameworks", title: "Ecosystem archetypes", readTime: "3 min", related: ["m3"],
+    slug: "ecosystem-archetypes", group: "Frameworks", title: "Ecosystem archetypes", related: ["m3"],
     summary: "Five patterns of assets and connectivity — how to recognize your region.",
     body: [
       { t: "table", cols: ["Archetype", "How to recognize your region", "What indicators typically show"], rows: [
@@ -110,7 +110,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "engine-archetypes", group: "Frameworks", title: "Engine archetypes", readTime: "4 min", related: ["m4", "m5"],
+    slug: "engine-archetypes", group: "Frameworks", title: "Engine archetypes", related: ["m4", "m5"],
     summary: "Five ways an Engine can sit in its ecosystem — and what each primarily does.",
     body: [
       { t: "table", cols: ["Archetype", "How to recognize the fit", "What the Engine primarily does"], rows: [
@@ -124,7 +124,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "barrier-types", group: "Frameworks", title: "The six kinds of ecosystem barrier", readTime: "4 min", related: ["m3", "m4"],
+    slug: "barrier-types", group: "Frameworks", title: "The six kinds of ecosystem barrier", related: ["m3", "m4"],
     summary: "Plain-language vocabulary for what's actually broken — none of which is “not enough money.”",
     body: [
       { t: "p", text: "A real ecosystem diagnosis names a specific failure in how actors relate to each other or how markets function. This vocabulary separates that from a generic “we need more collaboration” claim — and from a “we need more inputs” claim." },
@@ -140,7 +140,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "why-not-already", group: "Frameworks", title: "The “why not already?” test", readTime: "3 min", related: ["m4"],
+    slug: "why-not-already", group: "Frameworks", title: "The “why not already?” test", related: ["m4"],
     summary: "The single most important discipline in the Compass — and the one self-guided teams are most likely to skip.",
     body: [
       { t: "p", text: "Once you've named an ecosystem barrier, ask: if this failure is real and the solution is knowable, why hasn't someone already fixed it?" },
@@ -155,7 +155,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "engine-capabilities", group: "Frameworks", title: "The five capabilities — nascent, established, advanced", readTime: "5 min", related: ["m4"],
+    slug: "engine-capabilities", group: "Frameworks", title: "The five capabilities — nascent, established, advanced", related: ["m4"],
     summary: "A qualitative self-assessment of what your Engine can hold today — and what to build or partner for.",
     body: [
       { t: "p", text: "Analysis of an Engine's capabilities is necessarily qualitative. These tiers illustrate what a candid self-assessment looks like; the purpose is to understand the strengths and limits of your organizational position — a university has capabilities an EDO lacks and vice versa — and plan to bolster weaknesses by building or partnering." },
@@ -169,7 +169,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "innovation-mode", group: "Frameworks", title: "Innovation mode, maturity, and capital intensity", readTime: "3 min", related: ["m1", "m2"],
+    slug: "innovation-mode", group: "Frameworks", title: "Innovation mode, maturity, and capital intensity", related: ["m1", "m2"],
     summary: "Three dimensions that decide which ecosystem strategy could possibly work.",
     body: [
       { t: "h4", text: "Innovation mode" },
@@ -182,7 +182,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "skeptic-personas", group: "Process", title: "The stress test: six skeptics", readTime: "3 min", related: ["m5"],
+    slug: "skeptic-personas", group: "Process", title: "The stress test: six skeptics", related: ["m5"],
     summary: "Every partner sees only part of your causal chain. If the links aren't explicit, they fill the gaps with wrong assumptions.",
     body: [
       { t: "p", text: "A state legislator who hears “ecosystem building” but can't see the connection to jobs will treat the Engine as an academic exercise. A philanthropic funder who sees the industry case but not the equity case will pass. A community college dean who can't see quantified employer demand will hedge. A corporate leader invited to “participate in the ecosystem” without knowing what's being asked will send the community-relations director instead of the CTO. A startup organization that sees duplication will compete rather than partner." },
@@ -191,7 +191,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "who-in-the-room", group: "Process", title: "Who should be in the room", readTime: "3 min", related: ["m0"],
+    slug: "who-in-the-room", group: "Process", title: "Who should be in the room", related: ["m0"],
     summary: "The pilot worked partly because of one person most Engines don't have. Plan for that.",
     body: [
       { t: "p", text: "The first pilot had an unusually strong domain expert on the Engine side — someone with cluster-methodology background and roaming institutional knowledge who could complicate the data in real time: “that firm is filed under navigational instruments but runs a packaging fab.” That role was not a nice-to-have. It was what made the engagement work." },
@@ -207,10 +207,10 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "self-serve-vs-guided", group: "Process", title: "Compass Light vs. Full Compass", readTime: "3 min", related: ["m0", "m6"],
+    slug: "self-serve-vs-guided", group: "Process", title: "Self-guided vs. Full Compass", related: ["m0", "m6"],
     summary: "Two paths, one framework. TBP recommends a path at kickoff; you can move between them.",
     body: [
-      { t: "table", cols: ["", "Compass Light (self-guided)", "Full Compass (guided)"], rows: [
+      { t: "table", cols: ["", "Self-guided Compass", "Full Compass (guided)"], rows: [
         ["Who drives", "Your team, with the Gem", "TBP's navigator, strategist and data steward"],
         ["Human touchpoints", "Kickoff + synthesis calls; navigator review at the diagnosis gate; off-ramps anywhere", "Five or six facilitated calls over 10–12 weeks"],
         ["Time from your team", "Roughly 8–15 hours; can compress into 2–3 focused days", "6–8 hours of calls plus prep"],
@@ -221,7 +221,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "how-the-gem-works", group: "Data & the Gem", title: "How your Compass Gem works", readTime: "4 min", related: ["m0", "m1", "m2", "m3", "m4", "m5"],
+    slug: "how-the-gem-works", group: "Data & the Gem", title: "How your Compass Gem works", related: ["m0", "m1", "m2", "m3", "m4", "m5"],
     summary: "A Gemini Gem pre-configured with the Compass logic and your region's data — and nothing else.",
     body: [
       { t: "p", text: "The diagnostic runs on a Gemini Gem — Google's name for a specialized assistant set up in advance to know two things you'd otherwise have to type every time." },
@@ -241,7 +241,7 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "data-what-it-sees", group: "Data & the Gem", title: "What the data can and can't see", readTime: "5 min", related: ["m1", "m2", "m3"],
+    slug: "data-what-it-sees", group: "Data & the Gem", title: "What the data can and can't see", related: ["m1", "m2", "m3"],
     summary: "Suppression, misclassification, trade secrets, and the thin dimensions — know them before you read a chart.",
     body: [
       { t: "h", text: "Three traps from the pilot" },

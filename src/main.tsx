@@ -5,6 +5,7 @@ import "./styles/fonts.css";
 import "./styles/base.css";
 import "./styles/tbp.css";
 import "./styles/compass.css";
+import "./styles/gemfirst.css";
 import App from "./App";
 
 createRoot(document.getElementById("root")!).render(

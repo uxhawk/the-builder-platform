@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { LINKS, MY_COMPASS } from "../config";
-import { ArrowUpRight, Cross, LinkedIn, Menu } from "./Icons";
+import { Cross, LinkedIn, Menu } from "./Icons";
 
 /* ---------- Navbar (site: .navbar-wrapper / .navbar) ---------- */
 const NAV = [
@@ -31,11 +31,6 @@ export function Navbar() {
                   ))}
                   <a className="nav-link" href={LINKS.tbpSite} target="_blank" rel="noreferrer">builderplatform.engine.xyz ↗</a>
                 </div>
-              </div>
-              <div className="nav-controls">
-                <a className="external-link" href={LINKS.memberLogin} target="_blank" rel="noreferrer">
-                  <span className="nav-link">LogIN</span><ArrowUpRight width={16} height={16} />
-                </a>
               </div>
               <button type="button" className="menu-button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
                 {open ? <Cross /> : <Menu />}
@@ -70,7 +65,6 @@ export function Footer() {
                 <a className="footer-link" href={LINKS.tbpSite} target="_blank" rel="noreferrer">The Builder Platform</a>
                 <a className="footer-link" href={`${LINKS.tbpSite}/ecosystems`} target="_blank" rel="noreferrer">Ecosystems</a>
                 <a className="footer-link" href={`${LINKS.tbpSite}/services`} target="_blank" rel="noreferrer">Services</a>
-                <a className="footer-link" href={LINKS.memberLogin} target="_blank" rel="noreferrer">Member Login</a>
                 <a className="footer-link" href={`mailto:${LINKS.contactEmail}`}>Contact</a>
               </div>
               <div className="footer-menu">

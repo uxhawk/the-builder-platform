@@ -9,6 +9,7 @@ import type { MoodId } from "../compass/data/moods";
 import { LEARN } from "../compass/data/learn";
 import { useHelp } from "../components/HelpDrawer";
 import { LINKS, MY_COMPASS } from "../config";
+import { fromState } from "../compass/state/from";
 
 const MOOD_KEY = "tbp-compass:mood";
 
@@ -21,31 +22,19 @@ export default function Landing() {
     <>
       {/* Hero */}
       <WideHero tone="deep-blue" size="large">
-        <div className="grid thin" style={{ alignItems: "end" }}>
-          <div className="vertical-content">
-            <Badge label="The Compass · Self-guided regional diagnostic" color="sky-blue" white />
-            <h1 className="display-heading font-color-white">Know exactly where your Engine should act next.</h1>
-            <p className="paragraph-big font-color-white" style={{ maxWidth: 560, opacity: .9 }}>A data-grounded diagnostic that turns your region's evidence into a story partners believe — and two or three first moves you can defend.</p>
-            <div className="hero-actions">
-              <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button>
-              <Button variant="glass" href="#how">How it works</Button>
-            </div>
-          </div>
-          <div className="hero-status-card" style={{ justifySelf: "end" }}>
-            <div className="badge-title"><span className="square evergreen" /><span className="badge-text font-color-white">What it takes</span></div>
-            <div className="grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
-              <div><div className="heading-h3 font-color-white">7</div><div className="fine-print font-color-body">milestones, two of them calls</div></div>
-              <div><div className="heading-h3 font-color-white">8–15h</div><div className="fine-print font-color-body">of your team's time</div></div>
-              <div><div className="heading-h3 font-color-white">2–3</div><div className="fine-print font-color-body">first moves, each with a “but for”</div></div>
-              <div><div className="heading-h3 font-color-white">4–5</div><div className="fine-print font-color-body">pages, not 190</div></div>
-            </div>
-            <p className="fine-print font-color-body">TBP does the analytical heavy lifting. You do the thinking, debating, and deciding.</p>
+        <div className="vertical-content">
+          <Badge label="The Compass · Self-guided regional diagnostic" color="sky-blue" white />
+          <h1 className="display-heading font-color-white">Know exactly where your Engine should act next.</h1>
+          <p className="paragraph-big font-color-white" style={{ maxWidth: 560, opacity: .9 }}>A data-grounded diagnostic that turns your region's evidence into a story partners believe — and two or three first moves you can defend.</p>
+          <div className="hero-actions">
+            <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button>
+            <Button variant="glass" href="#how">How it works</Button>
           </div>
         </div>
       </WideHero>
 
       {/* Where are you right now */}
-      <Section>
+      <Section id="start">
         <Container>
           <div className="vertical-content padding">
             <Badge label="Start where you are" color="magenta" />
@@ -83,12 +72,13 @@ export default function Landing() {
       {/* How it works: three layers */}
       <Section id="how">
         <Container>
-          <div className="grid gap-loose" style={{ alignItems: "start" }}>
-            <div className="vertical-content">
+          {/* Intro on top, three equal-width layer cards below — side-by-side left the third card squeezed. */}
+          <div className="stack" style={{ gap: 40, width: "100%" }}>
+            <div className="vertical-content" style={{ maxWidth: 760 }}>
               <Badge label="How it works" color="ultramarine" />
               <h2 className="heading-h2">Built from the inside out, in three layers.</h2>
               <p className="body-text">Engines default to the macro case (“this technology matters”) and the micro case (“here are our twelve sub-awards”). The Compass builds the missing middle: how your ecosystem actually works, and what your Engine is built to change. Each layer produces a claim, and each claim depends on the one before it.</p>
-              <ArrowLink to="/learn/what-is-compass">What the Compass is and isn't</ArrowLink>
+              <ArrowLink to="/learn/what-is-compass" state={fromState("/#how", "Compass home · How it works")}>What the Compass is and isn't</ArrowLink>
             </div>
             <div className="layers">
               <div className="layer industry"><Badge label="Layer 1 · Industry" color="sky-blue" /><div className="layer-claim">“Our target industry is underperforming in this specific way, given how it exists in the region and how it innovates.”</div><span className="fine-print">Milestones 1–2 · public data, benchmarked twice</span><ArrowRight className="layer-arrow" /></div>
@@ -113,6 +103,7 @@ export default function Landing() {
                 <span className="ov-code">{m.kind === "bookend" ? "Call" : `Milestone ${i}`}{m.gate ? " · gate" : ""}</span>
                 <span className="ov-title">{m.title}</span>
                 <span className="ov-sub">{m.purpose}</span>
+                <span className="ov-cta"><span className="arrow-link-text">Open in Compass</span><ArrowRight /></span>
                 {m.kind === "bookend" && <Users width={16} height={16} style={{ position: "absolute", top: 14, right: 14, color: "var(--colors-brand--sky-blue-dark)" }} />}
               </Link>
             ))}
@@ -128,33 +119,31 @@ export default function Landing() {
         <Container>
           <div className="vertical-content padding">
             <Badge label="Two paths, one framework" color="evergreen" white />
-            <h2 className="heading-h2 font-color-white max-l">Compass Light or Full Compass. Your navigator recommends; you can switch.</h2>
+            <h2 className="heading-h2 font-color-white max-l">Self-guided or Full Compass. Your navigator recommends; you can switch.</h2>
           </div>
           <div className="grid gap-default align-stretch">
             <div className="path-card light">
-              <Badge label="Compass Light · self-guided" color="evergreen" />
+              <Badge label="Self-guided Compass" color="evergreen" />
               <h3 className="heading-h4">You drive, with the Gem.</h3>
               <ul>
                 <li>Kickoff and synthesis calls with your navigator and strategist</li>
                 <li>Five milestones in your Compass Gem, at your pace</li>
                 <li>Navigator review at the diagnosis gate — nothing reaches your team unchallenged</li>
                 <li>Off-ramps everywhere: flag a thought partner at any milestone</li>
-                <li>Roughly 8–15 hours of your team's time</li>
               </ul>
             </div>
             <div className="path-card light">
               <Badge label="Full Compass · guided" color="sky-blue" />
               <h3 className="heading-h4">TBP drives, call by call.</h3>
               <ul>
-                <li>Five or six facilitated calls over 10–12 weeks</li>
+                <li>Five or six facilitated calls</li>
                 <li>TBP does the between-call work: data pulls, stakeholder conversations, drafts</li>
                 <li>A neutral third party in the room for the hard conversations</li>
                 <li>Best for complex, defense-adjacent, or newly-led Engines</li>
-                <li>Limited seats per cohort</li>
               </ul>
             </div>
           </div>
-          <div className="row" style={{ marginTop: 24 }}><ArrowLink to="/learn/self-serve-vs-guided" white>Compare the two paths</ArrowLink></div>
+          <div className="row" style={{ marginTop: 24 }}><ArrowLink to="/learn/self-serve-vs-guided" state={fromState("/#paths", "Compass home · Two paths")} white>Compare the two paths</ArrowLink></div>
         </Container>
       </Section>
 
@@ -167,7 +156,8 @@ export default function Landing() {
               <h2 className="heading-h2">An AI partner that knows your region — and only your region.</h2>
               <p className="body-text">Each Engine gets a dedicated Gemini Gem: the Compass diagnostic logic plus your regional data packet, and nothing else. No web searches, no fabricated metrics, no generic industry assumptions. It writes an artifact at every milestone and can tell you what the data can't see.</p>
               <p className="body-text">This page and the Gem are separate on purpose. You'll paste a prompt, do the work there, and come back here to reflect, check off, and move on.</p>
-              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works">How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees">What the data can and can't see</ArrowLink></div>
+              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/#gem", "Compass home · The Gem")}>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/#gem", "Compass home · The Gem")}>What the data can and can't see</ArrowLink></div>
+              <div className="row"><Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button></div>
             </div>
             <div className="stack">
               {[
@@ -190,7 +180,7 @@ export default function Landing() {
               <Badge label="Before you start" color="sky-blue" />
               <h2 className="heading-h2">The right people matter more than the right data.</h2>
               <p className="body-text">The first pilot worked because one person on the Engine side could look at a table and say “that's wrong, here's why.” Most Engines don't have that person on staff. We'll help you find one at kickoff — before the data is pulled.</p>
-              <ArrowLink to="/learn/who-in-the-room">Who should be in the room</ArrowLink>
+              <ArrowLink to="/learn/who-in-the-room" state={fromState("/#room", "Compass home · Who's in the room")}>Who should be in the room</ArrowLink>
             </div>
             <div className="stack">
               {[["Engine lead / CEO", "Kickoff and synthesis. Owns the strategic call."], ["Process owner", "A mid-senior deputy — the primary interlocutor across milestones."], ["Regional ED fluency", "The “Andrea role.” Required. If you don't have one, say so at kickoff."], ["Technical / industry voice", "A CTO, engineer, or founder — not community relations."]].map(([r, d]) => (
@@ -211,7 +201,8 @@ export default function Landing() {
               <p className="body-text">Dig deeper in the Learn library — frameworks, process, and what the data can and can't see.</p>
               <ArrowLink to="/learn">Open the Learn library ({LEARN.length} topics)</ArrowLink>
             </div>
-            <div className="stack" style={{ gap: 0 }}>
+            {/* width: 100% — the grid centres/shrink-wraps items, which made this column resize as answers opened */}
+            <div className="stack" style={{ gap: 0, width: "100%" }}>
               <FaqItem q="How much time does this really take?" defaultOpen>Roughly 8–15 hours of your team's time on the self-guided path, plus two calls. A motivated team with a deadline has done the middle in two or three focused days. The guided path is 6–8 hours of calls over 10–12 weeks, with TBP doing the between-call work.</FaqItem>
               <FaqItem q="Do we need a data scientist?">No. The Gem does the retrieval and the arithmetic; the navigator and data steward handle sources. You need someone who knows your region's firms and institutions well enough to challenge a chart — and a CEO willing to be challenged.</FaqItem>
               <FaqItem q="What if the data is wrong about us?">It will be, somewhere: suppressed defense employers, misclassified firms, trade secrets that never patent. Milestone 1 is designed to surface exactly that. When a correction changes the picture, you get an explicit revised read — never a silent update.</FaqItem>
@@ -231,7 +222,6 @@ export default function Landing() {
           <div className="main-container inside-wide-section align-center">
             <div className="cta-content">
               <div className="vertical-content align-center">
-                <Badge label="Cohort two · kickoffs from Sep 26" />
                 <h2 className="heading-h2 max-l">Ready to point the Compass at your region?</h2>
               </div>
               <div className="cta-container" style={{ gap: 12 }}>

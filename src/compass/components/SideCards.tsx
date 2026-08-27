@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { Engine } from "../data/engines";
 import { MILESTONES } from "../data/milestones";
+import { fromState } from "../state/from";
 import type { Progress } from "../state/progress";
 import { Button } from "../../components/Primitives";
 import { Disclosure } from "../../components/Interactive";
@@ -60,7 +61,7 @@ export function TeamCard({ engine }: { engine: Engine }) {
           </div>
         ))}
       </div>
-      <Link className="arrow-link" to="/learn/who-in-the-room"><span className="arrow-link-text">Why these roles</span><ArrowRight /></Link>
+      <Link className="arrow-link" to="/learn/who-in-the-room" state={fromState(`/engine/${engine.slug}`, "Your Compass")}><span className="arrow-link-text">Why these roles</span><ArrowRight /></Link>
     </div>
   );
 }

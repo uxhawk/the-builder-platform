@@ -6,7 +6,6 @@ export const MY_COMPASS = `/engine/${SIGNED_IN_ENGINE}`;
 
 export const LINKS = {
   tbpSite: "https://builderplatform.engine.xyz",
-  memberLogin: "https://login.circle.so/sign_in?request_host=builderplatform.circle.so",
   contactEmail: "builderplatform@engine.xyz",
   // Per-engine Gem URLs live in compass/data/engines.ts; this is the fallback.
   gemFallback: "https://gemini.google.com/gems/view",

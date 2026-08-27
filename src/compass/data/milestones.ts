@@ -41,7 +41,7 @@ export const MILESTONES: Milestone[] = [
     id: "m0", code: "00", title: "Kickoff", shortTitle: "Kickoff", kind: "bookend", color: "sky-blue", humanLabel: "Call with your Navigator + strategist",
     purpose: "Set your bearings with a navigator before any data is pulled.",
     leaveWith: "A configuration summary (industry codes, geography, peers), a first working hypothesis, a declared deadline, and a team that can carry the work.",
-    time: "60–90 min call · ~1 hr prep", artifact: "Compass configuration summary",
+    time: "60–90 min", artifact: "Compass configuration summary",
     prepare: [
       "Gather what you already have: NSF proposal, strategic plan, any regional studies or industry definitions.",
       "List the industries you think you're in — in your own words. NAICS codes are optional; we translate together.",
@@ -51,7 +51,7 @@ export const MILESTONES: Milestone[] = [
     inGem: [
       "Confirm core and enabling NAICS codes, county footprint, and 3–5 peer regions. These lock once your Gem is built.",
       "State your starting hypothesis — what you believe is holding your industry back — before you see any data.",
-      "Agree which path fits: self-guided (Compass Light) or guided (Full Compass). You can switch later.",
+      "Agree which path fits: self-guided Compass or Full Compass (guided). You can switch later.",
     ],
     reflect: [
       "Your Gem is provisioned with your regional data packet (about one business day).",

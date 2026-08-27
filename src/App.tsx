@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "rea
 import { Footer, Navbar } from "./components/Chrome";
 import { HelpProvider } from "./components/HelpDrawer";
 import Landing from "./pages/Landing";
-import EnginePortal from "./pages/EnginePortal";
+import GemFirstPortal from "./pages/GemFirstPortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
 import Styleguide from "./pages/Styleguide";
 import NotFound from "./pages/NotFound";
@@ -35,8 +35,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Landing />} />
+          <Route path="engine/:slug" element={<GemFirstPortal />} />
           <Route path="compass" element={<Navigate to={MY_COMPASS} replace />} />
-          <Route path="engine/:slug" element={<EnginePortal />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
           <Route path="styleguide" element={<Styleguide />} />

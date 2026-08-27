@@ -35,17 +35,17 @@
 @media screen and (max-width: 767px) { .stepper { grid-auto-flow: row; grid-auto-columns: auto; gap: 4px; } .step { flex-flow: row; text-align: left; gap: 14px; padding: 6px 0; } .step::before { top: 100%; left: 15px; width: 2px; height: 12px; } .step-label { max-width: none; } }
 
 /* ---------- Status pill ---------- */
-.status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; letter-spacing: .02em; padding: 4px 10px; border-radius: 3px; background: var(--colors-interface--grey); color: var(--colors-interface--dark-2); white-space: nowrap; font-variation-settings: "wght" 600; }
+.status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--typefaces--secondary); font-size: 11px; line-height: 22px; /* integer: inherited 22.4px made pills 30.4px tall and snap unevenly */ text-transform: uppercase; letter-spacing: .02em; padding: 4px 10px; border-radius: 3px; background: var(--colors-interface--grey); color: var(--colors-interface--dark-2); white-space: nowrap; flex-shrink: 0; /* a label never gives up width in a flex row */ font-variation-settings: "wght" 600; }
 .status-pill.done { background: var(--colors-interface--dark-2); color: #fff; }
 .status-pill.current { background: var(--colors-brand--evergreen); }
-.status-pill.locked { background: var(--colors-interface--grey); color: #7a7a7a; }
+.status-pill.locked { background: var(--colors-interface--grey); color: #6b6b6b; }
 .status-pill.review { background: var(--colors-brand--magenta); }
 .status-pill.human { background: var(--colors-brand--sky-blue); }
 .status-pill .icon { width: 12px; height: 12px; }
 
 /* ---------- Milestone cards ---------- */
 .milestone-list { display: flex; flex-flow: column; gap: 12px; width: 100%; }
-.milestone-card { width: 100%; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); background: #fff; overflow: hidden; transition: box-shadow var(--motion--fast), border-color var(--motion--fast); }
+.milestone-card { width: 100%; scroll-margin-top: calc(var(--globals--navbar-height) + 24px); border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); background: #fff; overflow: hidden; transition: box-shadow var(--motion--fast), border-color var(--motion--fast); }
 .milestone-card.current { border-color: var(--colors-interface--dark-2); box-shadow: 0 8px 30px -18px rgba(0,0,0,.35); }
 .milestone-card.locked { background: var(--colors-interface--grey-3); }
 .milestone-head { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; padding: 20px 24px; width: 100%; text-align: left; cursor: pointer; }
@@ -88,8 +88,8 @@
 
 /* ---------- Deeper chips ---------- */
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--typefaces--secondary); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--colors-interface--grey-2); border-radius: 3px; text-decoration: none; color: var(--colors-interface--dark-2); transition: background var(--motion--fast); }
-.chip:hover { background: var(--colors-interface--grey); }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--typefaces--secondary); font-size: 12px; text-transform: uppercase; padding: 6px 10px; border: 1px solid color-mix(in srgb, var(--colors-brand--ultramarine) 45%, transparent); background: color-mix(in srgb, var(--colors-brand--ultramarine) 12%, transparent); border-radius: 3px; text-decoration: none; color: var(--colors-brand--deep-blue-dark); transition: background var(--motion--fast), border-color var(--motion--fast); }
+.chip:hover { background: color-mix(in srgb, var(--colors-brand--ultramarine) 28%, transparent); border-color: var(--colors-brand--ultramarine); }
 .chip .icon { width: 14px; height: 14px; }
 
 /* ---------- Gate / notice banners ---------- */
@@ -131,9 +131,9 @@
 
 /* ---------- Help FAB + drawer ---------- */
 .help-fab { position: fixed; right: 24px; bottom: 24px; z-index: 5000; box-shadow: 0 12px 40px -12px rgba(0,0,0,.5); }
-.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 6000; opacity: 0; pointer-events: none; transition: opacity var(--motion--fast); }
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1000010; opacity: 0; pointer-events: none; transition: opacity var(--motion--fast); }
 .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
-.drawer { visibility: hidden; position: fixed; top: 0; right: 0; height: 100dvh; width: min(480px, 100vw); background: #fff; z-index: 6001; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-flow: column; overflow-y: auto; }
+.drawer { visibility: hidden; position: fixed; top: 0; right: 0; height: 100dvh; width: min(480px, 100vw); background: #fff; z-index: 1000011; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-flow: column; overflow-y: auto; }
 .drawer.open { visibility: visible; transform: translateX(0); }
 .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--colors-interface--grey-2); position: sticky; top: 0; background: #fff; z-index: 1; }
 .drawer-body { padding: 24px; display: flex; flex-flow: column; gap: 24px; }
@@ -157,8 +157,8 @@
 @media screen and (max-width: 479px) { .mood-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Three layers diagram ---------- */
-.layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; }
-.layer { position: relative; display: flex; flex-flow: column; gap: 14px; padding: 24px; border-radius: var(--border-radius--default); min-height: 260px; }
+.layers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; } /* minmax(0,…) — plain 1fr can't shrink below the longest word */
+.layer { position: relative; display: flex; flex-flow: column; gap: 14px; padding: 24px 28px; border-radius: var(--border-radius--default); min-height: 220px; }
 .layer.industry { background: var(--colors-brand--sky-blue-lighter); }
 .layer.ecosystem { background: var(--colors-brand--ultramarine-blue-lighter); }
 .layer.engine { background: var(--colors-brand--evergreen-lighter); }
@@ -170,7 +170,13 @@
 /* ---------- Milestone overview strip (landing) ---------- */
 .overview-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; width: 100%; }
 .overview-item { display: flex; flex-flow: column; gap: 10px; padding: 16px 14px; border-radius: var(--border-radius--small); background: var(--colors-interface--grey); min-height: 150px; text-decoration: none; color: inherit; transition: background var(--motion--fast), transform var(--motion--fast); position: relative; }
-.overview-item:hover { transform: translateY(-3px); }
+.overview-item:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 2px var(--colors-brand--evergreen); background: #fff; }
+.overview-item.human:hover { background: var(--colors-brand--sky-blue-lighter); }
+/* Hover affordance: says what a click does. Reserved space so the card doesn't jump; always shown where there is no hover. */
+.overview-item .ov-cta { margin-top: auto; padding-top: 6px; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; color: var(--colors-interface--dark-2); opacity: 0; transition: opacity var(--motion--fast); }
+.overview-item .ov-cta .icon { width: 16px; height: 16px; }
+.overview-item:hover .ov-cta, .overview-item:focus-visible .ov-cta { opacity: 1; }
+@media (hover: none) { .overview-item .ov-cta { opacity: 1; } }
 .overview-item.human { background: var(--colors-brand--sky-blue-lighter); }
 .overview-item .ov-code { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; }
 .overview-item .ov-title { font-family: var(--typefaces--heading-bold); font-size: 15px; line-height: 1.2; }
@@ -227,7 +233,7 @@
 
 /* ---------- Misc ---------- */
 .kbd-note { font-family: var(--typefaces--secondary); font-size: 12px; color: #6b6b6b; }
-.proto-note { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #8a8a8a; display: inline-flex; gap: 6px; align-items: center; }
+.proto-note { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; display: inline-flex; gap: 6px; align-items: center; }
 .proto-note::before { content: ""; width: 6px; height: 6px; background: var(--colors-brand--magenta); }
 .artifact-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--colors-interface--grey-2); font-size: 14px; }
 .artifact-row:first-child { border-top: 0; }
