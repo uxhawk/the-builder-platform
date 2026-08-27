@@ -60,7 +60,7 @@ export const ENGINES: Engine[] = [
       { role: "Regional ED fluency — “the Andrea role”", why: "Someone who can look at a data table and say “that's wrong, here's why.”", person: "Jordan DeWitt · OEP", required: true },
       { role: "Technical / industry voice", why: "A CTO, engineer, or founder — not a community-relations lead.", required: false },
     ],
-    seedCompleted: ["m0", "m1", "m2", "m3"],
+    seedCompleted: [], /* everyone starts at Kickoff; “reset prototype state” returns here */
   },
   {
     slug: "sample-cohort-two",

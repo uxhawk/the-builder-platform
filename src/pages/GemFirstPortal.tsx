@@ -28,8 +28,6 @@ function Page({ slug }: { slug: string }) {
   const help = useHelp();
   const cur = progress.current;
   const latest = engine.hypotheses[engine.hypotheses.length - 1];
-  const d = progress.state.deadline;
-  const days = d ? Math.ceil((new Date(d.date + "T12:00:00").getTime() - Date.now()) / 86400000) : null;
   const gemHref = engine.gemUrl ?? LINKS.gemFallback;
   const copyAndOpen = async (text?: string) => { try { if (text) await navigator.clipboard.writeText(text); } catch { /* ignore */ } window.open(gemHref, "_blank", "noreferrer"); };
 
@@ -39,13 +37,10 @@ function Page({ slug }: { slug: string }) {
         <div className="main-container">
           <div className="gf-head-row">
             <div className="stack" style={{ gap: 6 }}>
-              <div className="badge-title"><span className="square evergreen" /><span className="badge-text">Cohort {engine.cohort} · {engine.path === "pre-kickoff" ? "pre-kickoff" : engine.path}</span></div>
               <h1 className="heading-h2">{engine.name}</h1>
-              <div className="fine-print" style={{ color: "#555" }}>{engine.region} · {engine.industry}</div>
             </div>
             <div className="row">
               <span className="status-pill current">{progress.state.completed.length} / {MILESTONES.length} milestones</span>
-              {d && <span className={`deadline-chip ${days !== null && days < 21 ? "" : "grey"}`}><Calendar width={14} height={14} />{d.label} · {days !== null && days >= 0 ? `${days} days` : "passed"}</span>}
               <button type="button" className="proto-note" onClick={progress.reset}>reset prototype state</button>
             </div>
           </div>

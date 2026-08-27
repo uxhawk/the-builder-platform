@@ -18,7 +18,8 @@ export interface ProgressState {
   notes: Partial<Record<MilestoneId, string>>;
 }
 
-const KEY = (slug: string) => `tbp-compass:${slug}`;
+/* v2: seed changed to “nothing completed”; the version bump discards state saved under the old seed. */
+const KEY = (slug: string) => `tbp-compass:v2:${slug}`;
 
 function initial(engine: Engine): ProgressState {
   return {
