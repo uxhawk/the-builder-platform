@@ -35,6 +35,7 @@
 .gf-step.locked .gf-card { background: transparent; border-style: dashed; padding: 14px 22px; }
 .gf-step.locked .gf-card .milestone-purpose { color: #8a8a8a; }
 .gf-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.gf-title-row > div:first-child { min-width: 0; } /* text column wraps; the pill keeps its size */
 .gf-title { font-family: var(--typefaces--heading-bold); font-size: var(--typography--h5-size); line-height: 1.2; }
 .gf-kicker { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; margin-bottom: 4px; }
 
@@ -45,10 +46,6 @@
 .gf-mini ul { padding-left: 1em; list-style: square; display: flex; flex-flow: column; gap: 4px; color: #333; }
 @media screen and (max-width: 767px) { .gf-mini { grid-template-columns: 1fr; } }
 
-.gf-note { display: flex; flex-flow: column; gap: 8px; }
-.gf-note textarea { width: 100%; background: var(--colors-interface--grey); border: 0; border-radius: var(--border-radius--small); padding: 12px 14px; font-family: var(--typefaces--body); font-size: 15px; resize: vertical; min-height: 56px; }
-.gf-note textarea:focus { outline: 2px solid var(--colors-brand--evergreen); }
-.gf-said { border-left: 3px solid var(--colors-brand--evergreen); padding: 4px 12px; color: #444; font-size: 14px; font-style: italic; }
 .gf-gate { display: grid; grid-template-columns: 56px 1fr; gap: 0 16px; position: relative; }
 .gf-gate::before { content: ""; position: absolute; left: 27px; top: 0; bottom: 0; width: 2px; background: var(--colors-interface--grey-2); }
 .gf-gate .gf-node > span { border-style: dashed; }

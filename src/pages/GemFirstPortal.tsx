@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { engineBySlug } from "../compass/data/engines";
 import { MILESTONES, type Milestone, type MilestoneId } from "../compass/data/milestones";
@@ -128,10 +127,8 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
   const status = progress.statusOf(m.id);
   const idx = MILESTONES.findIndex((x) => x.id === m.id);
   const isHuman = m.kind === "bookend";
-  const [note, setNote] = useState(progress.state.notes[m.id] ?? "");
   const stressOk = !m.stressTest || progress.state.personasAnswered.length >= 6;
-  const complete = () => { progress.setNote(m.id, note); progress.complete(m.id); if (m.gate) progress.requestReview(m.id); };
-  const said = progress.state.notes[m.id];
+  const complete = () => { progress.complete(m.id); if (m.gate) progress.requestReview(m.id); };
 
   return (
     <>
@@ -147,7 +144,6 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
             {isHuman && status !== "done" && status !== "locked" ? <StatusPill status="human" /> : <StatusPill status={status} />}
           </div>
 
-          {status === "done" && said && <div className="gf-said">“{said}”</div>}
           {status === "done" && m.gate && progress.state.reviews.m4 === "requested" && (
             <Notice tone="magenta" icon="users" title="In navigator review">Moonlight annotates the Gem's diagnosis and brings it back with your framing. <button type="button" className="proto-note" onClick={() => progress.approveReview("m4")}>prototype: simulate approval</button></Notice>
           )}
@@ -163,10 +159,6 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
                 <div><span className="n">3</span><strong>Come back</strong><ul>{m.reflect.map((t) => <li key={t}>{t}</li>)}</ul></div>
               </div>
               {m.stressTest && <StressTest progress={progress} />}
-              <div className="gf-note">
-                <label className="badge-text muted" htmlFor={`note-${m.id}`}>One line before you move on: what changed in your thinking?</label>
-                <textarea id={`note-${m.id}`} value={note} onChange={(e) => setNote(e.target.value)} placeholder={m.id === "m0" ? "e.g. We thought we were a packaging story; we may be a photonics story." : "e.g. The data can't see our largest employer — flagged for Sid."} />
-              </div>
               <div className="row between">
                 <div className="row">
                   {!isHuman && <Button variant="primary" size="small" disabled={!engine.gemUrl} onClick={() => onOpenGem(m.gemPrompt)} icon={<ArrowUpRight width={16} height={16} />}>Open Gem</Button>}

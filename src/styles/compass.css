@@ -35,7 +35,7 @@
 @media screen and (max-width: 767px) { .stepper { grid-auto-flow: row; grid-auto-columns: auto; gap: 4px; } .step { flex-flow: row; text-align: left; gap: 14px; padding: 6px 0; } .step::before { top: 100%; left: 15px; width: 2px; height: 12px; } .step-label { max-width: none; } }
 
 /* ---------- Status pill ---------- */
-.status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; letter-spacing: .02em; padding: 4px 10px; border-radius: 3px; background: var(--colors-interface--grey); color: var(--colors-interface--dark-2); white-space: nowrap; font-variation-settings: "wght" 600; }
+.status-pill { display: inline-flex; align-items: center; gap: 8px; font-family: var(--typefaces--secondary); font-size: 11px; line-height: 22px; /* integer: inherited 22.4px made pills 30.4px tall and snap unevenly */ text-transform: uppercase; letter-spacing: .02em; padding: 4px 10px; border-radius: 3px; background: var(--colors-interface--grey); color: var(--colors-interface--dark-2); white-space: nowrap; flex-shrink: 0; /* a label never gives up width in a flex row */ font-variation-settings: "wght" 600; }
 .status-pill.done { background: var(--colors-interface--dark-2); color: #fff; }
 .status-pill.current { background: var(--colors-brand--evergreen); }
 .status-pill.locked { background: var(--colors-interface--grey); color: #7a7a7a; }
