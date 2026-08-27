@@ -45,7 +45,7 @@
 
 /* ---------- Milestone cards ---------- */
 .milestone-list { display: flex; flex-flow: column; gap: 12px; width: 100%; }
-.milestone-card { width: 100%; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); background: #fff; overflow: hidden; transition: box-shadow var(--motion--fast), border-color var(--motion--fast); }
+.milestone-card { width: 100%; scroll-margin-top: calc(var(--globals--navbar-height) + 24px); border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); background: #fff; overflow: hidden; transition: box-shadow var(--motion--fast), border-color var(--motion--fast); }
 .milestone-card.current { border-color: var(--colors-interface--dark-2); box-shadow: 0 8px 30px -18px rgba(0,0,0,.35); }
 .milestone-card.locked { background: var(--colors-interface--grey-3); }
 .milestone-head { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; padding: 20px 24px; width: 100%; text-align: left; cursor: pointer; }

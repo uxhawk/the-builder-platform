@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { engineBySlug } from "../compass/data/engines";
 import { MILESTONES, type Milestone, type MilestoneId } from "../compass/data/milestones";
 import { learnBySlug } from "../compass/data/learn";
+import { fromState } from "../compass/state/from";
 import { useProgress, type Progress } from "../compass/state/progress";
 import { StressTest } from "../compass/components/StressTest";
 import { Button, Notice, StatusPill } from "../components/Primitives";
@@ -121,6 +122,9 @@ function Page({ slug }: { slug: string }) {
 
 function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: ReturnType<typeof engineBySlug> & object; progress: Progress; onOpenGem: (t?: string) => void }) {
   const help = useHelp();
+  const { hash } = useLocation();
+  /* Cross-links into Learn carry this so the article's back link lands on this card, expanded. */
+  const here = fromState(`/engine/${engine.slug}#${m.id}`, `Your Compass · ${m.title}`);
   const status = progress.statusOf(m.id);
   const idx = MILESTONES.findIndex((x) => x.id === m.id);
   const isHuman = m.kind === "bookend";
@@ -177,16 +181,16 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
           {status === "review" && <Notice tone="magenta" icon="users" title="Unlocks after navigator review">The diagnosis goes to a human first. That's the one hard gate in the Compass.</Notice>}
 
           {status !== "locked" && (
-            <Disclosure summary={<span className="badge-text muted">Details · questions for your team · go deeper</span>}>
+            <Disclosure defaultOpen={hash === `#${m.id}`} summary={<span className="badge-text muted">Details · questions for your team · go deeper</span>}>
               <div className="stack gap-l">
                 <div className="fact"><span className="fact-label">You'll leave with</span><span className="fact-value">{m.leaveWith}</span></div>
                 <ul className="question-bank">{m.questions.map((q) => <li key={q}>{q}</li>)}</ul>
-                <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
+                <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={here}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
                 {status === "done" && <button type="button" className="arrow-link" onClick={() => progress.uncomplete(m.id)}><span className="arrow-link-text">Reopen</span></button>}
               </div>
             </Disclosure>
           )}
-          {status === "locked" && <span className="fine-print" style={{ color: "#8a8a8a" }}>Unlocks after {MILESTONES[idx - 1]?.title}. <Link to={`/learn/${m.deeper[0]}`}>Read ahead</Link>.</span>}
+          {status === "locked" && <span className="fine-print" style={{ color: "#8a8a8a" }}>Unlocks after {MILESTONES[idx - 1]?.title}. <Link to={`/learn/${m.deeper[0]}`} state={here}>Read ahead</Link>.</span>}
         </div>
       </div>
       {m.gate && (

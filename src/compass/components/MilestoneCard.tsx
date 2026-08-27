@@ -4,6 +4,7 @@ import { MILESTONES, prevMilestone, type Milestone } from "../data/milestones";
 import type { Engine } from "../data/engines";
 import type { Progress } from "../state/progress";
 import { learnBySlug } from "../data/learn";
+import { fromState } from "../state/from";
 import { Button, Notice, StatusPill } from "../../components/Primitives";
 import { Checkbox, CopyButton, Disclosure } from "../../components/Interactive";
 import { ArrowUpRight, Calendar, ChevronDown, Check, Doc, Flag, Info, Sparkle, Users } from "../../components/Icons";
@@ -128,7 +129,7 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
           <div className="stack">
             <span className="badge-text muted">Go deeper</span>
             <div className="chip-row">
-              {m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`}><Info width={14} height={14} />{t.title}</Link> : null; })}
+              {m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={fromState(`/engine/${engine.slug}#${m.id}`, `Your Compass · ${m.title}`)}><Info width={14} height={14} />{t.title}</Link> : null; })}
             </div>
           </div>
 

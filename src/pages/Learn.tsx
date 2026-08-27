@@ -1,10 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { LEARN, LEARN_GROUPS, learnBySlug, type Block } from "../compass/data/learn";
 import { milestoneById } from "../compass/data/milestones";
 import { ArrowLink, Badge, Container, Section, WideHero } from "../components/Primitives";
 import { ArrowLeft, ArrowRight } from "../components/Icons";
 import NotFound from "./NotFound";
 import { MY_COMPASS } from "../config";
+import { fromState, readFrom } from "../compass/state/from";
 
 export function LearnIndex() {
   return (
@@ -22,7 +23,7 @@ export function LearnIndex() {
             <div className="vertical-content padding" style={{ paddingBottom: 24 }}><Badge label={g} color={(["magenta", "ultramarine", "sky-blue", "evergreen"] as const)[i]} /></div>
             <div className="learn-grid">
               {LEARN.filter((t) => t.group === g).map((t) => (
-                <Link key={t.slug} to={`/learn/${t.slug}`} className="learn-card">
+                <Link key={t.slug} to={`/learn/${t.slug}`} state={fromState("/learn", "Learn library")} className="learn-card">
                   <span className="lc-title">{t.title}</span>
                   <span className="lc-sum">{t.summary}</span>
                   <span className="arrow-link"><span className="arrow-link-text">Read</span><ArrowRight /></span>
@@ -38,8 +39,12 @@ export function LearnIndex() {
 
 export function LearnTopic() {
   const { slug } = useParams();
+  const location = useLocation();
   const t = learnBySlug(slug);
   if (!t) return <NotFound />;
+  /* Back link returns to wherever the reader came from (portal milestone, landing
+     section, library); the index is only the fallback for a direct visit. */
+  const back = readFrom(location.state) ?? fromState("/learn", `Learn library · ${t.group}`);
   const i = LEARN.indexOf(t);
   const prev = LEARN[i - 1]; const next = LEARN[i + 1];
   const heads = t.body.filter((b) => b.t === "h") as Extract<Block, { t: "h" }>[];
@@ -48,7 +53,7 @@ export function LearnTopic() {
       <Section className="padding-s" style={{ paddingTop: "calc(var(--globals--navbar-height) + 48px)" }}>
         <Container>
           <div className="vertical-content">
-            <Link to="/learn" className="arrow-link"><ArrowLeft /><span className="arrow-link-text">Learn library · {t.group}</span></Link>
+            <Link to={back.from} className="arrow-link"><ArrowLeft /><span className="arrow-link-text">{back.fromLabel}</span></Link>
             <h1 className="heading-h1 max-xl">{t.title}</h1>
             <p className="paragraph-big max-l" style={{ color: "#444" }}>{t.summary}</p>
             {t.related.length > 0 && <div className="row"><span className="badge-text muted">Shows up in {t.related.map((r) => milestoneById(r).code).join(", ")}</span></div>}
@@ -66,8 +71,8 @@ export function LearnTopic() {
                 <div className="chip-row">{t.related.map((r) => { const m = milestoneById(r); return <Link key={r} className="chip" to={`${MY_COMPASS}#${r}`}>{m.code} · {m.title}</Link>; })}</div>
               </div>
               <div className="row between" style={{ marginTop: 12 }}>
-                {prev ? <ArrowLink to={`/learn/${prev.slug}`}>← {prev.title}</ArrowLink> : <span />}
-                {next && <ArrowLink to={`/learn/${next.slug}`}>{next.title}</ArrowLink>}
+                {prev ? <ArrowLink to={`/learn/${prev.slug}`} state={location.state}>← {prev.title}</ArrowLink> : <span />}
+                {next && <ArrowLink to={`/learn/${next.slug}`} state={location.state}>{next.title}</ArrowLink>}
               </div>
             </div>
             <aside className="portal-side">

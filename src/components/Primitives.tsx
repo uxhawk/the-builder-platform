@@ -30,10 +30,10 @@ export function Button({ to, href, onClick, type = "button", variant = "grey", s
 }
 
 /* ---------- Arrow link (site: .arrow-link) ---------- */
-export function ArrowLink({ to, href, children, white, external, onClick }: { to?: string; href?: string; children: ReactNode; white?: boolean; external?: boolean; onClick?: () => void }) {
+export function ArrowLink({ to, href, children, white, external, onClick, state }: { to?: string; href?: string; children: ReactNode; white?: boolean; external?: boolean; onClick?: () => void; state?: unknown }) {
   const cls = `arrow-link ${white ? "font-color-white" : ""}`;
   const inner = <><span className="arrow-link-text">{children}</span>{external ? <ArrowUpRight /> : <ArrowRight />}</>;
-  if (to) return <Link className={cls} to={to} onClick={onClick}>{inner}</Link>;
+  if (to) return <Link className={cls} to={to} state={state} onClick={onClick}>{inner}</Link>;
   if (href) return <a className={cls} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} onClick={onClick}>{inner}</a>;
   return <button type="button" className={cls} onClick={onClick}>{inner}</button>;
 }

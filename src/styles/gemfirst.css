@@ -18,7 +18,7 @@
 
 /* ---- Timeline ---- */
 .gf-rail { display: flex; flex-flow: column; position: relative; }
-.gf-step { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 16px; position: relative; }
+.gf-step { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 16px; position: relative; scroll-margin-top: calc(var(--globals--navbar-height) + 24px); }
 .gf-step::before { content: ""; position: absolute; left: 27px; top: 0; bottom: 0; width: 2px; background: var(--colors-interface--grey-2); }
 .gf-step.done::before { background: var(--colors-interface--dark-2); }
 .gf-step:first-child::before { top: 28px; }
