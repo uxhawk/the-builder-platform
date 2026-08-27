@@ -9,15 +9,15 @@ export interface Mood {
 export const MOODS: Mood[] = [
   {
     id: "deadline", title: "I have a date to hit", sub: "Site visit, renewal pitch, board retreat", tone: "magenta",
-    headline: "Point the Compass at your date.",
-    body: "Cohort one organized everything around a September NSF site visit — and that forcing function was the strongest predictor of a good outcome. A motivated team can move through the milestones in two or three focused days; most take six to ten weeks. Either way, we set the cadence backward from your date.",
+    headline: "Work backward from your deadline.",
+    body: "A fixed date is the best thing that can happen to this work: a site visit, a renewal pitch, or a board retreat tells you exactly what the output has to do and when. A focused team can move through the milestones in two or three days; most take six to ten weeks. Either way, we set the cadence backward from your date.",
     firstStep: "Book your kickoff and declare the deadline. Everything else follows from it.",
     cta: { label: "Book a kickoff", to: "#kickoff" }, alt: { label: "See what you'll walk away with", to: "#outcomes" },
   },
   {
-    id: "obligated", title: "I was told to do this", sub: "NSF or a board member suggested it", tone: "sky",
-    headline: "Fair enough. Here's the minimum — and why it's worth more.",
-    body: "The minimum is a kickoff call and one milestone. What most Engines discover is that the Compass answers the question they keep getting asked and struggle to answer: how is an Engine different from a research grant? A data-grounded answer to that is worth the time even if you stop there.",
+    id: "obligated", title: "This was recommended to us", sub: "By NSF, a board member, or a peer Engine", tone: "sky",
+    headline: "Welcome. Here's what it asks of you — and what you get back.",
+    body: "It starts with one kickoff call and one milestone — that's the whole ask. What most Engines discover is that the Compass answers the question they keep getting asked and struggle to answer: how is an Engine different from a research grant? A data-grounded answer to that is worth the time even if you stop there.",
     firstStep: "Read the one-pager on how an Engine differs from a grant. Then decide.",
     cta: { label: "How an Engine differs from a grant", to: "/learn/engine-vs-grant" }, alt: { label: "How it works", to: "#how" },
   },

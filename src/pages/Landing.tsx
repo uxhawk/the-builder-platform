@@ -72,8 +72,9 @@ export default function Landing() {
       {/* How it works: three layers */}
       <Section id="how">
         <Container>
-          <div className="grid gap-loose" style={{ alignItems: "start" }}>
-            <div className="vertical-content">
+          {/* Intro on top, three equal-width layer cards below — side-by-side left the third card squeezed. */}
+          <div className="stack" style={{ gap: 40, width: "100%" }}>
+            <div className="vertical-content" style={{ maxWidth: 760 }}>
               <Badge label="How it works" color="ultramarine" />
               <h2 className="heading-h2">Built from the inside out, in three layers.</h2>
               <p className="body-text">Engines default to the macro case (“this technology matters”) and the micro case (“here are our twelve sub-awards”). The Compass builds the missing middle: how your ecosystem actually works, and what your Engine is built to change. Each layer produces a claim, and each claim depends on the one before it.</p>
@@ -102,6 +103,7 @@ export default function Landing() {
                 <span className="ov-code">{m.kind === "bookend" ? "Call" : `Milestone ${i}`}{m.gate ? " · gate" : ""}</span>
                 <span className="ov-title">{m.title}</span>
                 <span className="ov-sub">{m.purpose}</span>
+                <span className="ov-cta"><span className="arrow-link-text">Open in Compass</span><ArrowRight /></span>
                 {m.kind === "bookend" && <Users width={16} height={16} style={{ position: "absolute", top: 14, right: 14, color: "var(--colors-brand--sky-blue-dark)" }} />}
               </Link>
             ))}
@@ -117,29 +119,27 @@ export default function Landing() {
         <Container>
           <div className="vertical-content padding">
             <Badge label="Two paths, one framework" color="evergreen" white />
-            <h2 className="heading-h2 font-color-white max-l">Compass Light or Full Compass. Your navigator recommends; you can switch.</h2>
+            <h2 className="heading-h2 font-color-white max-l">Self-guided or Full Compass. Your navigator recommends; you can switch.</h2>
           </div>
           <div className="grid gap-default align-stretch">
             <div className="path-card light">
-              <Badge label="Compass Light · self-guided" color="evergreen" />
+              <Badge label="Self-guided Compass" color="evergreen" />
               <h3 className="heading-h4">You drive, with the Gem.</h3>
               <ul>
                 <li>Kickoff and synthesis calls with your navigator and strategist</li>
                 <li>Five milestones in your Compass Gem, at your pace</li>
                 <li>Navigator review at the diagnosis gate — nothing reaches your team unchallenged</li>
                 <li>Off-ramps everywhere: flag a thought partner at any milestone</li>
-                <li>Roughly 8–15 hours of your team's time</li>
               </ul>
             </div>
             <div className="path-card light">
               <Badge label="Full Compass · guided" color="sky-blue" />
               <h3 className="heading-h4">TBP drives, call by call.</h3>
               <ul>
-                <li>Five or six facilitated calls over 10–12 weeks</li>
+                <li>Five or six facilitated calls</li>
                 <li>TBP does the between-call work: data pulls, stakeholder conversations, drafts</li>
                 <li>A neutral third party in the room for the hard conversations</li>
                 <li>Best for complex, defense-adjacent, or newly-led Engines</li>
-                <li>Limited seats per cohort</li>
               </ul>
             </div>
           </div>
@@ -157,6 +157,7 @@ export default function Landing() {
               <p className="body-text">Each Engine gets a dedicated Gemini Gem: the Compass diagnostic logic plus your regional data packet, and nothing else. No web searches, no fabricated metrics, no generic industry assumptions. It writes an artifact at every milestone and can tell you what the data can't see.</p>
               <p className="body-text">This page and the Gem are separate on purpose. You'll paste a prompt, do the work there, and come back here to reflect, check off, and move on.</p>
               <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/#gem", "Compass home · The Gem")}>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/#gem", "Compass home · The Gem")}>What the data can and can't see</ArrowLink></div>
+              <div className="row"><Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button></div>
             </div>
             <div className="stack">
               {[
@@ -221,7 +222,6 @@ export default function Landing() {
           <div className="main-container inside-wide-section align-center">
             <div className="cta-content">
               <div className="vertical-content align-center">
-                <Badge label="Cohort two · kickoffs from Sep 26" />
                 <h2 className="heading-h2 max-l">Ready to point the Compass at your region?</h2>
               </div>
               <div className="cta-container" style={{ gap: 12 }}>

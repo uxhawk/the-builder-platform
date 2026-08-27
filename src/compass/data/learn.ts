@@ -207,10 +207,10 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "self-serve-vs-guided", group: "Process", title: "Compass Light vs. Full Compass", related: ["m0", "m6"],
+    slug: "self-serve-vs-guided", group: "Process", title: "Self-guided vs. Full Compass", related: ["m0", "m6"],
     summary: "Two paths, one framework. TBP recommends a path at kickoff; you can move between them.",
     body: [
-      { t: "table", cols: ["", "Compass Light (self-guided)", "Full Compass (guided)"], rows: [
+      { t: "table", cols: ["", "Self-guided Compass", "Full Compass (guided)"], rows: [
         ["Who drives", "Your team, with the Gem", "TBP's navigator, strategist and data steward"],
         ["Human touchpoints", "Kickoff + synthesis calls; navigator review at the diagnosis gate; off-ramps anywhere", "Five or six facilitated calls over 10–12 weeks"],
         ["Time from your team", "Roughly 8–15 hours; can compress into 2–3 focused days", "6–8 hours of calls plus prep"],

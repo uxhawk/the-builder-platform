@@ -51,7 +51,7 @@ export const MILESTONES: Milestone[] = [
     inGem: [
       "Confirm core and enabling NAICS codes, county footprint, and 3–5 peer regions. These lock once your Gem is built.",
       "State your starting hypothesis — what you believe is holding your industry back — before you see any data.",
-      "Agree which path fits: self-guided (Compass Light) or guided (Full Compass). You can switch later.",
+      "Agree which path fits: self-guided Compass or Full Compass (guided). You can switch later.",
     ],
     reflect: [
       "Your Gem is provisioned with your regional data packet (about one business day).",
