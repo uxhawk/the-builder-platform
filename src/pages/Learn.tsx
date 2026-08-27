@@ -23,7 +23,6 @@ export function LearnIndex() {
             <div className="learn-grid">
               {LEARN.filter((t) => t.group === g).map((t) => (
                 <Link key={t.slug} to={`/learn/${t.slug}`} className="learn-card">
-                  <span className="badge-text muted">{t.readTime}</span>
                   <span className="lc-title">{t.title}</span>
                   <span className="lc-sum">{t.summary}</span>
                   <span className="arrow-link"><span className="arrow-link-text">Read</span><ArrowRight /></span>
@@ -52,7 +51,7 @@ export function LearnTopic() {
             <Link to="/learn" className="arrow-link"><ArrowLeft /><span className="arrow-link-text">Learn library · {t.group}</span></Link>
             <h1 className="heading-h1 max-xl">{t.title}</h1>
             <p className="paragraph-big max-l" style={{ color: "#444" }}>{t.summary}</p>
-            <div className="row"><span className="badge-text muted">{t.readTime} read</span>{t.related.length > 0 && <span className="badge-text muted">· Shows up in {t.related.map((r) => milestoneById(r).code).join(", ")}</span>}</div>
+            {t.related.length > 0 && <div className="row"><span className="badge-text muted">Shows up in {t.related.map((r) => milestoneById(r).code).join(", ")}</span></div>}
           </div>
         </Container>
       </Section>

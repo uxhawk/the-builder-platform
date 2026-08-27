@@ -131,9 +131,9 @@
 
 /* ---------- Help FAB + drawer ---------- */
 .help-fab { position: fixed; right: 24px; bottom: 24px; z-index: 5000; box-shadow: 0 12px 40px -12px rgba(0,0,0,.5); }
-.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 6000; opacity: 0; pointer-events: none; transition: opacity var(--motion--fast); }
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1000010; opacity: 0; pointer-events: none; transition: opacity var(--motion--fast); }
 .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
-.drawer { visibility: hidden; position: fixed; top: 0; right: 0; height: 100dvh; width: min(480px, 100vw); background: #fff; z-index: 6001; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-flow: column; overflow-y: auto; }
+.drawer { visibility: hidden; position: fixed; top: 0; right: 0; height: 100dvh; width: min(480px, 100vw); background: #fff; z-index: 1000011; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-flow: column; overflow-y: auto; }
 .drawer.open { visibility: visible; transform: translateX(0); }
 .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--colors-interface--grey-2); position: sticky; top: 0; background: #fff; z-index: 1; }
 .drawer-body { padding: 24px; display: flex; flex-flow: column; gap: 24px; }
