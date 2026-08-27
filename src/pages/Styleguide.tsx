@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLink, Badge, BoxCta, Button, Container, Notice, Section, StatusPill, WideHero } from "../components/Primitives";
 import { Checkbox, FaqItem, Tabs } from "../components/Interactive";
 import { ArrowRight, ArrowUpRight } from "../components/Icons";
-import { LINKS } from "../config";
+import { asset, LINKS } from "../config";
 
 /* Side-by-side parity page: compare against builderplatform.engine.xyz */
 const SWATCHES: [string, string, string][] = [
@@ -76,7 +76,7 @@ export default function Styleguide() {
           <div className="sg-block">
             <Badge label="Cards" />
             <div className="grid three gap-default align-stretch">
-              <a className="blog-card" href="#"><div className="zoom-image-link"><img src="/bg/3D_Shift_Verdant.jpg" alt="" /></div><div className="blog-card-body"><div className="heading-h5 font-color-white">Sustaining Innovation Ecosystems: Roles of the System Hub</div><div className="blog-card-meta"><Badge label="Article" color="white" white /><span className="badge-text font-color-white">8.25.2026</span></div></div></a>
+              <a className="blog-card" href="#"><div className="zoom-image-link"><img src={asset("bg/3D_Shift_Verdant.jpg")} alt="" /></div><div className="blog-card-body"><div className="heading-h5 font-color-white">Sustaining Innovation Ecosystems: Roles of the System Hub</div><div className="blog-card-meta"><Badge label="Article" color="white" white /><span className="badge-text font-color-white">8.25.2026</span></div></div></a>
               <div className="card-link"><Badge label="Card link" color="evergreen" white /><span className="heading-h4 font-color-white">16:9 dark card</span></div>
               <div className="light-card"><Badge label="Light card" /><span className="heading-h5 bold">Border grey-2, radius 10</span><p className="body-text" style={{ fontSize: 15, color: "#444" }}>Used for Compass content on white.</p></div>
             </div>

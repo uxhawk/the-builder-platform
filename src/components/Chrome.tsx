@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { LINKS, MY_COMPASS } from "../config";
+import { asset, LINKS, MY_COMPASS } from "../config";
 import { Cross, LinkedIn, Menu } from "./Icons";
 
 /* ---------- Navbar (site: .navbar-wrapper / .navbar) ---------- */
@@ -17,11 +17,11 @@ export function Navbar() {
       <div className="navbar-top-line" />
       <div className="navbar-content main-container contains-navbar">
         <nav className="navbar" aria-label="Primary">
-          <img className="notch left" src="/icons/notch-corner.svg" alt="" />
-          <img className="notch right" src="/icons/notch-corner.svg" alt="" />
+          <img className="notch left" src={asset("icons/notch-corner.svg")} alt="" />
+          <img className="notch right" src={asset("icons/notch-corner.svg")} alt="" />
           <div className="navbar-row">
             <Link to="/" className="nav-logo-link" aria-label="The Builder Platform — Compass home" onClick={() => setOpen(false)}>
-              <img src="/logo/TBP_Logo_Endorsed_White.svg" alt="The Builder Platform, powered by The Engine" />
+              <img src={asset("logo/TBP_Logo_Endorsed_White.svg")} alt="The Builder Platform, powered by The Engine" />
             </Link>
             <div className="nav-contents">
               <div className={`nav-menu ${open ? "open" : ""}`}>
@@ -51,7 +51,7 @@ export function Footer() {
         <div className="footer-wrapper">
           <div className="footer-top">
             <div className="footer-info">
-              <Link to="/"><img src="/logo/TBP_Logo_Endorsed_White_footer.svg" alt="The Builder Platform" /></Link>
+              <Link to="/"><img src={asset("logo/TBP_Logo_Endorsed_White_footer.svg")} alt="The Builder Platform" /></Link>
               <p className="fine-print footer-fine-print font-color-white">We exist to empower ecosystem builders to unlock the full potential of Tough Tech, ensuring every innovation is supported by a thriving ecosystem.</p>
             </div>
             <div className="footer-menus">

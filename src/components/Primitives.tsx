@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { asset } from "../config";
 import { ArrowRight, ArrowUpRight, Check, Info, Lock, Users } from "./Icons";
 
 export type BrandColor = "sky-blue" | "evergreen" | "verdant" | "verdant-dark" | "magenta" | "ultramarine" | "deep-blue" | "grey" | "white" | "dark";
@@ -58,8 +59,8 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 /* ---------- Wide hero with 3D “modular shift” art (site: .wide-section-content.page-title) ---------- */
 export type HeroTone = "deep-blue" | "ultramarine" | "sky-blue" | "magenta" | "verdant" | "evergreen" | "neutral" | "dark";
 const ART: Record<HeroTone, string | null> = {
-  "deep-blue": "/bg/3D_Shift_DeepBlue.jpg", ultramarine: "/bg/3D_Shift_UltraMarine.jpg", "sky-blue": "/bg/3D_Shift_SkyBlue.jpg",
-  magenta: "/bg/3D_Shift_Magenta.jpg", verdant: "/bg/3D_Shift_Verdant.jpg", evergreen: "/bg/3D_Shift_Evergreen.jpg", neutral: "/bg/3D_Shift_Neutral.jpg", dark: null,
+  "deep-blue": asset("bg/3D_Shift_DeepBlue.jpg"), ultramarine: asset("bg/3D_Shift_UltraMarine.jpg"), "sky-blue": asset("bg/3D_Shift_SkyBlue.jpg"),
+  magenta: asset("bg/3D_Shift_Magenta.jpg"), verdant: asset("bg/3D_Shift_Verdant.jpg"), evergreen: asset("bg/3D_Shift_Evergreen.jpg"), neutral: asset("bg/3D_Shift_Neutral.jpg"), dark: null,
 };
 export function WideHero({ tone = "deep-blue", size = "default", children, art = true, shade = true, className = "" }: { tone?: HeroTone; size?: "default" | "large" | "small"; children: ReactNode; art?: boolean; shade?: boolean; className?: string }) {
   const img = art ? ART[tone] : null;
