@@ -145,15 +145,15 @@
 .box-format-div.dark .heading-h4 { color: var(--colors-interface--white); }
 .box-format-div.magenta { background-color: var(--colors-brand--magenta); }
 .box-format-div.sky { background-color: var(--colors-brand--sky-blue); }
-.box-format-div.roll { height: 50px; overflow: hidden; flex-flow: column; justify-content: flex-start; gap: 1em; }
-.box-format-div.roll .heading-h4 { transition: transform var(--motion--fast) ease; flex: none; line-height: 50px; white-space: nowrap; }
-.box-format-div.roll:hover .heading-h4 { transform: translateY(calc(-50px - 1em)); }
+/* Roll: two copies of the label stacked; hover slides the second into view. Height and gap share one
+   variable so the slide distance always matches (em units differed between box and heading). */
+.box-format-div.roll { --roll-h: 50px; --roll-gap: 16px; height: var(--roll-h); padding-top: 0; padding-bottom: 0; overflow: hidden; flex-flow: column; justify-content: flex-start; gap: var(--roll-gap); }
+.box-format-div.roll .heading-h4 { transition: transform var(--motion--fast) ease; flex: none; line-height: var(--roll-h); white-space: nowrap; }
+.box-format-div.roll:hover .heading-h4 { transform: translateY(calc(-1 * (var(--roll-h) + var(--roll-gap)))); }
 .box-format-div.compact { margin: 0; }
 .box-format-div.compact .heading-h4 { font-size: var(--typography--h5-size); }
-.box-format-div.compact.roll { height: 44px; }
-.box-format-div.compact.roll .heading-h4 { line-height: 44px; }
-.box-format-div.compact.roll:hover .heading-h4 { transform: translateY(calc(-44px - 1em)); }
-.cta-container { display: flex; }
+.box-format-div.compact.roll { --roll-h: 44px; }
+.cta-container { display: flex; align-items: center; }
 @media screen and (max-width: 767px) { .cta-container { flex-flow: column; gap: 1em; } }
 
 /* ---------- Banner (magenta strip) ---------- */
