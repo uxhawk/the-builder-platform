@@ -70,11 +70,15 @@ export function Checkbox({ checked, onChange, label, disabled }: { checked: bool
 }
 
 /* ---------- Generic disclosure (“revealed complexity”) ---------- */
-export function Disclosure({ summary, children, defaultOpen = false, className = "" }: { summary: ReactNode; children: ReactNode; defaultOpen?: boolean; className?: string }) {
+/* `toggle` swaps the bare chevron for a small labelled button (“More details” / “Hide details”). */
+export function Disclosure({ summary, children, defaultOpen = false, className = "", toggle }: { summary?: ReactNode; children: ReactNode; defaultOpen?: boolean; className?: string; toggle?: { closed: string; open: string } }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div className={className}>
-      <button type="button" className="services-title" aria-expanded={open} onClick={() => setOpen(!open)}>{summary}<ChevronDown /></button>
+      <button type="button" className="services-title" aria-expanded={open} onClick={() => setOpen(!open)}>
+        {summary}
+        {toggle ? <span className="button small disclosure-toggle">{open ? toggle.open : toggle.closed}<ChevronDown /></span> : <ChevronDown />}
+      </button>
       {open && <div className="anim-in" style={{ paddingTop: 12 }}>{children}</div>}
     </div>
   );

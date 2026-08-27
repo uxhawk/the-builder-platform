@@ -36,6 +36,13 @@
 .gf-step.locked .gf-card .milestone-purpose { color: #8a8a8a; }
 .gf-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .gf-title-row > div:first-child { min-width: 0; } /* text column wraps; the pill keeps its size */
+/* Disclosure row: whole row is the hit target; darkens on hover, with a labelled button instead of a bare chevron */
+.gf-card .services-title { width: calc(100% + 24px); margin: 0 -12px; padding: 6px 12px; border-radius: var(--border-radius--small); transition: background-color var(--motion--fast); }
+.gf-hint { opacity: 0; transition: opacity var(--motion--fast); } /* what's inside — revealed on hover/focus only */
+.gf-card .services-title:hover .gf-hint, .gf-card .services-title:focus-visible .gf-hint { opacity: 1; }
+.gf-card .services-title:hover { background: color-mix(in srgb, var(--colors-brand--evergreen) 28%, transparent); }
+.gf-card .services-title:hover .disclosure-toggle { background: var(--colors-brand--evergreen); }
+.disclosure-toggle .icon { width: 16px; height: 16px; }
 .gf-title { font-family: var(--typefaces--heading-bold); font-size: var(--typography--h5-size); line-height: 1.2; }
 .gf-kicker { font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; margin-bottom: 4px; }
 

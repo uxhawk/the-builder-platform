@@ -7,7 +7,7 @@ import { useProgress, type Progress } from "../compass/state/progress";
 import { StressTest } from "../compass/components/StressTest";
 import { Button, Notice, StatusPill } from "../components/Primitives";
 import { CopyButton, Disclosure } from "../components/Interactive";
-import { ArrowUpRight, Calendar, Check, Copy, Doc, Flag, Info, Lock, Users } from "../components/Icons";
+import { ArrowUpRight, Calendar, Check, Copy, Flag, Info, Lock, Users } from "../components/Icons";
 import { useHelp } from "../components/HelpDrawer";
 import { LINKS } from "../config";
 import NotFound from "./NotFound";
@@ -92,14 +92,6 @@ function Page({ slug }: { slug: string }) {
               <Button variant="outline on-dark" full href={gemHref} external disabled={!engine.gemUrl} icon={<ArrowUpRight width={16} height={16} />}>Open Gem without a prompt</Button>
             </div>
             <div className="gem-side">
-              <div className="badge-title"><span className="square deep-blue" /><span className="badge-text">Artifacts</span></div>
-              {MILESTONES.filter((m) => progress.isComplete(m.id)).slice(-3).reverse().map((m) => (
-                <div className="artifact-row" key={m.id}><span className="doc"><Doc /></span><span>{m.artifact}</span><span className="status-pill done"><Check />Saved</span></div>
-              ))}
-              {progress.state.completed.length === 0 && <span className="fine-print" style={{ color: "#6b6b6b" }}>Each milestone writes one artifact to your Drive folder.</span>}
-              {engine.driveUrl && <a className="arrow-link" href={engine.driveUrl}><span className="arrow-link-text">Open Drive folder</span></a>}
-            </div>
-            <div className="gem-side">
               <div className="badge-title"><span className="square evergreen" /><span className="badge-text">Stuck? Talk to a human</span></div>
               <button type="button" className="help-row" onClick={() => help.open({ engine, milestone: cur.title })} style={{ width: "100%", textAlign: "left" }}>
                 <span className="avatar">{engine.navigator.name.slice(0, 2).toUpperCase()}</span>
@@ -137,7 +129,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
         <div className="gf-card">
           <div className="gf-title-row">
             <div>
-              <div className="gf-kicker">{isHuman ? "Call" : `Milestone ${idx}`} · {m.time}</div>
+              <div className="gf-kicker">{isHuman ? "Call" : `Milestone ${idx}`}{m.id === "m0" && ` · ${m.time}`}</div>
               <div className="gf-title">{m.title}</div>
               <div className="milestone-purpose">{m.purpose}</div>
             </div>
@@ -173,11 +165,20 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
           {status === "review" && <Notice tone="magenta" icon="users" title="Unlocks after navigator review">The diagnosis goes to a human first. That's the one hard gate in the Compass.</Notice>}
 
           {status !== "locked" && (
-            <Disclosure defaultOpen={hash === `#${m.id}`} summary={<span className="badge-text muted">Details · questions for your team · go deeper</span>}>
+            <Disclosure defaultOpen={hash === `#${m.id}`} toggle={{ closed: "More details", open: "Hide details" }} summary={<span className="badge-text gf-hint">Takeaways · questions for your team · go deeper</span>}>
+              {/* Three sections, headed with the same three words as the toggle label. */}
               <div className="stack gap-l">
-                <div className="fact"><span className="fact-label">You'll leave with</span><span className="fact-value">{m.leaveWith}</span></div>
-                <ul className="question-bank">{m.questions.map((q) => <li key={q}>{q}</li>)}</ul>
-                <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={here}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
+                <section className="stack">
+                  <div className="fact"><span className="fact-label">You'll leave with</span><span className="fact-value">{m.leaveWith}</span></div>
+                </section>
+                <section className="stack">
+                  <span className="badge-text muted">Questions for your team</span>
+                  <ul className="question-bank">{m.questions.map((q) => <li key={q}>{q}</li>)}</ul>
+                </section>
+                <section className="stack">
+                  <span className="badge-text muted">Go deeper</span>
+                  <div className="chip-row">{m.deeper.map((s) => { const t = learnBySlug(s); return t ? <Link key={s} className="chip" to={`/learn/${s}`} state={here}><Info width={14} height={14} />{t.title}</Link> : null; })}</div>
+                </section>
                 {status === "done" && <button type="button" className="arrow-link" onClick={() => progress.uncomplete(m.id)}><span className="arrow-link-text">Reopen</span></button>}
               </div>
             </Disclosure>
