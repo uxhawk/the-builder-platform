@@ -55,17 +55,6 @@ export const LEARN: LearnTopic[] = [
     ],
   },
   {
-    slug: "ninja-and-but-for", group: "Start here", title: "The “ninja” framing and the “but for” question", related: ["m0", "m4"],
-    summary: "Small, surgical, aimed at a strike you can actually land.",
-    body: [
-      { t: "p", text: "In the first pilot kickoff, the Engine's CEO adopted a framing that stuck: an Engine is a ninja. Not a broad transformation program — a small team with a modest budget that has to be precise about where it acts. “When we fire our bullets, let's do it where we think we'll get our biggest strike.”" },
-      { t: "p", text: "The analogy from the strategist: grid-enhancing technologies. Small transmission investments that yield 20–40% more capacity from existing infrastructure, versus building new lines. Chronically underinvested because they're unglamorous — and exactly where an Engine's leverage lives." },
-      { t: "h", text: "The “but for” question" },
-      { t: "p", text: "For every proposed move: which specific connection, contract, capability, or capital flow will exist because of us that wouldn't exist otherwise? If you can't answer with a concrete example, the move is probably an input, not an intervention." },
-      { t: "callout", text: "The Compass is designed to get you from grandiose industry-transformation claims to specific, bounded interventions with a “but for” attached to each." },
-    ],
-  },
-  {
     slug: "input-fallacy", group: "Frameworks", title: "The input fallacy", related: ["m3", "m4"],
     summary: "Why “we need more X” is usually the wrong diagnosis.",
     body: [
@@ -204,20 +193,6 @@ export const LEARN: LearnTopic[] = [
         ["Evaluators", "Invited to the data-heavy early milestones as insight partners.", "Optional"],
       ] },
       { t: "callout", text: "Push for broader representation than your instinct. The process works better with more voices — and with people from legacy firms who should be exposed to innovation, not just the ones who already opted in." },
-    ],
-  },
-  {
-    slug: "self-serve-vs-guided", group: "Process", title: "Self-guided vs. Full Compass", related: ["m0", "m6"],
-    summary: "Two paths, one framework. TBP recommends a path at kickoff; you can move between them.",
-    body: [
-      { t: "table", cols: ["", "Self-guided Compass", "Full Compass (guided)"], rows: [
-        ["Who drives", "Your team, with the Gem", "TBP's navigator, strategist and data steward"],
-        ["Human touchpoints", "Kickoff + synthesis calls; navigator review at the diagnosis gate; off-ramps anywhere", "Five or six facilitated calls over 10–12 weeks"],
-        ["Time from your team", "Roughly 8–15 hours; can compress into 2–3 focused days", "6–8 hours of calls plus prep"],
-        ["Between-milestone work", "Structured by the tool: question banks, local conversations, artifacts", "Done by TBP between calls (60%+ of total effort in the pilot)"],
-        ["Best for", "Teams with a clear deadline and an internal owner with regional data fluency", "Teams new to the framework, complex or defense-adjacent industries, or where the CEO needs a neutral third party in the room"],
-      ] },
-      { t: "p", text: "Navigators route Engines to a path — self-guided is not for everyone, and teams that clearly need hand-holding shouldn't be defaulted to it. Throughout the self-guided flow you can flag that you want a thought partner; the two highest-stakes moments (the archetype call and the barrier test) have escalation built in." },
     ],
   },
   {

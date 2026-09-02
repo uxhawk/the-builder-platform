@@ -64,7 +64,7 @@ export const MILESTONES: Milestone[] = [
       "Who on our team can read a regional data table and say “that's wrong, here's why”?",
       "What would make this a “ninja” engagement — small, precise, aimed at a strike we can actually land?",
     ],
-    deeper: ["what-is-compass", "who-in-the-room", "ninja-and-but-for", "how-the-gem-works", "self-serve-vs-guided"],
+    deeper: ["what-is-compass", "who-in-the-room", "how-the-gem-works"],
   },
   {
     id: "m1", code: "01", title: "Industry Definition", shortTitle: "Industry definition", kind: "self-guided", color: "evergreen",
@@ -220,7 +220,7 @@ export const MILESTONES: Milestone[] = [
     inGem: ["Walk the three voices — your framing, the Gem's output, Moonlight's annotations. Where they diverge is where strategy sharpens.", "Agree what's finished, what's open, and whether a follow-on guided engagement is warranted."],
     reflect: ["Your Compass stays open. Come back when conditions change: new data, a new partner, a new deadline.", "Share what you learned with a peer Engine facing a similar archetype."],
     questions: ["Could any member of our team tell the three-paragraph story to a stranger?", "What would we say to NSF about how this shifted our strategy?", "Which open thread matters most in the next 90 days?"],
-    deeper: ["what-is-compass", "self-serve-vs-guided"],
+    deeper: ["what-is-compass"],
   },
 ];
 
