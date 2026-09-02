@@ -20,12 +20,12 @@ type ButtonProps = {
   to?: string; href?: string; onClick?: () => void; type?: "button" | "submit";
   variant?: "grey" | "primary" | "dark" | "glass" | "outline" | "outline on-dark" | "magenta" | "sky";
   size?: "small"; full?: boolean; disabled?: boolean; icon?: ReactNode; iconLeft?: ReactNode;
-  children: ReactNode; className?: string; external?: boolean; title?: string; ariaLabel?: string;
+  children: ReactNode; className?: string; external?: boolean; title?: string; ariaLabel?: string; state?: unknown;
 };
-export function Button({ to, href, onClick, type = "button", variant = "grey", size, full, disabled, icon, iconLeft, children, className = "", external, title, ariaLabel }: ButtonProps) {
+export function Button({ to, href, onClick, type = "button", variant = "grey", size, full, disabled, icon, iconLeft, children, className = "", external, title, ariaLabel, state }: ButtonProps) {
   const cls = `button ${variant} ${size ?? ""} ${full ? "full" : ""} ${disabled ? "disabled" : ""} ${className}`;
   const inner = <>{iconLeft}{children}{icon}</>;
-  if (to && !disabled) return <Link className={cls} to={to} title={title} aria-label={ariaLabel}>{inner}</Link>;
+  if (to && !disabled) return <Link className={cls} to={to} state={state} title={title} aria-label={ariaLabel}>{inner}</Link>;
   if (href && !disabled) return <a className={cls} href={href} title={title} aria-label={ariaLabel} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{inner}</a>;
   return <button type={type} className={cls} onClick={onClick} disabled={disabled} title={title} aria-label={ariaLabel}>{inner}</button>;
 }
