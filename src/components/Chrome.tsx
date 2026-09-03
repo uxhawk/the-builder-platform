@@ -8,7 +8,6 @@ const NAV = [
   { to: "/", label: "Compass", end: true },
   { to: MY_COMPASS, label: "My Compass" },
   { to: "/learn", label: "Learn" },
-  { to: "/styleguide", label: "Styleguide" },
 ];
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -59,7 +58,6 @@ export function Footer() {
                 <Link className="footer-link" to="/">Compass</Link>
                 <Link className="footer-link" to={MY_COMPASS}>My Compass</Link>
                 <Link className="footer-link" to="/learn">Learn</Link>
-                <Link className="footer-link" to="/styleguide">Styleguide</Link>
               </div>
               <div className="footer-menu">
                 <a className="footer-link" href={LINKS.tbpSite} target="_blank" rel="noreferrer">The Builder Platform</a>
