@@ -44,7 +44,7 @@ docs/              feature analysis from the meeting notes; the progressive-disc
 - **Fonts**: Neue Haas is a licensed Monotype face; the TTFs here are TBP's own files served by their site, included for internal review only.
 - **Content**: milestone copy, question banks, prompts and Learn topics are condensed from the Compass guide, the V2 engagement flow, the data-layer spec, the FSE departure analysis and 29 meeting notes (Mar–Aug 2026). Treat as a straw man for TBP to react to.
 
-See `docs/feature-analysis.md` for how meeting-note requests map to the UI, and `docs/progressive-disclosure.md` for the disclosure model.
+See `docs/feature-analysis.md` for how meeting-note requests map to the UI, `docs/progressive-disclosure.md` for the disclosure model, and `docs/engine-config-and-access.md` for options on managing Engine records (light CMS) and gating "My Compass" per Engine.
 
 ## Branching
 
