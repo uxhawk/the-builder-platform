@@ -9,7 +9,6 @@ import { HypothesisBox } from "../compass/components/HypothesisBox";
 import { ArtifactsCard, ConfigCard, DeadlineCard, GemCard, HelpCard, TeamCard } from "../compass/components/SideCards";
 import { Badge, Button, Container, Section, WideHero } from "../components/Primitives";
 import { ArrowUpRight, Calendar, Refresh } from "../components/Icons";
-import { useHelp } from "../components/HelpDrawer";
 import NotFound from "./NotFound";
 import { LINKS } from "../config";
 
@@ -23,7 +22,6 @@ export default function EnginePortal() {
 function Portal({ engineSlug }: { engineSlug: string }) {
   const engine = engineBySlug(engineSlug)!;
   const progress = useProgress(engine);
-  const help = useHelp();
   /* Open card = the current milestone, unless the user picked another one since
      the current milestone last changed (derived during render, no effect). */
   const { hash } = useLocation();
@@ -65,7 +63,7 @@ function Portal({ engineSlug }: { engineSlug: string }) {
             <div className="meter"><span style={{ width: `${progress.percent}%` }} /></div>
             <div className="hero-actions">
               <Button variant="primary" href={engine.gemUrl ?? LINKS.gemFallback} external disabled={!engine.gemUrl} icon={<ArrowUpRight width={18} height={18} />}>Open your Compass Gem</Button>
-              <Button variant="glass" onClick={() => help.open({ engine })}>Talk to your navigator</Button>
+              <Button variant="glass" href={`mailto:${engine.navigator.email}`}>Talk to your navigator</Button>
             </div>
           </div>
         </div>

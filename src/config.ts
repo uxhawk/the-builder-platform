@@ -18,4 +18,6 @@ export const LINKS = {
   linkedin: "https://www.linkedin.com/company/theenginebuiltbymit/",
   // Member login (Circle), as linked from the live site's nav.
   login: "https://login.circle.so/sign_in?request_host=builderplatform.circle.so",
+  // The Engine (parent org), linked from the live site's footer.
+  engineSite: "https://engine.xyz/",
 };

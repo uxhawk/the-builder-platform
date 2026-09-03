@@ -7,7 +7,6 @@ import type { Progress } from "../state/progress";
 import { Button } from "../../components/Primitives";
 import { Disclosure } from "../../components/Interactive";
 import { ArrowRight, ArrowUpRight, Calendar, Check, Doc, Mail, Sparkle } from "../../components/Icons";
-import { initials, useHelp } from "../../components/HelpDrawer";
 import { LINKS } from "../../config";
 
 export function GemCard({ engine }: { engine: Engine }) {
@@ -66,17 +65,18 @@ export function TeamCard({ engine }: { engine: Engine }) {
   );
 }
 
+const initials = (name: string) => name.split(/\s+/).map((p) => p[0]).join("").slice(0, 2).toUpperCase();
+
 export function HelpCard({ engine }: { engine: Engine }) {
-  const help = useHelp();
   return (
     <div className="side-card">
       <div className="badge-title"><span className="square evergreen" /><span className="badge-text">Live help</span></div>
       <div>
-        <button type="button" className="help-row" onClick={() => help.open({ engine })} style={{ width: "100%", textAlign: "left" }}>
+        <a className="help-row" href={`mailto:${engine.navigator.email}`}>
           <span className="avatar">{initials(engine.navigator.name)}</span>
           <span className="who"><strong>{engine.navigator.name}</strong><small>Navigator · {engine.navigator.org}</small></span>
           <Mail className="arrow" />
-        </button>
+        </a>
         <a className="help-row" href={LINKS.bookCall}>
           <span className="avatar magenta">{initials(engine.strategist.name)}</span>
           <span className="who"><strong>{engine.strategist.name}</strong><small>Strategy · {engine.strategist.org} · book 30 min</small></span>

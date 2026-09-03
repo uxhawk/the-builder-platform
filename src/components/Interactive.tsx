@@ -1,5 +1,5 @@
-import { useEffect, useId, useState, type ReactNode } from "react";
-import { Check, ChevronDown, Copy, Cross } from "./Icons";
+import { useId, useState, type ReactNode } from "react";
+import { Check, ChevronDown, Copy } from "./Icons";
 
 /* ---------- FAQ / accordion item (site: .services-title + .accordion-content) ---------- */
 export function FaqItem({ q, children, defaultOpen = false, dark = false }: { q: string; children: ReactNode; defaultOpen?: boolean; dark?: boolean }) {
@@ -24,29 +24,6 @@ export function Tabs<T extends string>({ tabs, active, onChange, align = "center
         <button key={t.id} role="tab" type="button" aria-selected={active === t.id} className={`tab-link ${t.color} ${active === t.id ? "current" : ""}`} onClick={() => onChange(t.id)}>{t.label}</button>
       ))}
     </div>
-  );
-}
-
-/* ---------- Drawer ---------- */
-export function Drawer({ open, onClose, title, children, dark, wide }: { open: boolean; onClose: () => void; title: ReactNode; children: ReactNode; dark?: boolean; wide?: boolean }) {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
-  }, [open, onClose]);
-  return (
-    <>
-      <div className={`drawer-backdrop ${open ? "open" : ""}`} onClick={onClose} aria-hidden />
-      <aside className={`drawer ${open ? "open" : ""} ${dark ? "dark" : ""} ${wide ? "wide" : ""}`} role="dialog" aria-modal="true" aria-hidden={!open}>
-        <div className="drawer-head">
-          <div className="heading-h5 bold">{title}</div>
-          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close"><Cross /></button>
-        </div>
-        <div className="drawer-body">{children}</div>
-      </aside>
-    </>
   );
 }
 

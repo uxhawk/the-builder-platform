@@ -100,6 +100,30 @@ export function Navbar() {
 }
 
 /* ---------- Footer (site: .footer) ---------- */
+/* Mirrors the live site's footer: three link columns (site pages open the real site),
+   copyright, LinkedIn. Compass has no footer links of its own — it lives in the navbar. */
+const FOOTER_MENUS: { label: string; href: string }[][] = [
+  [
+    { label: "Home", href: LINKS.tbpSite },
+    { label: "About", href: `${LINKS.tbpSite}/about` },
+    { label: "Impact", href: `${LINKS.tbpSite}/impact` },
+    { label: "Ecosystems", href: `${LINKS.tbpSite}/ecosystems` },
+    { label: "Services", href: `${LINKS.tbpSite}/services` },
+    { label: "Partners", href: `${LINKS.tbpSite}/#Partnerships` },
+  ],
+  [
+    { label: "Stories", href: `${LINKS.tbpSite}/featured-stories` },
+    { label: "Field Insights", href: `${LINKS.tbpSite}/#fieldinsights` },
+    { label: "Member Login", href: LINKS.login },
+    { label: "The Engine", href: LINKS.engineSite },
+    { label: "Contact", href: `${LINKS.tbpSite}/contact` },
+    { label: "FAQ", href: `${LINKS.tbpSite}/services#FAQ` },
+  ],
+  [
+    { label: "Privacy Policy", href: `${LINKS.tbpSite}/privacy-policy` },
+    { label: "Terms and Conditions", href: `${LINKS.tbpSite}/terms-and-conditions` },
+  ],
+];
 export function Footer() {
   return (
     <footer className="footer">
@@ -107,30 +131,22 @@ export function Footer() {
         <div className="footer-wrapper">
           <div className="footer-top">
             <div className="footer-info">
-              <Link to="/"><img src={asset("logo/TBP_Logo_Endorsed_White_footer.svg")} alt="The Builder Platform" /></Link>
+              <Link to="/" aria-label="The Builder Platform — Compass home"><img src={asset("logo/TBP_Logo_Endorsed_White_footer.svg")} alt="The Builder Platform, powered by The Engine" /></Link>
               <p className="fine-print footer-fine-print font-color-white">We exist to empower ecosystem builders to unlock the full potential of Tough Tech, ensuring every innovation is supported by a thriving ecosystem.</p>
             </div>
             <div className="footer-menus">
-              <div className="footer-menu">
-                <Link className="footer-link" to="/compass">Compass</Link>
-                <Link className="footer-link" to={MY_COMPASS}>My Compass</Link>
-                <Link className="footer-link" to="/learn">Learn</Link>
-              </div>
-              <div className="footer-menu">
-                <a className="footer-link" href={LINKS.tbpSite} target="_blank" rel="noreferrer">The Builder Platform</a>
-                <a className="footer-link" href={`${LINKS.tbpSite}/ecosystems`} target="_blank" rel="noreferrer">Ecosystems</a>
-                <a className="footer-link" href={`${LINKS.tbpSite}/services`} target="_blank" rel="noreferrer">Services</a>
-                <a className="footer-link" href={`mailto:${LINKS.contactEmail}`}>Contact</a>
-              </div>
-              <div className="footer-menu">
-                <a className="footer-link" href={`${LINKS.tbpSite}/privacy-policy`} target="_blank" rel="noreferrer">Privacy Policy</a>
-                <a className="footer-link" href={`${LINKS.tbpSite}/terms-and-conditions`} target="_blank" rel="noreferrer">Terms and Conditions</a>
-              </div>
+              {FOOTER_MENUS.map((col, i) => (
+                <div className="footer-menu" key={i}>
+                  {col.map((l) => <a className="footer-link" key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label}</a>)}
+                </div>
+              ))}
             </div>
           </div>
           <div className="footer-bottom">
-            <div className="fine-print font-color-white">Copyright © {new Date().getFullYear()} The Engine · Compass design prototype</div>
-            <a className="social-icon-link" href={LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedIn /></a>
+            <div className="fine-print font-color-white">Copyright © {new Date().getFullYear()} The Engine</div>
+            <div className="social-icons">
+              <a className="social-icon-link" href={LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedIn /></a>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { MY_COMPASS } from "../../config";
+import { LINKS, MY_COMPASS } from "../../config";
 
 /* “Users arrive in very different mental states: panicked, curious, obligated,
    or already motivated. The landing page should speak to people where they are.”
@@ -14,7 +14,7 @@ export const MOODS: Mood[] = [
     headline: "Work backward from your deadline.",
     body: "A fixed date is the best thing that can happen to this work: a site visit, a renewal pitch, or a board retreat tells you exactly what the output has to do and when. A focused team can move through the milestones in two or three days; most take six to ten weeks. Either way, we set the cadence backward from your date.",
     firstStep: "Book your kickoff and declare the deadline. Everything else follows from it.",
-    cta: { label: "Book a kickoff", to: "#kickoff" }, alt: { label: "See what you'll walk away with", to: "#outcomes" },
+    cta: { label: "Book a kickoff", to: LINKS.bookCall }, alt: { label: "See what you'll walk away with", to: "#outcomes" },
   },
   {
     id: "obligated", title: "This was recommended to us", sub: "By NSF, a board member, or a peer Engine", tone: "sky",
@@ -35,6 +35,6 @@ export const MOODS: Mood[] = [
     headline: "Good. Let's make sure the right people are in the room.",
     body: "The Engines that got the most out of the Compass had one thing in common: someone on the team who could look at a regional data table and say “that's wrong, here's why.” Most Engines don't have that person on staff. If you don't, we'll help you find one before the data is pulled — not after.",
     firstStep: "Check who's in the room, then open your Engine's Compass.",
-    cta: { label: "Open your Compass", to: MY_COMPASS }, alt: { label: "Who should be in the room", to: "/learn/who-in-the-room" },
+    cta: { label: "Open my Compass", to: MY_COMPASS }, alt: { label: "Who should be in the room", to: "/learn/who-in-the-room" },
   },
 ];

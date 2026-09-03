@@ -18,8 +18,8 @@ npm run build       # type-check + production build
 | Route | What it is |
 | --- | --- |
 | `/` | Redirects to `/compass` |
-| `/compass` | Cohort-facing Compass landing page: "where are you right now?", outcomes, three layers, seven milestones, two paths, the Gem, who's in the room, FAQ, kickoff CTA |
-| `/engine/:slug` | Per-Engine portal (FSE seeded at M4; `sample-cohort-two` shows the empty state): stepper, progressively disclosed milestone cards, working-hypothesis box, Gem link, forcing-function deadline, team roster, live help, artifacts, locked configuration |
+| `/compass` | Cohort-facing Compass landing page: "where are you right now?", outcomes, three layers, the Gem, FAQ |
+| `/engine/:slug` | Per-Engine portal (FSE seeded at M4; `sample-cohort-two` shows the empty state): stepper, progressively disclosed milestone cards, working-hypothesis box, Gem link, forcing-function deadline, team roster, artifacts, locked configuration |
 | `/learn` · `/learn/:slug` | Dive-deeper library (16 topics) linked from every milestone |
 | `/styleguide` | Side-by-side parity page for components ported from builderplatform.engine.xyz |
 
@@ -30,7 +30,7 @@ Progress, checklists, mood, deadline and review state persist in `localStorage` 
 ```
 public/            fonts, icons, logos and 3D "modular shift" art pulled from the live site
 src/styles/        tokens.css (1:1 Webflow variables) · fonts · base · tbp.css (site parity) · compass.css
-src/components/    Icons, Primitives (Badge/Button/ArrowLink/BoxCta/WideHero/Notice), Chrome (Banner/Navbar/Footer), Interactive, HelpDrawer
+src/components/    Icons, Primitives (Badge/Button/ArrowLink/BoxCta/WideHero/Notice), Chrome (Banner/Navbar/Footer), Interactive
 src/compass/data/  milestones.ts · engines.ts · learn.ts · personas.ts · moods.ts   ← all content lives here
 src/compass/state/ progress.ts (localStorage hook + unlock rules)
 src/compass/components/  Stepper, MilestoneCard, HypothesisBox, MoodPicker, StressTest, SideCards
