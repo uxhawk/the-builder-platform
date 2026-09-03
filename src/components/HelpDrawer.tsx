@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { useMatch } from "react-router-dom";
 import { LINKS } from "../config";
 import type { Engine } from "../compass/data/engines";
 import { Button } from "./Primitives";
@@ -10,13 +11,16 @@ const Ctx = createContext<HelpCtx>({ open: () => {}, close: () => {} });
 export const useHelp = () => useContext(Ctx);
 
 /* “Get live help” is the always-available off-ramp (Aug 6 / Aug 13 / Aug 20 notes:
-   engines should be able to flag they want a thought partner at any point). */
+   engines should be able to flag they want a thought partner at any point).
+   The drawer is mounted site-wide so in-page CTAs can open it; the floating
+   button only shows on the My Compass (engine portal) page. */
 export function HelpProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<{ open: boolean; engine?: Engine; milestone?: string }>({ open: false });
   const [note, setNote] = useState("");
   const open = useCallback((opts?: { engine?: Engine; milestone?: string }) => setState({ open: true, ...opts }), []);
   const close = useCallback(() => setState((s) => ({ ...s, open: false })), []);
   const value = useMemo(() => ({ open, close }), [open, close]);
+  const onMyCompass = useMatch("/engine/:slug");
   const eng = state.engine;
   const subject = encodeURIComponent(`Compass help${eng ? ` — ${eng.shortName}` : ""}${state.milestone ? ` (${state.milestone})` : ""}`);
   const body = encodeURIComponent(note);
@@ -25,7 +29,7 @@ export function HelpProvider({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={value}>
       {children}
-      <button type="button" className="button dark help-fab" onClick={() => open()}><Users width={18} height={18} />Get help</button>
+      {onMyCompass && <button type="button" className="button dark help-fab" onClick={() => open()}><Users width={18} height={18} />Get help</button>}
       <Drawer open={state.open} onClose={close} title="Get live help">
         <div className="stack gap-l">
           <p className="body-text">The Compass is self-guided, not hands-off. If you're stuck, unsure, or want a thought partner before you commit to a call — reach out. The bookend calls are the most load-bearing moments in the process; the middle has off-ramps.</p>

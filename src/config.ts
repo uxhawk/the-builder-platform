@@ -16,4 +16,6 @@ export const LINKS = {
   // Placeholder scheduling link for the strategist (Ryan) / navigator.
   bookCall: "#book-a-call",
   linkedin: "https://www.linkedin.com/company/theenginebuiltbymit/",
+  // Member login (Circle), as linked from the live site's nav.
+  login: "https://login.circle.so/sign_in?request_host=builderplatform.circle.so",
 };

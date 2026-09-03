@@ -8,7 +8,6 @@ import GemFirstPortal from "./pages/GemFirstPortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
 import Styleguide from "./pages/Styleguide";
 import NotFound from "./pages/NotFound";
-import { MY_COMPASS } from "./config";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -37,9 +36,9 @@ export default function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Landing />} />
+          <Route index element={<Navigate to="/compass" replace />} />
           <Route path="engine/:slug" element={<GemFirstPortal />} />
-          <Route path="compass" element={<Navigate to={MY_COMPASS} replace />} />
+          <Route path="compass" element={<Landing />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
           <Route path="styleguide" element={<Styleguide />} />

@@ -12,6 +12,7 @@ export const Menu = (p: P) => <svg {...base(p)}><path d="M24 12H0M24 4.8H0M0 19.
 export const Search = (p: P) => <svg {...base(p)} viewBox="0 0 20 20"><path d="M11.875 13.75C14.9816 13.75 17.5 11.2316 17.5 8.125C17.5 5.0184 14.9816 2.5 11.875 2.5C8.7684 2.5 6.25 5.0184 6.25 8.125C6.25 11.2316 8.7684 13.75 11.875 13.75Z" /><path d="M2.5 17.5L8.125 11.875" /></svg>;
 export const Cross = (p: P) => <svg {...base(p)} stroke="none" fill="currentColor"><path d="M5.70703 4.29297L4.29297 5.70703L10.5859 12L4.29297 18.293L5.70703 19.707L12 13.4141L18.293 19.707L19.707 18.293L13.4141 12L19.707 5.70703L18.293 4.29297L12 10.5859L5.70703 4.29297Z" /></svg>;
 export const ChevronDown = (p: P) => <svg {...base(p)}><path d="M5 9l7 7 7-7" /></svg>;
+export const Plus = (p: P) => <svg {...base(p)}><path d="M12 5v14M5 12h14" /></svg>;
 export const Check = (p: P) => <svg {...base(p)} strokeWidth={2}><path d="M4 12.5l5 5L20 6.5" /></svg>;
 export const Lock = (p: P) => <svg {...base(p)}><rect x="5" y="10.5" width="14" height="10" rx="1.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /></svg>;
 export const Copy = (p: P) => <svg {...base(p)}><rect x="8" y="8" width="12" height="12" rx="1.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>;

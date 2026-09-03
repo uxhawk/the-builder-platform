@@ -17,8 +17,8 @@ npm run build       # type-check + production build
 
 | Route | What it is |
 | --- | --- |
-| `/` | Cohort-facing landing page: "where are you right now?", outcomes, three layers, seven milestones, two paths, the Gem, who's in the room, FAQ, kickoff CTA |
-| `/compass` | Redirects to the signed-in user's Engine (`SIGNED_IN_ENGINE` in `src/config.ts`) — stand-in for auth |
+| `/` | Redirects to `/compass` |
+| `/compass` | Cohort-facing Compass landing page: "where are you right now?", outcomes, three layers, seven milestones, two paths, the Gem, who's in the room, FAQ, kickoff CTA |
 | `/engine/:slug` | Per-Engine portal (FSE seeded at M4; `sample-cohort-two` shows the empty state): stepper, progressively disclosed milestone cards, working-hypothesis box, Gem link, forcing-function deadline, team roster, live help, artifacts, locked configuration |
 | `/learn` · `/learn/:slug` | Dive-deeper library (16 topics) linked from every milestone |
 | `/styleguide` | Side-by-side parity page for components ported from builderplatform.engine.xyz |

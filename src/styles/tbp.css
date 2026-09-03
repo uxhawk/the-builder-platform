@@ -179,7 +179,36 @@
 .nav-link { font-family: var(--typefaces--secondary); color: var(--colors-interface--white); font-size: var(--typography--bade-size); text-transform: uppercase; text-decoration: none; padding: 0; transition: opacity var(--motion--fast); font-variation-settings: "wght" 500; }
 .nav-link:hover { opacity: .7; }
 .nav-link.active { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--colors-brand--evergreen); }
-.nav-controls { display: flex; align-items: center; gap: 36px; color: var(--colors-interface--white); }
+/* Compass dropdown: click = landing page; hover/focus reveals sub-items (desktop).
+   The wrapper spans the navbar height and the panel hangs just under the label; the menu's
+   top padding bridges the gap so the hover path from label to panel is unbroken. */
+.nav-dropdown { position: relative; display: flex; align-items: center; height: var(--globals--navbar-height); }
+.nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 6px; }
+.nav-dropdown-plus { width: 12px; height: 12px; stroke-width: 2; flex: none; }
+.nav-dropdown-menu { position: absolute; top: 50%; right: 0; min-width: 180px; padding-top: 20px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity var(--motion--fast), transform var(--motion--fast), visibility var(--motion--fast); }
+/* :has(:focus-visible) rather than :focus-within so a mouse click does not pin the panel open */
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:has(:focus-visible) .nav-dropdown-menu { opacity: 1; visibility: visible; transform: none; }
+.nav-dropdown-panel { display: flex; flex-flow: column; padding: 6px; background-color: var(--colors-interface--dark-2); border: 1px solid var(--colors-interface--white-border); border-radius: var(--border-radius--small); box-shadow: 0 16px 40px -16px rgba(0,0,0,.6); }
+.nav-dropdown-item { display: block; padding: 10px 12px; border-radius: var(--border-radius--small); white-space: nowrap; }
+.nav-dropdown-item:hover { opacity: 1; background-color: var(--colors-interface--white-faded-hover); }
+.nav-dropdown-item.active { text-decoration: none; color: var(--colors-brand--evergreen); }
+.nav-controls { position: relative; display: flex; align-items: center; gap: 36px; height: var(--globals--navbar-height); color: var(--colors-interface--white); }
+/* Search (site: .search-dropdown): the icon toggles a panel that hangs under the controls, right-aligned with Login */
+.search-dropdown { display: flex; align-items: center; }
+.search-trigger { display: flex; color: inherit; transition: opacity var(--motion--fast); }
+.search-trigger:hover { opacity: .7; }
+.search-panel { position: absolute; top: 50%; right: 0; width: 384px; padding-top: 20px; }
+.search-form { position: relative; display: flex; overflow: hidden; color: var(--colors-interface--white); background-color: var(--colors-interface--dark-2); border: 1px solid var(--colors-interface--white-border); border-radius: var(--border-radius--small); box-shadow: 0 16px 40px -16px rgba(0,0,0,.6); }
+.search-form-input { flex: 1; min-width: 0; height: var(--buttons--button-height); padding: 12px var(--buttons--button-height) 12px 18px; border: 0; border-radius: 0; background: transparent; color: var(--colors-interface--white); font-size: var(--typography--body-size); line-height: var(--typography--body-line-height); appearance: none; -webkit-appearance: none; }
+.search-form-input::placeholder { color: var(--colors-interface--body-text); }
+.search-form-input:focus { outline: none; }
+.search-submit { position: absolute; top: 0; right: 0; display: flex; align-items: center; justify-content: center; width: var(--buttons--button-height); height: var(--buttons--button-height); color: inherit; opacity: .5; transition: opacity var(--motion--fast); }
+.search-submit:hover { opacity: 1; }
+.nav-login { color: inherit; transition: opacity var(--motion--fast); }
+.nav-login:hover { opacity: .7; }
+.nav-login .icon { transition: transform var(--motion--fast); }
+.nav-login:hover .icon { transform: translate(2px, -2px); }
+.mobile-only { display: none; }
 .menu-button { display: none; color: #fff; }
 .menu-button .icon { width: 24px; height: 24px; }
 .nav-menu { display: contents; }
@@ -191,6 +220,18 @@
   .nav-controls { display: none; }
   .menu-button { display: block; position: relative; z-index: 1000000; }
   .navbar-wrapper { margin-bottom: 0; }
+  /* Dropdown in the mobile overlay: sub-items always listed, indented under Compass */
+  .nav-dropdown { display: block; height: auto; }
+  .nav-dropdown-toggle { display: flex; justify-content: flex-start; gap: 12px; width: 100%; }
+  .nav-dropdown-plus { width: 18px; height: 18px; }
+  .nav-dropdown-menu { position: static; min-width: 0; padding-top: 0; opacity: 1; visibility: visible; transform: none; transition: none; }
+  .nav-dropdown-panel { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+  .nav-dropdown-item { padding: 12px 0 12px 30px; border-radius: 0; color: var(--colors-interface--body-text); }
+  .nav-dropdown-item:hover { background: none; }
+  /* Mobile-only rows: Login sits with the links; the search field is pushed to the overlay's bottom */
+  .mobile-only { display: flex; }
+  .nav-links { flex: 1; }
+  .search-form.mobile-only { margin-top: auto; }
 }
 
 /* ---------- Cards ---------- */
