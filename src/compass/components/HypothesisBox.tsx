@@ -3,12 +3,10 @@ import type { Progress } from "../state/progress";
 import { Disclosure } from "../../components/Interactive";
 import { Button } from "../../components/Primitives";
 import { Refresh } from "../../components/Icons";
-import { useHelp } from "../../components/HelpDrawer";
 
 /* “Live hypothesis box”: a sticky element that tracks the evolving thesis.
    Revised only via the Navigator or strategist, not changed on the fly (Aug 19). */
 export function HypothesisBox({ engine, progress }: { engine: Engine; progress: Progress }) {
-  const help = useHelp();
   const latest = engine.hypotheses[engine.hypotheses.length - 1];
   const fmt = (d: string) => new Date(d + "T12:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
   return (
@@ -31,7 +29,7 @@ export function HypothesisBox({ engine, progress }: { engine: Engine; progress: 
         <span className="fine-print font-color-body">Revised with your navigator, not on the fly.</span>
         {progress.state.revisionRequested
           ? <span className="status-pill review">Revision requested</span>
-          : <Button variant="outline on-dark" size="small" iconLeft={<Refresh width={14} height={14} />} onClick={() => { progress.requestRevision(); help.open({ engine, milestone: "hypothesis revision" }); }}>Request a revision</Button>}
+          : <Button variant="outline on-dark" size="small" iconLeft={<Refresh width={14} height={14} />} onClick={() => progress.requestRevision()}>Request a revision</Button>}
       </div>
     </div>
   );

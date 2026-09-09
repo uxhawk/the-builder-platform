@@ -8,7 +8,6 @@ import { fromState } from "../state/from";
 import { Button, Notice, StatusPill } from "../../components/Primitives";
 import { Checkbox, CopyButton, Disclosure } from "../../components/Interactive";
 import { ArrowUpRight, Calendar, ChevronDown, Check, Doc, Flag, Info, Sparkle, Users } from "../../components/Icons";
-import { useHelp } from "../../components/HelpDrawer";
 import { useToast } from "../../components/Toast";
 import { StressTest } from "./StressTest";
 import { LINKS } from "../../config";
@@ -20,7 +19,6 @@ import { LINKS } from "../../config";
    3. Go deeper — chips into the Learn library.
    Locked milestones are still readable (preview), just not actionable. */
 export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Milestone; engine: Engine; progress: Progress; open: boolean; onToggle: () => void }) {
-  const help = useHelp();
   const { toast } = useToast();
   const id = useId();
   const status = progress.statusOf(m.id);
@@ -99,7 +97,7 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
           {actionable && (
             <div className="hero-actions">
               {isHuman
-                ? <><Button variant="primary" href={LINKS.bookCall} icon={<Calendar width={18} height={18} />}>{m.id === "m0" ? "Book the kickoff" : "Schedule synthesis"}</Button><Button variant="outline" onClick={() => help.open({ engine, milestone: m.title })}>Message your navigator</Button></>
+                ? <><Button variant="primary" href={LINKS.bookCall} icon={<Calendar width={18} height={18} />}>{m.id === "m0" ? "Book the kickoff" : "Schedule synthesis"}</Button><Button variant="outline" href={`mailto:${engine.navigator.email}`}>Message your navigator</Button></>
                 : <><Button variant="primary" href={engine.gemUrl ?? LINKS.gemFallback} external disabled={!engine.gemUrl} icon={<ArrowUpRight width={18} height={18} />}>Open your Compass Gem</Button>
                     {engine.driveUrl && <Button variant="outline" href={engine.driveUrl} icon={<Doc width={16} height={16} />}>Artifacts folder</Button>}</>}
             </div>
@@ -148,7 +146,7 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
           {/* Footer: off-ramp + complete */}
           <div className="row between" style={{ borderTop: "1px solid var(--colors-interface--grey-2)", paddingTop: 20 }}>
             <div className="stack" style={{ gap: 6 }}>
-              <Button variant={progress.isFlagged(m.id) ? "magenta" : "outline"} size="small" iconLeft={<Flag width={14} height={14} />} onClick={() => { progress.flag(m.id); help.open({ engine, milestone: m.title }); }}>
+              <Button variant={progress.isFlagged(m.id) ? "magenta" : "outline"} size="small" iconLeft={<Flag width={14} height={14} />} onClick={() => progress.flag(m.id)}>
                 {progress.isFlagged(m.id) ? "Thought partner requested" : "I want a thought partner here"}
               </Button>
               {m.offRamp && <span className="kbd-note">{m.offRamp}</span>}

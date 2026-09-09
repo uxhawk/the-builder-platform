@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLink, Badge, BoxCta, Button, Container, Section, WideHero } from "../components/Primitives";
+import { ArrowLink, Badge, Button, Container, Section, WideHero } from "../components/Primitives";
 import { FaqItem } from "../components/Interactive";
-import { ArrowRight, ArrowUpRight, Users } from "../components/Icons";
+import { ArrowRight } from "../components/Icons";
 import { MoodPicker } from "../compass/components/MoodPicker";
-import { MILESTONES } from "../compass/data/milestones";
 import type { MoodId } from "../compass/data/moods";
 import { LEARN } from "../compass/data/learn";
-import { useHelp } from "../components/HelpDrawer";
-import { LINKS, MY_COMPASS } from "../config";
+import { MY_COMPASS } from "../config";
 import { fromState } from "../compass/state/from";
 
 const MOOD_KEY = "tbp-compass:mood";
 
 export default function Landing() {
-  const help = useHelp();
   const [mood, setMood] = useState<MoodId | undefined>(() => { try { return (localStorage.getItem(MOOD_KEY) as MoodId) || undefined; } catch { return undefined; } });
   useEffect(() => { try { if (mood) localStorage.setItem(MOOD_KEY, mood); else localStorage.removeItem(MOOD_KEY); } catch { /* ignore */ } }, [mood]);
 
@@ -27,7 +23,7 @@ export default function Landing() {
           <h1 className="display-heading font-color-white">Know exactly where your Engine should act next.</h1>
           <p className="paragraph-big font-color-white" style={{ maxWidth: 560, opacity: .9 }}>A data-grounded diagnostic that turns your region's evidence into a story partners believe — and two or three first moves you can defend.</p>
           <div className="hero-actions">
-            <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button>
+            <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open my Compass</Button>
             <Button variant="glass" href="#how">How it works</Button>
           </div>
         </div>
@@ -66,6 +62,9 @@ export default function Landing() {
               </div>
             ))}
           </div>
+          <div className="row" style={{ marginTop: 24 }}>
+            <Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open my Compass</Button>
+          </div>
         </Container>
       </Section>
 
@@ -89,75 +88,17 @@ export default function Landing() {
         </Container>
       </Section>
 
-      {/* Milestone overview */}
-      <Section className="no-top-padding">
-        <Container>
-          <div className="vertical-content padding">
-            <Badge label="Seven milestones" color="deep-blue" />
-            <h2 className="heading-h2 max-l">Two conversations, five self-guided milestones, one document.</h2>
-            <p className="body-text max-l">The kickoff and synthesis calls are the load-bearing moments. In between, you work in your Compass Gem at your own pace — a motivated team can finish in two or three focused days. Every milestone ends with questions for your team and produces one artifact.</p>
-          </div>
-          <div className="overview-strip">
-            {MILESTONES.map((m, i) => (
-              <Link to={`${MY_COMPASS}#${m.id}`} className={`overview-item ${m.kind === "bookend" ? "human" : ""}`} key={m.id}>
-                <span className="ov-code">{m.kind === "bookend" ? "Call" : `Milestone ${i}`}{m.gate ? " · gate" : ""}</span>
-                <span className="ov-title">{m.title}</span>
-                <span className="ov-sub">{m.purpose}</span>
-                <span className="ov-cta"><span className="arrow-link-text">Open in Compass</span><ArrowRight /></span>
-                {m.kind === "bookend" && <Users width={16} height={16} style={{ position: "absolute", top: 14, right: 14, color: "var(--colors-brand--sky-blue-dark)" }} />}
-              </Link>
-            ))}
-          </div>
-          <div className="row" style={{ marginTop: 24 }}>
-            <span className="fine-print" style={{ color: "#6b6b6b" }}>The sequence is scaffolding, not a mold — completed milestones stay open, and the diagnosis step is gated behind a human review on purpose.</span>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Two paths */}
-      <Section id="paths" className="bg-dark">
-        <Container>
-          <div className="vertical-content padding">
-            <Badge label="Two paths, one framework" color="evergreen" white />
-            <h2 className="heading-h2 font-color-white max-l">Self-guided or Full Compass. Your navigator recommends; you can switch.</h2>
-          </div>
-          <div className="grid gap-default align-stretch">
-            <div className="path-card light">
-              <Badge label="Self-guided Compass" color="evergreen" />
-              <h3 className="heading-h4">You drive, with the Gem.</h3>
-              <ul>
-                <li>Kickoff and synthesis calls with your navigator and strategist</li>
-                <li>Five milestones in your Compass Gem, at your pace</li>
-                <li>Navigator review at the diagnosis gate — nothing reaches your team unchallenged</li>
-                <li>Off-ramps everywhere: flag a thought partner at any milestone</li>
-              </ul>
-            </div>
-            <div className="path-card light">
-              <Badge label="Full Compass · guided" color="sky-blue" />
-              <h3 className="heading-h4">TBP drives, call by call.</h3>
-              <ul>
-                <li>Five or six facilitated calls</li>
-                <li>TBP does the between-call work: data pulls, stakeholder conversations, drafts</li>
-                <li>A neutral third party in the room for the hard conversations</li>
-                <li>Best for complex, defense-adjacent, or newly-led Engines</li>
-              </ul>
-            </div>
-          </div>
-          <div className="row" style={{ marginTop: 24 }}><ArrowLink to="/learn/self-serve-vs-guided" state={fromState("/#paths", "Compass home · Two paths")} white>Compare the two paths</ArrowLink></div>
-        </Container>
-      </Section>
-
       {/* The Gem */}
-      <Section id="gem">
+      <Section id="gem" className="bg-dark">
         <Container>
           <div className="grid gap-loose" style={{ alignItems: "start" }}>
             <div className="vertical-content">
-              <Badge label="Your Compass Gem" color="ultramarine" />
-              <h2 className="heading-h2">An AI partner that knows your region — and only your region.</h2>
-              <p className="body-text">Each Engine gets a dedicated Gemini Gem: the Compass diagnostic logic plus your regional data packet, and nothing else. No web searches, no fabricated metrics, no generic industry assumptions. It writes an artifact at every milestone and can tell you what the data can't see.</p>
-              <p className="body-text">This page and the Gem are separate on purpose. You'll paste a prompt, do the work there, and come back here to reflect, check off, and move on.</p>
-              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/#gem", "Compass home · The Gem")}>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/#gem", "Compass home · The Gem")}>What the data can and can't see</ArrowLink></div>
-              <div className="row"><Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open your Compass</Button></div>
+              <Badge label="Your Compass Gem" color="ultramarine" white />
+              <h2 className="heading-h2 font-color-white">An AI partner that knows your region — and only your region.</h2>
+              <p className="body-text" style={{ color: "var(--colors-interface--body-text)" }}>Each Engine gets a dedicated Gemini Gem: the Compass diagnostic logic plus your regional data packet, and nothing else. No web searches, no fabricated metrics, no generic industry assumptions. It writes an artifact at every milestone and can tell you what the data can't see.</p>
+              <p className="body-text" style={{ color: "var(--colors-interface--body-text)" }}>This page and the Gem are separate on purpose. You'll paste a prompt, do the work there, and come back here to reflect, check off, and move on.</p>
+              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/#gem", "Compass home · The Gem")} white>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/#gem", "Compass home · The Gem")} white>What the data can and can't see</ArrowLink></div>
+              <div className="row"><Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open my Compass</Button></div>
             </div>
             <div className="stack">
               {[
@@ -166,25 +107,6 @@ export default function Landing() {
                 { t: "Human review", d: "Moonlight reviews the Gem's diagnosis before it reaches your team, annotates it, and presents it next to your own framing. Three voices, not one.", c: "evergreen" },
               ].map((x) => (
                 <div className="light-card" key={x.t}><Badge label={x.t} color={x.c as "ultramarine"} /><p className="body-text" style={{ fontSize: 15, color: "#444" }}>{x.d}</p></div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Who's in the room */}
-      <Section id="room" className="bg-grey">
-        <Container>
-          <div className="grid gap-loose" style={{ alignItems: "start" }}>
-            <div className="vertical-content">
-              <Badge label="Before you start" color="sky-blue" />
-              <h2 className="heading-h2">The right people matter more than the right data.</h2>
-              <p className="body-text">The first pilot worked because one person on the Engine side could look at a table and say “that's wrong, here's why.” Most Engines don't have that person on staff. We'll help you find one at kickoff — before the data is pulled.</p>
-              <ArrowLink to="/learn/who-in-the-room" state={fromState("/#room", "Compass home · Who's in the room")}>Who should be in the room</ArrowLink>
-            </div>
-            <div className="stack">
-              {[["Engine lead / CEO", "Kickoff and synthesis. Owns the strategic call."], ["Process owner", "A mid-senior deputy — the primary interlocutor across milestones."], ["Regional ED fluency", "The “Andrea role.” Required. If you don't have one, say so at kickoff."], ["Technical / industry voice", "A CTO, engineer, or founder — not community relations."]].map(([r, d]) => (
-                <div className="light-card" key={r} style={{ flexDirection: "row", alignItems: "center", gap: 16 }}><Users style={{ color: "var(--colors-brand--deep-blue)" }} /><div><strong>{r}</strong><div className="fine-print" style={{ color: "#555" }}>{d}</div></div></div>
               ))}
             </div>
           </div>
@@ -214,25 +136,6 @@ export default function Landing() {
         </Container>
       </Section>
 
-      {/* CTA band (site: blobs + boxed CTAs) */}
-      <section id="kickoff" className="section wide-section remove-padding">
-        <div className="wide-section-content cta remove-radius">
-          <div className="blob a" /><div className="blob b" /><div className="blob c" /><div className="blob d" />
-          <div className="grid-bg dark-cta-grid" />
-          <div className="main-container inside-wide-section align-center">
-            <div className="cta-content">
-              <div className="vertical-content align-center">
-                <h2 className="heading-h2 max-l">Ready to point the Compass at your region?</h2>
-              </div>
-              <div className="cta-container" style={{ gap: 12 }}>
-                <BoxCta color="green" href={LINKS.bookCall}>Book a kickoff</BoxCta>
-                <BoxCta color="grey" onClick={() => help.open()}>Talk to TBP first</BoxCta>
-              </div>
-              <a className="external-link" href={LINKS.tbpSite} target="_blank" rel="noreferrer">builderplatform.engine.xyz <ArrowUpRight width={16} height={16} /></a>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

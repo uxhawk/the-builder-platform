@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import { MOODS, type MoodId } from "../data/moods";
 import { ArrowLink, Button } from "../../components/Primitives";
-import { fromState } from "../state/from";
 
 /* Entry-state selector: tailors the first step without hiding anything. */
 export function MoodPicker({ value, onChange }: { value?: MoodId; onChange: (id?: MoodId) => void }) {
@@ -31,7 +29,6 @@ export function MoodPicker({ value, onChange }: { value?: MoodId; onChange: (id?
               <div className="row">{go(mood.cta.to)}</div>
               {mood.alt.to.startsWith("#") ? <a className="arrow-link" href={mood.alt.to}><span className="arrow-link-text">{mood.alt.label}</span></a> : <ArrowLink to={mood.alt.to}>{mood.alt.label}</ArrowLink>}
             </div>
-            <Link to="/learn/self-serve-vs-guided" state={fromState("/#start", "Compass home · Where are you")} className="fine-print" style={{ color: "#6b6b6b" }}>Not sure which path fits? Navigators help you choose at kickoff — and you can switch.</Link>
           </div>
         </div>
       )}

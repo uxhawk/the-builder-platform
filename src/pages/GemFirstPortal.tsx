@@ -8,7 +8,6 @@ import { StressTest } from "../compass/components/StressTest";
 import { Button, Notice, StatusPill } from "../components/Primitives";
 import { CopyButton, Disclosure } from "../components/Interactive";
 import { ArrowUpRight, Calendar, Check, Copy, Flag, Info, Lock, Users } from "../components/Icons";
-import { useHelp } from "../components/HelpDrawer";
 import { useToast } from "../components/Toast";
 import { LINKS } from "../config";
 import NotFound from "./NotFound";
@@ -26,7 +25,6 @@ export default function GemFirstPortal() {
 function Page({ slug }: { slug: string }) {
   const engine = engineBySlug(slug)!;
   const progress = useProgress(engine);
-  const help = useHelp();
   const cur = progress.current;
   const latest = engine.hypotheses[engine.hypotheses.length - 1];
   const gemHref = engine.gemUrl ?? LINKS.gemFallback;
@@ -48,7 +46,7 @@ function Page({ slug }: { slug: string }) {
           <div className="gf-hyp">
             <span className="badge-text" style={{ color: "var(--colors-brand--evergreen-dark)" }}>Working hypothesis{latest ? ` · v${latest.version}` : ""}</span>
             <span className={`txt ${latest ? "" : "empty"}`}>{latest ? latest.text : "Captured at kickoff — what you believe is holding your industry back, before you see any data."}</span>
-            {progress.state.revisionRequested ? <span className="status-pill review">Revision requested</span> : <Button variant="outline" size="small" onClick={() => { progress.requestRevision(); help.open({ engine, milestone: "hypothesis revision" }); }}>Request revision</Button>}
+            {progress.state.revisionRequested ? <span className="status-pill review">Revision requested</span> : <Button variant="outline" size="small" onClick={() => progress.requestRevision()}>Request revision</Button>}
           </div>
         </div>
       </section>
@@ -89,11 +87,11 @@ function Page({ slug }: { slug: string }) {
             </div>
             <div className="gem-side">
               <div className="badge-title"><span className="square evergreen" /><span className="badge-text">Stuck? Talk to a human</span></div>
-              <button type="button" className="help-row" onClick={() => help.open({ engine, milestone: cur.title })} style={{ width: "100%", textAlign: "left" }}>
+              <a className="help-row" href={`mailto:${engine.navigator.email}`}>
                 <span className="avatar">{engine.navigator.name.slice(0, 2).toUpperCase()}</span>
                 <span className="who"><strong>{engine.navigator.name}</strong><small>Navigator · replies within a business day</small></span>
                 <Flag className="arrow" />
-              </button>
+              </a>
               <a className="help-row" href={LINKS.bookCall}>
                 <span className="avatar magenta">RD</span>
                 <span className="who"><strong>{engine.strategist.name}</strong><small>Strategy · 30 min</small></span>
@@ -108,7 +106,6 @@ function Page({ slug }: { slug: string }) {
 }
 
 function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: ReturnType<typeof engineBySlug> & object; progress: Progress; onOpenGem: (t?: string) => void }) {
-  const help = useHelp();
   const { toast } = useToast();
   const { hash } = useLocation();
   /* Cross-links into Learn carry this so the article's back link lands on this card, expanded. */
@@ -165,7 +162,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
                 <div className="row">
                   {!isHuman && <Button variant="primary" size="small" disabled={!engine.gemUrl} onClick={() => onOpenGem(m.gemPrompt)} icon={<ArrowUpRight width={16} height={16} />}>Open Gem</Button>}
                   {isHuman && <Button variant="primary" size="small" href={LINKS.bookCall} icon={<Calendar width={16} height={16} />}>{m.id === "m0" ? "Book kickoff" : "Schedule"}</Button>}
-                  <Button variant={progress.isFlagged(m.id) ? "magenta" : "outline"} size="small" iconLeft={<Flag width={14} height={14} />} onClick={() => { progress.flag(m.id); help.open({ engine, milestone: m.title }); }}>{progress.isFlagged(m.id) ? "Thought partner requested" : "Thought partner"}</Button>
+                  <Button variant={progress.isFlagged(m.id) ? "magenta" : "outline"} size="small" iconLeft={<Flag width={14} height={14} />} onClick={() => progress.flag(m.id)}>{progress.isFlagged(m.id) ? "Thought partner requested" : "Thought partner"}</Button>
                 </div>
                 <Button variant="dark" size="small" disabled={!stressOk} onClick={complete} title={!stressOk ? "Answer all six skeptics first" : undefined}>{m.gate ? "Done · request review" : "Done"}</Button>
               </div>

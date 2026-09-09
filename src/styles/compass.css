@@ -129,25 +129,10 @@
 .avatar.evergreen { background: var(--colors-brand--evergreen-lighter); color: var(--colors-brand--evergreen-darker); }
 .avatar.sky { background: var(--colors-brand--sky-blue-lighter); color: var(--colors-brand--sky-blue-darker); }
 
-/* ---------- Help FAB + drawer ---------- */
-.help-fab { position: fixed; right: 24px; bottom: 24px; z-index: 5000; box-shadow: 0 12px 40px -12px rgba(0,0,0,.5); }
-
 /* ---------- Toast ---------- */
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 16px); z-index: 6000; display: flex; align-items: center; gap: 10px; max-width: calc(100vw - 48px); padding: 12px 20px; border-radius: var(--border-radius--small); background: var(--colors-interface--dark-2); color: #fff; font-size: 14px; box-shadow: 0 12px 40px -12px rgba(0,0,0,.5); opacity: 0; pointer-events: none; transition: opacity var(--motion--fast), transform var(--motion--fast); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 .toast .toast-icon { display: grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--colors-brand--evergreen); color: var(--colors-interface--dark-2); }
-.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1000010; opacity: 0; pointer-events: none; transition: opacity var(--motion--fast); }
-.drawer-backdrop.open { opacity: 1; pointer-events: auto; }
-.drawer { visibility: hidden; position: fixed; top: 0; right: 0; height: 100dvh; width: min(480px, 100vw); background: #fff; z-index: 1000011; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1); display: flex; flex-flow: column; overflow-y: auto; }
-.drawer.open { visibility: visible; transform: translateX(0); }
-.drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--colors-interface--grey-2); position: sticky; top: 0; background: #fff; z-index: 1; }
-.drawer-body { padding: 24px; display: flex; flex-flow: column; gap: 24px; }
-.drawer.dark { background: var(--colors-interface--dark-2); color: #fff; }
-.drawer.dark .drawer-head { background: var(--colors-interface--dark-2); border-color: var(--colors-interface--white-border); }
-.drawer.wide { width: min(720px, 100vw); }
-.icon-btn { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--colors-interface--grey); }
-.icon-btn:hover { background: var(--colors-interface--grey-2); }
-.drawer.dark .icon-btn { background: var(--colors-interface--glass-bg-white); color: #fff; }
 
 /* ---------- Mood picker (“where are you right now?”) ---------- */
 .mood-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }

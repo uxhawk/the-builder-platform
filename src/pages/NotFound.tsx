@@ -6,7 +6,7 @@ export default function NotFound() {
         <div className="vertical-content align-center">
           <h1 className="heading-h2">Nothing here yet.</h1>
           <p className="body-text">That page doesn't exist in the prototype.</p>
-          <Button variant="dark" to="/">Back to the Compass</Button>
+          <Button variant="dark" to="/compass">Back to the Compass</Button>
         </div>
       </Container>
     </Section>

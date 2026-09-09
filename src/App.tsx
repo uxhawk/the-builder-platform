@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Footer, Navbar } from "./components/Chrome";
-import { HelpProvider } from "./components/HelpDrawer";
 import { ToastProvider } from "./components/Toast";
 import Landing from "./pages/Landing";
 import GemFirstPortal from "./pages/GemFirstPortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
 import Styleguide from "./pages/Styleguide";
 import NotFound from "./pages/NotFound";
-import { MY_COMPASS } from "./config";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -21,14 +19,12 @@ function ScrollToTop() {
 
 function Layout() {
   return (
-    <HelpProvider>
-      <ToastProvider>
-        <ScrollToTop />
-        <Navbar />
-        <main><Outlet /></main>
-        <Footer />
-      </ToastProvider>
-    </HelpProvider>
+    <ToastProvider>
+      <ScrollToTop />
+      <Navbar />
+      <main><Outlet /></main>
+      <Footer />
+    </ToastProvider>
   );
 }
 
@@ -37,9 +33,9 @@ export default function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Landing />} />
+          <Route index element={<Navigate to="/compass" replace />} />
           <Route path="engine/:slug" element={<GemFirstPortal />} />
-          <Route path="compass" element={<Navigate to={MY_COMPASS} replace />} />
+          <Route path="compass" element={<Landing />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
           <Route path="styleguide" element={<Styleguide />} />

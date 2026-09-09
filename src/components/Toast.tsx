@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from "react";
 import { Check } from "./Icons";
 
-/* Success toast, one at a time — same context pattern as HelpDrawer. */
+/* Success toast, one at a time — provided via context, consumed with useToast(). */
 type ToastCtx = { toast: (message: ReactNode) => void };
 const Ctx = createContext<ToastCtx>({ toast: () => {} });
 export const useToast = () => useContext(Ctx);

@@ -30,7 +30,7 @@
 .gf-step.review .gf-node > span { background: var(--colors-brand--magenta); border-color: var(--colors-brand--magenta); color: var(--colors-interface--dark-2); }
 .gf-step.available .gf-node > span { border-color: var(--colors-interface--dark-2); color: var(--colors-interface--dark-2); }
 .gf-node .icon { width: 16px; height: 16px; }
-.gf-card { margin: 8px 0 20px; background: #fff; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); padding: 20px 22px; display: flex; flex-flow: column; gap: 14px; min-width: 0; }
+.gf-card { margin: 0 0 28px; background: #fff; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); padding: 20px 22px; display: flex; flex-flow: column; gap: 14px; min-width: 0; }
 .gf-step.current .gf-card { border-color: var(--colors-interface--dark-2); box-shadow: 0 12px 34px -20px rgba(0,0,0,.4); }
 .gf-step.locked .gf-card { background: transparent; border-style: dashed; padding: 14px 22px; }
 .gf-step.locked .gf-card .milestone-purpose { color: #6b6b6b; }
