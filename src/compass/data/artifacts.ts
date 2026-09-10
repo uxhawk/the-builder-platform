@@ -45,12 +45,12 @@ export const STEPS: Step[] = [
   {
     id: "self-paced", label: "Step 2 · Self-paced in My Compass", kind: "self-paced", color: "evergreen",
     name: "Self-paced, in My Compass", with: "With AI-powered data analytics, at your pace",
-    summary: "Work through the analysis at your own pace. A navigator reviews it before you set first moves.",
+    summary: "Work through the analysis at your own pace.",
     leaveWith: "One document you can hand to any partner, and two or three first moves you can defend.",
     doc: {
       kicker: "Integrated Diagnostic Document",
       title: "Your Engine: what we're building, and why it's ours to build",
-      sections: ["The industry, defined", "Where it's heading", "Why", "What the Engine must be", "First moves", "Stress test"],
+      sections: ["The industry, defined", "Where it's heading", "Why", "What the Engine must be", "First moves"],
     },
   },
   {
