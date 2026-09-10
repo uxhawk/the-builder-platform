@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Footer, Navbar } from "./components/Chrome";
 import { ToastProvider } from "./components/Toast";
-import Landing from "./pages/Landing";
+import LandingA from "./pages/LandingA";
+import LandingB from "./pages/LandingB";
 import GemFirstPortal from "./pages/GemFirstPortal";
 import { LearnIndex, LearnTopic } from "./pages/Learn";
 import Styleguide from "./pages/Styleguide";
@@ -33,9 +34,13 @@ export default function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Navigate to="/compass" replace />} />
+          {/* Two takes on the landing page, side by side for review (docs/homepage-a-vs-b.md).
+              /compass stays the canonical entry point and resolves to this branch's default, B. */}
+          <Route index element={<Navigate to="/compass-b" replace />} />
+          <Route path="compass" element={<Navigate to="/compass-b" replace />} />
+          <Route path="compass-a" element={<LandingA />} />
+          <Route path="compass-b" element={<LandingB />} />
           <Route path="engine/:slug" element={<GemFirstPortal />} />
-          <Route path="compass" element={<Landing />} />
           <Route path="learn" element={<LearnIndex />} />
           <Route path="learn/:slug" element={<LearnTopic />} />
           <Route path="styleguide" element={<Styleguide />} />

@@ -1,8 +1,8 @@
 # Compass landing page — version A vs. version B
 
-Two takes on `/compass`, built to be reviewed side by side. Nav, footer, tokens and every other page are identical; only the landing page differs.
+Two takes on the Compass landing page, built to be reviewed side by side. On the `homepage-version-b` branch both are deployed together: **A at `/compass-a`**, **B at `/compass-b`**, and the Compass nav dropdown lists both so a reviewer can flip between them without leaving the site (`/compass` resolves to B). Nav, footer, tokens and every other page are identical; only the landing page differs.
 
-| | **A** (`main`) | **B** (`homepage-version-b`) |
+| | **A** (`main` · `/compass-a`) | **B** (`homepage-version-b` · `/compass-b`) |
 | --- | --- | --- |
 | The bet | Meet the visitor where they are, then explain the method | Show the visitor what they'll be holding at the end, then work backward |
 | Written for | Someone already provisioned: primary CTA is *Open my Compass* | An Engine lead who hasn't booked yet: primary CTA is *Book a kickoff*; *Open my Compass* is a small secondary link |

@@ -9,7 +9,7 @@ import { fromState } from "../compass/state/from";
 /* Version B — proof-led. Written for an Engine lead who hasn't booked a kickoff yet:
    lead with the document they'll be holding at the end, then show the three steps by
    what each leaves behind. Program-general throughout; the region fills the blanks. */
-export default function Landing() {
+export default function LandingB() {
   return (
     <>
       {/* Hero: same copy as main; B keeps its pre-kickoff CTAs */}
@@ -62,9 +62,9 @@ export default function Landing() {
             </div>
           </div>
           <div className="row gap-l" style={{ marginTop: 32 }}>
-            <ArrowLink to="/learn/how-the-gem-works" state={fromState("/compass#how", "Compass home · Who does what")} white>How the AI-powered analysis works</ArrowLink>
-            <ArrowLink to="/learn/data-what-it-sees" state={fromState("/compass#how", "Compass home · Who does what")} white>What the data can and can't see</ArrowLink>
-            <ArrowLink to="/learn/who-in-the-room" state={fromState("/compass#how", "Compass home · Who does what")} white>Who should be in the room</ArrowLink>
+            <ArrowLink to="/learn/how-the-gem-works" state={fromState("/compass-b#how", "Compass home · Who does what")} white>How the AI-powered analysis works</ArrowLink>
+            <ArrowLink to="/learn/data-what-it-sees" state={fromState("/compass-b#how", "Compass home · Who does what")} white>What the data can and can't see</ArrowLink>
+            <ArrowLink to="/learn/who-in-the-room" state={fromState("/compass-b#how", "Compass home · Who does what")} white>Who should be in the room</ArrowLink>
           </div>
         </Container>
       </Section>
