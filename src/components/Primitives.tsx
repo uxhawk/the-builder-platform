@@ -62,15 +62,16 @@ const ART: Record<HeroTone, string | null> = {
   "deep-blue": asset("bg/3D_Shift_DeepBlue.jpg"), ultramarine: asset("bg/3D_Shift_UltraMarine.jpg"), "sky-blue": asset("bg/3D_Shift_SkyBlue.jpg"),
   magenta: asset("bg/3D_Shift_Magenta.jpg"), verdant: asset("bg/3D_Shift_Verdant.jpg"), evergreen: asset("bg/3D_Shift_Evergreen.jpg"), neutral: asset("bg/3D_Shift_Neutral.jpg"), dark: null,
 };
-export function WideHero({ tone = "deep-blue", size = "default", children, art = true, shade = true, className = "" }: { tone?: HeroTone; size?: "default" | "large" | "small"; children: ReactNode; art?: boolean; shade?: boolean; className?: string }) {
+/* `center` centres the content block (CTA bands); `id` makes the band an anchor target. */
+export function WideHero({ tone = "deep-blue", size = "default", children, art = true, shade = true, className = "", center = false, id }: { tone?: HeroTone; size?: "default" | "large" | "small"; children: ReactNode; art?: boolean; shade?: boolean; className?: string; center?: boolean; id?: string }) {
   const img = art ? ART[tone] : null;
   return (
-    <section className="section wide-section">
+    <section className="section wide-section" id={id}>
       <div className={`wide-section-content page-title ${tone} ${size === "large" ? "large" : ""} ${size === "small" ? "cta" : ""} ${className}`}>
         {img && <div className="hero-bg" style={{ backgroundImage: `url(${img})` }} />}
         {img && shade && <div className="hero-shade" />}
         <div className="grid-bg" />
-        <div className="main-container inside-wide-section">{children}</div>
+        <div className={`main-container inside-wide-section ${center ? "align-center" : ""}`}>{children}</div>
       </div>
     </section>
   );

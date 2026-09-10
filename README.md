@@ -18,7 +18,7 @@ npm run build       # type-check + production build
 | Route | What it is |
 | --- | --- |
 | `/` | Redirects to `/compass` |
-| `/compass` | Cohort-facing Compass landing page: "where are you right now?", outcomes, three layers, the Gem, FAQ |
+| `/compass` | Compass landing page — **version B (proof-led)** on this branch: the deliverable in the hero, a three-step viewer (kickoff call · self-paced in My Compass · synthesis call) showing what each step leaves behind, who does what, FAQ, kickoff band. (`main` carries version A: mood picker, outcomes, three layers, the Gem, FAQ.) |
 | `/engine/:slug` | Per-Engine portal (FSE seeded at M4; `sample-cohort-two` shows the empty state): stepper, progressively disclosed milestone cards, working-hypothesis box, Gem link, forcing-function deadline, team roster, artifacts, locked configuration |
 | `/learn` · `/learn/:slug` | Dive-deeper library (16 topics) linked from every milestone |
 | `/styleguide` | Side-by-side parity page for components ported from builderplatform.engine.xyz |
@@ -29,11 +29,11 @@ Progress, checklists, mood, deadline and review state persist in `localStorage` 
 
 ```
 public/            fonts, icons, logos and 3D "modular shift" art pulled from the live site
-src/styles/        tokens.css (1:1 Webflow variables) · fonts · base · tbp.css (site parity) · compass.css
+src/styles/        tokens.css (1:1 Webflow variables) · fonts · base · tbp.css (site parity) · compass.css · landing.css (landing B)
 src/components/    Icons, Primitives (Badge/Button/ArrowLink/BoxCta/WideHero/Notice), Chrome (Banner/Navbar/Footer), Interactive
-src/compass/data/  milestones.ts · engines.ts · learn.ts · personas.ts · moods.ts   ← all content lives here
+src/compass/data/  milestones.ts · engines.ts · learn.ts · personas.ts · moods.ts · artifacts.ts   ← all content lives here
 src/compass/state/ progress.ts (localStorage hook + unlock rules)
-src/compass/components/  Stepper, MilestoneCard, HypothesisBox, MoodPicker, StressTest, SideCards
+src/compass/components/  Stepper, MilestoneCard, HypothesisBox, MoodPicker, StressTest, SideCards, ArtifactViewer (landing B)
 src/pages/         Landing, EnginePortal, Learn, Styleguide, NotFound
 docs/              feature analysis from the meeting notes; the progressive-disclosure model
 ```
@@ -50,3 +50,4 @@ See `docs/feature-analysis.md` for how meeting-note requests map to the UI, and 
 
 - `main` — reference concept, styles as close to the live site as possible.
 - `concept/<name>` — alternative explorations (e.g. `concept/single-page-timeline`, `concept/gem-first`). Open a PR to compare against `main`.
+- `homepage-version-b` — alternative `/compass` landing page (proof-led, written for a pre-kickoff Engine lead). Everything else is identical to `main`; see `docs/homepage-a-vs-b.md` for the comparison.

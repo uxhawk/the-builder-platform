@@ -1,0 +1,60 @@
+/* ==================================================================
+   Compass landing — version B (proof-led). Three steps, each shown by
+   what an Engine leaves it holding. Built on
+   the same tokens as tbp.css / compass.css.
+   ================================================================== */
+
+/* ---------- Document mock ---------- */
+.doc { position: relative; width: 100%; max-width: 440px; background: #fff; color: var(--colors-interface--dark-2); border-radius: var(--border-radius--small); box-shadow: 0 32px 64px -32px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.12); padding: 26px 28px 20px; display: flex; flex-flow: column; gap: 14px; font-size: 13px; line-height: 1.45; text-align: left; }
+.doc.large { max-width: none; padding: 36px 40px 28px; gap: 20px; font-size: 15px; box-shadow: 0 24px 48px -32px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.08); }
+.doc-kicker { font-family: var(--typefaces--secondary); font-size: 10px; line-height: 1.4; text-transform: uppercase; letter-spacing: .02em; color: #6b6b6b; font-variation-settings: "wght" 600; }
+.doc.large .doc-kicker { font-size: 11px; }
+.doc-title { font-family: var(--typefaces--heading-bold); font-size: 19px; line-height: 1.2; letter-spacing: -0.005em; }
+.doc.large .doc-title { font-size: var(--typography--h4-size); line-height: var(--typography--h4-line-height); }
+.doc-sections { display: flex; flex-flow: column; gap: 9px; list-style: none; }
+.doc.large .doc-sections { gap: 14px; }
+.doc-section { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: baseline; }
+.doc.large .doc-section { grid-template-columns: 28px 1fr; }
+.doc-section .n { font-family: var(--typefaces--secondary); font-size: 11px; color: #8a8a8a; font-variation-settings: "wght" 700; }
+.doc-section .t { font-family: var(--typefaces--heading-bold); }
+.doc-foot { padding-top: 10px; border-top: 1px solid var(--colors-interface--grey-2); font-family: var(--typefaces--secondary); font-size: 10px; text-transform: uppercase; color: #8a8a8a; }
+
+/* ---------- Viewer: three steps across the top, the document each leaves behind below ---------- */
+.viewer { display: flex; flex-flow: column; gap: 16px; width: 100%; }
+.viewer-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.viewer-item { position: relative; display: flex; flex-flow: column; align-items: flex-start; gap: 8px; text-align: left; padding: 22px 24px 20px; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); background: #fff; transition: border-color var(--motion--fast), background var(--motion--fast), transform var(--motion--fast); }
+.viewer-item:hover { border-color: var(--colors-interface--dark-2); transform: translateY(-2px); }
+.viewer-item.call { border-style: dashed; background: var(--colors-interface--grey-3); }
+.viewer-item.selected, .viewer-item.selected:hover { background: var(--colors-interface--dark-2); border-color: var(--colors-interface--dark-2); border-style: solid; color: #fff; transform: none; }
+.viewer-item .vi-label { display: inline-flex; align-items: center; gap: 8px; padding-right: 32px; /* clears the corner icon */ font-family: var(--typefaces--secondary); font-size: 11px; text-transform: uppercase; color: #6b6b6b; font-variation-settings: "wght" 700; }
+.viewer-item .vi-name { font-family: var(--typefaces--heading-bold); font-size: var(--typography--h5-size); line-height: 1.2; padding-right: 32px; }
+.viewer-item .vi-meta { font-size: 13px; line-height: 1.35; color: #6b6b6b; }
+.viewer-item .vi-icon { position: absolute; top: 22px; right: 22px; width: 20px; height: 20px; color: #8a8a8a; }
+.viewer-item.selected .vi-label, .viewer-item.selected .vi-meta, .viewer-item.selected .vi-icon { color: var(--colors-interface--body-text); }
+.viewer-stage { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 32px; padding: 32px; background: var(--colors-interface--grey); border-radius: var(--border-radius--default); align-items: start; min-width: 0; }
+.viewer-doc { min-width: 0; }
+.viewer-aside { display: flex; flex-flow: column; gap: 22px; }
+.viewer-aside .say { font-size: 17px; line-height: 1.4; color: var(--colors-interface--dark-2); }
+
+/* ---------- Who does what (dark section) ---------- */
+.roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.role-card { display: flex; flex-flow: column; gap: 14px; padding: 28px; border: 1px solid var(--colors-interface--white-border); border-radius: var(--border-radius--default); background: var(--colors-interface--white-faded); color: #fff; }
+.role-card h3 { font-family: var(--typefaces--heading-bold); font-size: var(--typography--h5-size); line-height: 1.2; color: #fff; }
+.role-card p { font-size: 15px; line-height: 1.45; color: var(--colors-interface--body-text); }
+
+/* ---------- Closing band ---------- */
+/* WideHero adds the hero's navbar clearance; a band lower on the page doesn't need it. */
+.wide-section-content.cta-band { padding-top: 0; }
+/* keep the band's rounded corners off the footer edge, matching the 9px side insets */
+.section.wide-section:has(.cta-band) { padding-bottom: var(--globals--wide-section-padding); }
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 991px) {
+  .viewer-stage { grid-template-columns: 1fr; padding: 24px; }
+  .roles { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 767px) {
+  .doc { padding: 22px 20px 18px; }
+  .doc.large { padding: 24px 22px 20px; font-size: 14px; }
+  .viewer-list { grid-template-columns: 1fr; }
+}
