@@ -44,11 +44,13 @@ function SearchDropdown() {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
-  // Compass reads as active on its landing page and on its sub-pages (engine portals, Learn).
-  // Both matches are hooks, so they must run on every render (no short-circuiting).
+  // Compass reads as active on either landing page (A / B) and on its sub-pages (engine portals, Learn).
+  // All matches are hooks, so they must run on every render (no short-circuiting).
+  const onLandingA = useMatch("/compass-a");
+  const onLandingB = useMatch("/compass-b");
   const onEngine = useMatch("/engine/:slug");
   const onLearn = useMatch("/learn/*");
-  const inCompass = !!onEngine || !!onLearn;
+  const inCompass = !!onLandingA || !!onLandingB || !!onEngine || !!onLearn;
   return (
     <div className="navbar-wrapper">
       <div className="navbar-top-line" />
@@ -66,13 +68,16 @@ export function Navbar() {
                   {SITE_NAV.map((n) => (
                     <a key={n.href} className="nav-link" href={n.href} target="_blank" rel="noreferrer" onClick={close}>{n.label}</a>
                   ))}
-                  {/* Compass: click goes to the landing page; hover/focus reveals the sub-pages. */}
+                  {/* Compass: click goes to the default landing page; hover/focus reveals the two landing
+                      versions under review (A = main's mood-led page, B = this branch's proof-led page) and the sub-pages. */}
                   <div className="nav-dropdown">
                     <NavLink to="/compass" end className={({ isActive }) => `nav-link nav-dropdown-toggle ${isActive || inCompass ? "active" : ""}`} onClick={close}>
                       <Plus className="icon nav-dropdown-plus" />Compass
                     </NavLink>
                     <div className="nav-dropdown-menu">
                       <div className="nav-dropdown-panel">
+                        <NavLink to="/compass-a" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Compass A</NavLink>
+                        <NavLink to="/compass-b" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Compass B</NavLink>
                         <NavLink to={MY_COMPASS} className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>My Compass</NavLink>
                         <NavLink to="/learn" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Learn</NavLink>
                       </div>

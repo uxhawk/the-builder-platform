@@ -8,9 +8,11 @@ import { LEARN } from "../compass/data/learn";
 import { MY_COMPASS } from "../config";
 import { fromState } from "../compass/state/from";
 
+/* Version A — ported verbatim from `main` (mood-led). Meet the visitor where they are,
+   then explain the method: mood picker, outcomes, three layers, the Gem, FAQ. */
 const MOOD_KEY = "tbp-compass:mood";
 
-export default function Landing() {
+export default function LandingA() {
   const [mood, setMood] = useState<MoodId | undefined>(() => { try { return (localStorage.getItem(MOOD_KEY) as MoodId) || undefined; } catch { return undefined; } });
   useEffect(() => { try { if (mood) localStorage.setItem(MOOD_KEY, mood); else localStorage.removeItem(MOOD_KEY); } catch { /* ignore */ } }, [mood]);
 
@@ -77,7 +79,7 @@ export default function Landing() {
               <Badge label="How it works" color="ultramarine" />
               <h2 className="heading-h2">Built from the inside out, in three layers.</h2>
               <p className="body-text">Engines default to the macro case (“this technology matters”) and the micro case (“here are our twelve sub-awards”). The Compass builds the missing middle: how your ecosystem actually works, and what your Engine is built to change. Each layer produces a claim, and each claim depends on the one before it.</p>
-              <ArrowLink to="/learn/what-is-compass" state={fromState("/#how", "Compass home · How it works")}>What the Compass is and isn't</ArrowLink>
+              <ArrowLink to="/learn/what-is-compass" state={fromState("/compass-a#how", "Compass home · How it works")}>What the Compass is and isn't</ArrowLink>
             </div>
             <div className="layers">
               <div className="layer industry"><Badge label="Layer 1 · Industry" color="sky-blue" /><div className="layer-claim">“Our target industry is underperforming in this specific way, given how it exists in the region and how it innovates.”</div><span className="fine-print">Milestones 1–2 · public data, benchmarked twice</span><ArrowRight className="layer-arrow" /></div>
@@ -97,7 +99,7 @@ export default function Landing() {
               <h2 className="heading-h2 font-color-white">An AI partner that knows your region — and only your region.</h2>
               <p className="body-text" style={{ color: "var(--colors-interface--body-text)" }}>Each Engine gets a dedicated Gemini Gem: the Compass diagnostic logic plus your regional data packet, and nothing else. No web searches, no fabricated metrics, no generic industry assumptions. It writes an artifact at every milestone and can tell you what the data can't see.</p>
               <p className="body-text" style={{ color: "var(--colors-interface--body-text)" }}>This page and the Gem are separate on purpose. You'll paste a prompt, do the work there, and come back here to reflect, check off, and move on.</p>
-              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/#gem", "Compass home · The Gem")} white>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/#gem", "Compass home · The Gem")} white>What the data can and can't see</ArrowLink></div>
+              <div className="row gap-l"><ArrowLink to="/learn/how-the-gem-works" state={fromState("/compass-a#gem", "Compass home · The Gem")} white>How the Gem works</ArrowLink><ArrowLink to="/learn/data-what-it-sees" state={fromState("/compass-a#gem", "Compass home · The Gem")} white>What the data can and can't see</ArrowLink></div>
               <div className="row"><Button variant="primary" to={MY_COMPASS} icon={<ArrowRight width={18} height={18} />}>Open my Compass</Button></div>
             </div>
             <div className="stack">
