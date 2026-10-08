@@ -68,3 +68,21 @@
 .gem-side { background: #fff; border: 1px solid var(--colors-interface--grey-2); border-radius: var(--border-radius--default); padding: 16px 18px; display: flex; flex-flow: column; gap: 10px; }
 .gem-side .help-row { padding: 10px 0; }
 @media screen and (max-width: 1100px) { .gem-dock { position: static; } }
+
+/* ==================================================================
+   My Compass B — every card is a free accordion: no progress, no
+   locks, no "up next". The whole header is the toggle. Same tokens.
+   ================================================================== */
+.gf-acc { padding: 0; gap: 0; }
+.gf-acc-toggle { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; width: 100%; padding: 20px 22px; text-align: left; border-radius: var(--border-radius--default); transition: background-color var(--motion--fast); }
+.gf-acc-toggle[aria-expanded="true"] { border-radius: var(--border-radius--default) var(--border-radius--default) 0 0; }
+.gf-acc-toggle > div:first-child { min-width: 0; } /* text column wraps; the controls keep their size */
+.gf-acc-toggle:hover { background: color-mix(in srgb, var(--colors-brand--evergreen) 16%, transparent); }
+.gf-acc-toggle:hover .disclosure-toggle { background: var(--colors-brand--evergreen); }
+.gf-acc-toggle .disclosure-toggle .icon { transition: transform var(--motion--fast); }
+.gf-acc-toggle[aria-expanded="true"] .disclosure-toggle .icon { transform: rotate(180deg); }
+.gf-acc-side { flex: none; }
+.gf-acc-body { padding: 0 22px 22px; display: flex; flex-flow: column; gap: 14px; min-width: 0; }
+.gf-step.open .gf-card { border-color: var(--colors-interface--dark-2); box-shadow: 0 12px 34px -20px rgba(0,0,0,.4); }
+.gf-step.open .gf-node > span { border-color: var(--colors-interface--dark-2); color: var(--colors-interface--dark-2); }
+@media screen and (max-width: 767px) { .gf-acc-toggle { flex-flow: column; } }

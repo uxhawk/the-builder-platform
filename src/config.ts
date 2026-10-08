@@ -6,7 +6,13 @@ export const asset = (path: string) => import.meta.env.BASE_URL + path.replace(/
 
 /* Stand-in for auth: the signed-in user lands directly on their Engine. */
 export const SIGNED_IN_ENGINE = "florida-semiconductor";
-export const MY_COMPASS = `/engine/${SIGNED_IN_ENGINE}`;
+/* Two takes on the per-Engine portal live side by side (docs/my-compass-a-vs-b.md):
+   A = the gem-first timeline with progress, B = free accordions with no progress.
+   /engine/:slug stays the canonical entry point and resolves to this branch's default, B. */
+export const enginePath = (slug: string, version: "a" | "b" = "b") => `/engine-${version}/${slug}`;
+export const MY_COMPASS_A = enginePath(SIGNED_IN_ENGINE, "a");
+export const MY_COMPASS_B = enginePath(SIGNED_IN_ENGINE, "b");
+export const MY_COMPASS = MY_COMPASS_B;
 
 export const LINKS = {
   tbpSite: "https://builderplatform.engine.xyz",

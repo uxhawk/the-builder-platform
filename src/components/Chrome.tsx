@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Link, NavLink, useMatch } from "react-router-dom";
-import { asset, LINKS, MY_COMPASS } from "../config";
+import { asset, LINKS, MY_COMPASS_A, MY_COMPASS_B } from "../config";
 import { ArrowUpRight, Cross, LinkedIn, Menu, Plus, Search } from "./Icons";
 
 /* ---------- Navbar (site: .navbar-wrapper / .navbar) ---------- */
@@ -48,9 +48,10 @@ export function Navbar() {
   // All matches are hooks, so they must run on every render (no short-circuiting).
   const onLandingA = useMatch("/compass-a");
   const onLandingB = useMatch("/compass-b");
-  const onEngine = useMatch("/engine/:slug");
+  const onEngineA = useMatch("/engine-a/:slug");
+  const onEngineB = useMatch("/engine-b/:slug");
   const onLearn = useMatch("/learn/*");
-  const inCompass = !!onLandingA || !!onLandingB || !!onEngine || !!onLearn;
+  const inCompass = !!onLandingA || !!onLandingB || !!onEngineA || !!onEngineB || !!onLearn;
   return (
     <div className="navbar-wrapper">
       <div className="navbar-top-line" />
@@ -78,7 +79,9 @@ export function Navbar() {
                       <div className="nav-dropdown-panel">
                         <NavLink to="/compass-a" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Compass A</NavLink>
                         <NavLink to="/compass-b" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Compass B</NavLink>
-                        <NavLink to={MY_COMPASS} className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>My Compass</NavLink>
+                        {/* Both portal versions, for any Engine slug (docs/my-compass-a-vs-b.md). */}
+                        <NavLink to={MY_COMPASS_A} className={({ isActive }) => `nav-link nav-dropdown-item ${isActive || onEngineA ? "active" : ""}`} onClick={close}>My Compass A</NavLink>
+                        <NavLink to={MY_COMPASS_B} className={({ isActive }) => `nav-link nav-dropdown-item ${isActive || onEngineB ? "active" : ""}`} onClick={close}>My Compass B</NavLink>
                         <NavLink to="/learn" className={({ isActive }) => `nav-link nav-dropdown-item ${isActive ? "active" : ""}`} onClick={close}>Learn</NavLink>
                       </div>
                     </div>

@@ -169,7 +169,7 @@ export const MILESTONES: Milestone[] = [
       "Ask for a draft Engine archetype. Treat it as a hypothesis for your navigator, not a verdict.",
     ],
     reflect: [
-      "Request navigator review. Moonlight reviews the Gem's output first, annotates it, and brings it back alongside your own framing — three voices, not one.",
+      "Request navigator review. The data team reviews the Gem's output first, annotates it, and brings it back alongside your own framing — three voices, not one.",
       "Milestone 5 unlocks after review.",
     ],
     questions: [
@@ -213,11 +213,11 @@ export const MILESTONES: Milestone[] = [
   },
   {
     id: "m6", code: "06", title: "Synthesis", shortTitle: "Synthesis", kind: "bookend", color: "sky-blue", humanLabel: "Closing call with your Navigator + strategist",
-    purpose: "Close the loop: your narrative, the robot's read, and Moonlight's synthesis — side by side.",
+    purpose: "Close the loop: your narrative, the robot's read, and the data team's synthesis — side by side.",
     leaveWith: "A finalized document you can use with any partner, and a clear view of what to unlock next.",
     time: "60–90 min call", artifact: "Finalized Integrated Diagnostic Document",
     prepare: ["Send your draft document and roadmap three days before the call.", "List the 3–4 assertions you expect to be challenged."],
-    inGem: ["Walk the three voices — your framing, the Gem's output, Moonlight's annotations. Where they diverge is where strategy sharpens.", "Agree what's finished, what's open, and whether a follow-on guided engagement is warranted."],
+    inGem: ["Walk the three voices — your framing, the Gem's output, the data team's annotations. Where they diverge is where strategy sharpens.", "Agree what's finished, what's open, and whether a follow-on guided engagement is warranted."],
     reflect: ["Your Compass stays open. Come back when conditions change: new data, a new partner, a new deadline.", "Share what you learned with a peer Engine facing a similar archetype."],
     questions: ["Could any member of our team tell the three-paragraph story to a stranger?", "What would we say to NSF about how this shifted our strategy?", "Which open thread matters most in the next 90 days?"],
     deeper: ["what-is-compass", "self-serve-vs-guided"],

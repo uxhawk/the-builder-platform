@@ -20,7 +20,9 @@ npm run build       # type-check + production build
 | `/` · `/compass` | Redirect to `/compass-b`, this branch's default landing page |
 | `/compass-a` | Compass landing page **version A (mood-led)** — the page on `main`, brought over in full: mood picker, outcomes, three layers, the Gem, FAQ. Listed in the Compass nav dropdown so reviewers can flip between the two. |
 | `/compass-b` | Compass landing page **version B (proof-led)**: the deliverable in the hero, a three-step viewer (kickoff call · self-paced in My Compass · synthesis call) showing what each step leaves behind, who does what, FAQ, kickoff band. |
-| `/engine/:slug` | Per-Engine portal (FSE seeded at M4; `sample-cohort-two` shows the empty state): stepper, progressively disclosed milestone cards, working-hypothesis box, Gem link, forcing-function deadline, team roster, artifacts, locked configuration |
+| `/engine/:slug` | Redirect to `/engine-b/:slug`, this branch's default portal (the `#m3` hash is kept) |
+| `/engine-a/:slug` | Per-Engine portal **version A (gem-first timeline)**: milestones unlock in order, each with a Done button, status pills, the current prompt in the Gem dock, one hard navigator-review gate before 05, Go-deeper links into Learn |
+| `/engine-b/:slug` | Per-Engine portal **version B (free accordions)**: no progress, no locks, no "up next"; every milestone is an accordion the reader opens and closes at will; no prompts, thought-partner flags, stress test, gate note, Go-deeper links or people card. Both listed in the Compass nav dropdown; see `docs/my-compass-a-vs-b.md` |
 | `/learn` · `/learn/:slug` | Dive-deeper library (16 topics) linked from every milestone |
 | `/styleguide` | Side-by-side parity page for components ported from builderplatform.engine.xyz |
 
@@ -35,7 +37,7 @@ src/components/    Icons, Primitives (Badge/Button/ArrowLink/BoxCta/WideHero/Not
 src/compass/data/  milestones.ts · engines.ts · learn.ts · personas.ts · moods.ts · artifacts.ts   ← all content lives here
 src/compass/state/ progress.ts (localStorage hook + unlock rules)
 src/compass/components/  Stepper, MilestoneCard, HypothesisBox, MoodPicker, StressTest, SideCards, ArtifactViewer (landing B)
-src/pages/         LandingA (main's page), LandingB (this branch), EnginePortal, Learn, Styleguide, NotFound
+src/pages/         LandingA, LandingB, MyCompassA, MyCompassB, Learn, Styleguide, NotFound (EnginePortal is main's original portal, kept for reference, not routed)
 docs/              feature analysis from the meeting notes; the progressive-disclosure model
 ```
 
@@ -52,3 +54,4 @@ See `docs/feature-analysis.md` for how meeting-note requests map to the UI, and 
 - `main` — reference concept, styles as close to the live site as possible.
 - `concept/<name>` — alternative explorations (e.g. `concept/single-page-timeline`, `concept/gem-first`). Open a PR to compare against `main`.
 - `homepage-version-b` — alternative landing page (proof-led, written for a pre-kickoff Engine lead) at `/compass-b`, with `main`'s page kept alongside at `/compass-a` so both can be reviewed from one deploy. Everything else is identical to `main`; see `docs/homepage-a-vs-b.md` for the comparison.
+- `my-compass-b` — alternative per-Engine portal (free accordions, no progress tracking) at `/engine-b/:slug`, with the gem-first portal kept alongside at `/engine-a/:slug`; see `docs/my-compass-a-vs-b.md`.

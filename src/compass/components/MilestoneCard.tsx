@@ -81,7 +81,7 @@ export function MilestoneCard({ m, engine, progress, open, onToggle }: { m: Mile
             </Notice>
           )}
           {status === "done" && m.gate && reviewState === "requested" && (
-            <Notice tone="magenta" icon="users" title="Review requested">Moonlight reviews the Gem's output first, annotates it, then brings it back alongside your framing. Milestone 5 unlocks when approved. <button type="button" className="proto-note" onClick={() => progress.approveReview("m4")}>prototype: simulate approval</button></Notice>
+            <Notice tone="magenta" icon="users" title="Review requested">The data team reviews the Gem's output first, annotates it, then brings it back alongside your framing. Milestone 5 unlocks when approved. <button type="button" className="proto-note" onClick={() => progress.approveReview("m4")}>prototype: simulate approval</button></Notice>
           )}
           {status === "done" && !(m.gate && reviewState === "requested") && (
             <Notice tone="evergreen" icon="check" title="Complete">{isHuman ? "Done with your navigator." : <>Artifact saved to your Drive folder: <strong>{m.artifact}</strong>. Revisit any time — later milestones may send you back here.</>}</Notice>

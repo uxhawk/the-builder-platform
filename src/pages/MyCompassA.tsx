@@ -9,13 +9,14 @@ import { Button, Notice, StatusPill } from "../components/Primitives";
 import { CopyButton, Disclosure } from "../components/Interactive";
 import { ArrowUpRight, Calendar, Check, Copy, Flag, Info, Lock, Users } from "../components/Icons";
 import { useToast } from "../components/Toast";
-import { LINKS } from "../config";
+import { enginePath, LINKS } from "../config";
 import NotFound from "./NotFound";
 
-/* concept/gem-first: one scrolling timeline, the Gem always one click away.
-   The page is a companion, not a workspace: open the Gem with a prompt,
-   do the work there, come back and jot one line. */
-export default function GemFirstPortal() {
+/* My Compass A (concept/gem-first): one scrolling timeline, the Gem always
+   one click away. The page is a companion, not a workspace: open the Gem
+   with a prompt, do the work there, come back and mark the milestone done.
+   Compare with MyCompassB (docs/my-compass-a-vs-b.md). */
+export default function MyCompassA() {
   const { slug } = useParams();
   const engine = engineBySlug(slug);
   if (!engine) return <NotFound />;
@@ -109,7 +110,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
   const { toast } = useToast();
   const { hash } = useLocation();
   /* Cross-links into Learn carry this so the article's back link lands on this card, expanded. */
-  const here = fromState(`/engine/${engine.slug}#${m.id}`, `Your Compass · ${m.title}`);
+  const here = fromState(`${enginePath(engine.slug, "a")}#${m.id}`, `Your Compass · ${m.title}`);
   const status = progress.statusOf(m.id);
   const idx = MILESTONES.findIndex((x) => x.id === m.id);
   const isHuman = m.kind === "bookend";
@@ -144,7 +145,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
           </div>
 
           {status === "done" && m.gate && progress.state.reviews.m4 === "requested" && (
-            <Notice tone="magenta" icon="users" title="In navigator review">Moonlight annotates the Gem's diagnosis and brings it back with your framing. <button type="button" className="proto-note" onClick={() => progress.approveReview("m4")}>prototype: simulate approval</button></Notice>
+            <Notice tone="magenta" icon="users" title="In navigator review">The data team annotates the Gem's diagnosis and brings it back with your framing. <button type="button" className="proto-note" onClick={() => progress.approveReview("m4")}>prototype: simulate approval</button></Notice>
           )}
 
           {(status === "current" || status === "available") && (
@@ -198,7 +199,7 @@ function Step({ m, engine, progress, onOpenGem }: { m: Milestone; engine: Return
           <div className="gf-node"><span>{progress.state.reviews.m4 === "approved" ? <Check /> : <Users />}</span></div>
           <div className="gf-card" style={{ background: "var(--colors-brand--magenta-lighter)", borderColor: "transparent", padding: "14px 22px" }}>
             <div className="gf-kicker">Gate · navigator review</div>
-            <div style={{ fontSize: 14 }}>{progress.state.reviews.m4 === "approved" ? "Approved — Moonlight's annotations are in your Drive folder next to the Gem's output." : "A human reviews the diagnosis before priorities are set. Nothing reaches your team unchallenged."}</div>
+            <div style={{ fontSize: 14 }}>{progress.state.reviews.m4 === "approved" ? "Approved — the data team's annotations are in your Drive folder next to the Gem's output." : "A human reviews the diagnosis before priorities are set. Nothing reaches your team unchallenged."}</div>
           </div>
         </div>
       )}
