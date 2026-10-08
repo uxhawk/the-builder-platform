@@ -46,7 +46,7 @@ Source: `tbp_meetings_compilation.md` (29 meetings, Mar 19 – Aug 20 2026), the
 | Request | Where |
 | --- | --- |
 | Landing page ↔ Gem: two surfaces, light integration, redirect not iframe (Aug 6, Aug 19) | "Open your Compass Gem" deep links + paste-able prompts with copy button; no data exchange |
-| NAICS codes precomputed and locked; changes go back to Moonlight (Aug 13) | "Configuration (locked at kickoff)" card; 00/01 copy |
+| NAICS codes precomputed and locked; changes go back to the data team (Aug 13) | "Configuration (locked at kickoff)" card; 00/01 copy |
 | Flag suppression risk and prompt for misclassified firms (departure analysis) | 01 In-the-Gem checklist + prompt; `/learn/data-what-it-sees` |
 | Gem writes a report at each milestone → Drive for async review (Aug 20) | "Artifacts folder" link; artifacts sidebar; copy in Learn → how the Gem works |
 | Pre-produced visualizations revealed at the right moment (Aug 13) | Noted in Learn; not mocked in this pass (candidate for a feature branch) |

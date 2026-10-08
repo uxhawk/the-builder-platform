@@ -106,7 +106,7 @@ export default function LandingA() {
               {[
                 { t: "Core directive", d: "Diagnostic logic, archetype definitions, TBP's voice. Strict guardrails. Maintained centrally so every Gem improves at once.", c: "ultramarine" },
                 { t: "Regional intelligence", d: "Your economic performance, ecosystem connectivity, peer and geography comparisons, archetype signals, and data provenance — attached as knowledge files.", c: "sky-blue" },
-                { t: "Human review", d: "Moonlight reviews the Gem's diagnosis before it reaches your team, annotates it, and presents it next to your own framing. Three voices, not one.", c: "evergreen" },
+                { t: "Human review", d: "The data team reviews the Gem's diagnosis before it reaches your team, annotates it, and presents it next to your own framing. Three voices, not one.", c: "evergreen" },
               ].map((x) => (
                 <div className="light-card" key={x.t}><Badge label={x.t} color={x.c as "ultramarine"} /><p className="body-text" style={{ fontSize: 15, color: "#444" }}>{x.d}</p></div>
               ))}

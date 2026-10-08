@@ -41,7 +41,7 @@ export const ENGINES: Engine[] = [
     driveUrl: "#drive-fse",
     navigator: { name: "Elizabeth", org: "The Builder Platform", email: "builderplatform@engine.xyz" },
     strategist: { name: "Ryan Donahue", org: "Formation" },
-    dataSteward: { name: "Sid", org: "Moonlight Analytics" },
+    dataSteward: { name: "Sid", org: "Data team" },
     deadline: { label: "NSF site visit (virtual)", date: "2026-09-15" },
     config: {
       coreNaics: ["3344 · Semiconductor & other electronic components", "333242 · Semiconductor machinery mfg"],
@@ -73,7 +73,7 @@ export const ENGINES: Engine[] = [
     tone: "ultramarine",
     navigator: { name: "Karen Barnes", org: "The Builder Platform", email: "builderplatform@engine.xyz" },
     strategist: { name: "Ryan Donahue", org: "Formation" },
-    dataSteward: { name: "Sid", org: "Moonlight Analytics" },
+    dataSteward: { name: "Sid", org: "Data team" },
     hypotheses: [],
     team: [
       { role: "Engine lead / CEO", why: "Attends kickoff and synthesis; owns the strategic call.", required: true },
